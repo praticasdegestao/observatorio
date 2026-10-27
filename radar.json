@@ -1,0 +1,578 @@
+{
+ "atualizado": "2026-10-27",
+ "metodo": "Coleta assistida por busca na web em 27/10/2026; cada item foi aberto e conferido (data e números) antes de entrar no radar.",
+ "itens": [
+  {
+   "data": "2026-10-26",
+   "titulo": "Preço da mandioca atinge maior nível desde fevereiro de 2025 com oferta restrita",
+   "veiculo": "Portal do Agronegócio",
+   "orgao": "Cepea",
+   "culturas": [
+    "Mandioca"
+   ],
+   "temas": [
+    "Preços",
+    "Clima"
+   ],
+   "resumo": "Chuvas dificultam a colheita e a oferta fica abaixo da demanda industrial, sobretudo no Paraná; em termos reais (IGP-DI), a média semanal é a mais alta desde novembro de 2025.",
+   "url": "https://portaldoagronegocio.com.br/gestao-rural/precos-agropecuarios/noticias/preco-da-mandioca-atinge-maior-nivel-desde-fevereiro-de-2025-com-oferta-restrita-1"
+  },
+  {
+   "data": "2026-10-26",
+   "titulo": "Problemas de qualidade e maior oferta voltam a pressionar preços do mamão havaí",
+   "veiculo": "Campo Vivo / HF Brasil",
+   "orgao": "Cepea",
+   "culturas": [
+    "Mamão"
+   ],
+   "temas": [
+    "Preços",
+    "Sanidade"
+   ],
+   "resumo": "Havaí a R$ 2,42/kg no Norte do ES (−6% na semana), com antracnose e mais oferta; formosa sobe para R$ 4,07/kg no Norte capixaba (+13%) e R$ 4,00/kg no Sul da BA (+14%).",
+   "url": "https://campovivo.com.br/fruticultura/2026/10/26/problemas-de-qualidade-e-maior-oferta-volta-a-pressionar-precos-do-havai/"
+  },
+  {
+   "data": "2026-10-27",
+   "titulo": "Conab: em setembro, banana e mamão recuam nas Ceasas; laranja sobe 3,3%",
+   "veiculo": "Conexão Tocantins",
+   "orgao": "Conab",
+   "culturas": [
+    "Banana",
+    "Mamão",
+    "Citros"
+   ],
+   "temas": [
+    "Preços",
+    "Mercado"
+   ],
+   "resumo": "Média ponderada de setembro vs agosto: mamão −8,9%, banana −2,6%, laranja +3,3%. Exportações de frutas e hortaliças somam 909 mil t (+6,6%) e US$ 1,17 bi (+17,6%) em jan–set; mamão +4,1%.",
+   "url": "https://conexaoto.com.br/2026/10/27/boletim-da-conab-aponta-para-queda-de-precos-da-cenoura"
+  },
+  {
+   "data": "2026-10-27",
+   "titulo": "El Niño 2026/2027: Embrapa entrega ao MAPA 163 medidas contra a seca no Nordeste",
+   "veiculo": "O Povo",
+   "orgao": "Embrapa / MAPA",
+   "culturas": [
+    "Mandioca"
+   ],
+   "temas": [
+    "Clima",
+    "Políticas"
+   ],
+   "resumo": "Nota técnica com Inmet prevê chuvas abaixo da média e calor no 1º semestre de 2027; variedades de mandioca tolerantes à seca aparecem entre as opções de convivência. Reservatórios estão perto de 51% (vs 23% em 2015).",
+   "url": "https://mais.opovo.com.br/jornal/economia/2026/10/27/el-nino-2026-2027-embrapa-indica-acoes-contra-seca-no-nordeste.html"
+  },
+  {
+   "data": "2026-10-24",
+   "titulo": "Preço da laranja cai com redução das compras da indústria",
+   "veiculo": "NC News",
+   "orgao": "Cepea",
+   "culturas": [
+    "Citros"
+   ],
+   "temas": [
+    "Preços",
+    "Mercado"
+   ],
+   "resumo": "Indicador Cepea da laranja para indústria fechou a R$ 27,65/cx em 23/10, cerca de 6,7% abaixo de 09/10. Processadoras compram menos no spot, usam contratos e priorizam NFC diante de estoques altos de suco.",
+   "url": "https://ncnews.com.br/2026/10/24/preco-laranja-cai-compras-industrias-suco/"
+  },
+  {
+   "data": "2026-10-24",
+   "titulo": "Embrapa instala Unidades de Referência Tecnológica de mandioca no Maranhão",
+   "veiculo": "Portal Amazônia",
+   "orgao": "Embrapa",
+   "culturas": [
+    "Mandioca"
+   ],
+   "temas": [
+    "P&D"
+   ],
+   "resumo": "Em Amarante do Maranhão, 15 cultivares serão avaliadas no clima e solo locais (produtividade e qualidade de raízes), em parceria com a COOPRAMA.",
+   "url": "https://portalamazonia.com/maranhao/unidades-referencia-mandioca-maranhao"
+  },
+  {
+   "data": "2026-10-20",
+   "titulo": "Embrapa entrega mudas de mandioca livres de pragas e doenças no Tocantins",
+   "veiculo": "Planeta Campo / Canal Rural",
+   "orgao": "Embrapa",
+   "culturas": [
+    "Mandioca"
+   ],
+   "temas": [
+    "P&D",
+    "Sanidade"
+   ],
+   "resumo": "Mudas tratadas por termoterapia entregues a produtores em Palmas (TO); estratégia semelhante à do Ciat (Colômbia), que construiu 58 estufas.",
+   "url": "https://planetacampo.canalrural.com.br/agricultura/embrapa-entrega-mudas-de-mandioca-livres-de-pragas-e-doencas-para-impulsionar-producao/"
+  },
+  {
+   "data": "2026-10-20",
+   "titulo": "Bom Jesus da Lapa (BA): o município que mais produz banana no Brasil",
+   "veiculo": "Canal Rural",
+   "orgao": "IBGE / Codevasf",
+   "culturas": [
+    "Banana"
+   ],
+   "temas": [
+    "Produção"
+   ],
+   "resumo": "Líder na PAM/IBGE (2023), com 22,7 t/ha frente à média nacional de 15 t/ha; a maior parte da área está no Projeto Formoso, perímetro irrigado de ~12 mil ha no São Francisco.",
+   "url": "https://www.canalrural.com.br/alem-do-agro/2026/10/20/foi-o-municipio-que-mais-produziu-banana-no-brasil-e-tem-uma-romaria-reconhecida-por-lei-federal-a-cidade-baiana-onde-fe-e-irrigacao-dividem-o-sao-francisco/"
+  },
+  {
+   "data": "2026-09-29",
+   "titulo": "Mandioca: baixa oferta sustenta alta da raiz; demanda fraca pressiona derivados",
+   "veiculo": "Folha Agrícola",
+   "orgao": "Cepea",
+   "culturas": [
+    "Mandioca"
+   ],
+   "temas": [
+    "Preços",
+    "Clima",
+    "Mercado"
+   ],
+   "resumo": "Chuvas atrasaram a colheita e reduziram a oferta de raiz em todas as regiões acompanhadas; fécula e farinha recuam com demanda enfraquecida.",
+   "url": "https://folhaagricola.com.br/2026/09/29/mandioca-baixa-oferta-sustenta-alta-da-raiz-demanda-enfraquecida-pressiona-derivados/"
+  },
+  {
+   "data": "2026-09-22",
+   "titulo": "Conab: mamão cai 10,9% no atacado em agosto; banana tem a maior alta entre as frutas",
+   "veiculo": "Agência Gov",
+   "orgao": "Conab",
+   "culturas": [
+    "Mamão",
+    "Banana",
+    "Citros"
+   ],
+   "temas": [
+    "Preços"
+   ],
+   "resumo": "Mamão mais barato em 70% das Ceasas (Vitória −43,7%; São Paulo −23,2%); banana +4,3%; laranja −0,95%. Comercialização de frutas cresce 4,5% no mês.",
+   "url": "https://agenciagov.ebc.com.br/noticias/202609/alface-cebola-batata-e-mamao-apresentam-reducao-superior-a-10-na-media-dos-valores-de-comercializacao-no-atacado"
+  },
+  {
+   "data": "2026-09-11",
+   "titulo": "Fundecitrus eleva para 263,15 milhões de caixas a safra de laranja 2026/27",
+   "veiculo": "Forbes Agro",
+   "orgao": "Fundecitrus",
+   "culturas": [
+    "Citros"
+   ],
+   "temas": [
+    "Produção",
+    "Clima"
+   ],
+   "resumo": "Revisão de +3,1% sobre maio, puxada pelo maior peso dos frutos após chuvas acima da média; ainda ~10% abaixo da safra 2025/26 (292,94 mi cx). Queda prematura de frutos sobe para 24,1%.",
+   "url": "https://forbes.com.br/forbes-agro/2026/09/fundecitrus-eleva-projecao-de-safra-de-laranja-de-sp-e-mg/"
+  },
+  {
+   "data": "2026-09-02",
+   "titulo": "Greening registra o menor avanço em nove anos no cinturão citrícola",
+   "veiculo": "Revista Cultivar",
+   "orgao": "Fundecitrus",
+   "culturas": [
+    "Citros"
+   ],
+   "temas": [
+    "Sanidade",
+    "Clima"
+   ],
+   "resumo": "Incidência passa de 47,63% (2025) para 48,08% (2026), +0,45 p.p., ante +3,28 p.p. no ano anterior. Controle do psilídeo, renovação de pomares e clima menos favorável explicam a desaceleração.",
+   "url": "https://revistacultivar.com.br/noticias/greening-registra-menor-avanco-em-nove-anos-em-sao-paulo"
+  },
+  {
+   "data": "2026-07-31",
+   "titulo": "Embrapa publica Sistema de Produção de Abacaxi para o Amazonas (edição 2026)",
+   "veiculo": "Compre Rural",
+   "orgao": "Embrapa",
+   "culturas": [
+    "Abacaxi"
+   ],
+   "temas": [
+    "P&D"
+   ],
+   "resumo": "Publicação gratuita cobre clima, adubação, pragas, colheita, pós-colheita, custos e comercialização, com base na cultivar Turiaçu Amazonas avaliada em Itacoatiara e Manaus.",
+   "url": "https://comprerural.com/nova-publicacao-atualiza-orientacoes-para-o-cultivo-de-abacaxi-no-amazonas/"
+  },
+  {
+   "data": "2026-07-28",
+   "titulo": "Fundecitrus busca genes de resistência ao greening em parentes silvestres dos citros",
+   "veiculo": "Citrus Industry",
+   "orgao": "Fundecitrus",
+   "culturas": [
+    "Citros"
+   ],
+   "temas": [
+    "P&D",
+    "Sanidade"
+   ],
+   "resumo": "Cruzamentos controlados e marcadores moleculares para transferir a resistência de Eremocitrus e Microcitrus a variedades comerciais, num programa de várias gerações.",
+   "url": "https://citrusindustry.net/2026/07/28/research-brazil-greening-resistance/"
+  },
+  {
+   "data": "2026-07-23",
+   "titulo": "Exportações de frutas do Ceará crescem 32% no 1º semestre de 2026",
+   "veiculo": "Diário do Nordeste",
+   "orgao": "MDIC",
+   "culturas": [
+    "Banana",
+    "Mamão"
+   ],
+   "temas": [
+    "Mercado"
+   ],
+   "resumo": "US$ 62 mi no semestre; banana US$ 3,07 mi (4,73 mil t, +4%) e mamão US$ 771 mil (629 t, +455%).",
+   "url": "https://diariodonordeste.verdesmares.com.br/negocios/agro/quais-frutas-o-ceara-mais-exporta-em-2026-e-para-quais-paises-1.3778551"
+  },
+  {
+   "data": "2026-07-21",
+   "titulo": "Banana/Cepea: alta nos preços eleva rentabilidade, mas margens seguem apertadas",
+   "veiculo": "Notícias Agrícolas",
+   "orgao": "Cepea",
+   "culturas": [
+    "Banana"
+   ],
+   "temas": [
+    "Preços",
+    "Mercado"
+   ],
+   "resumo": "Nanica de 1ª no Vale do Ribeira: rentabilidade de R$ 0,19/kg no 1º semestre (vs R$ 0,06 em 2025); preço médio R$ 1,59/kg (+10%) contra custo de R$ 1,40/kg (+3%).",
+   "url": "https://www.noticiasagricolas.com.br/noticia/425096"
+  },
+  {
+   "data": "2026-07-21",
+   "titulo": "El Niño deve elevar a volatilidade da oferta de frutas na América do Sul",
+   "veiculo": "Notícias Agrícolas",
+   "orgao": "NOAA",
+   "culturas": [
+    "Banana",
+    "Citros"
+   ],
+   "temas": [
+    "Clima",
+    "Mercado"
+   ],
+   "resumo": "El Niño moderado a forte (possivelmente muito forte entre set e nov/2026); Colômbia prevê estresse hídrico para banana e o Peru acumulava queda de 43% nas exportações de tangerina.",
+   "url": "https://www.noticiasagricolas.com.br/noticias/hortifruti/425051-el-nino-deve-impactar-producao-e-comercializacao-de-frutas-na-america-do-sul-e-elevar-volatilidade-da-oferta.amp.html"
+  },
+  {
+   "data": "2026-07-16",
+   "titulo": "Suco de laranja brasileiro fica fora da nova sobretaxa de 25% dos EUA",
+   "veiculo": "Notícias Agrícolas",
+   "orgao": "USTR / CitrusBR",
+   "culturas": [
+    "Citros"
+   ],
+   "temas": [
+    "Mercado",
+    "Políticas"
+   ],
+   "resumo": "Isenção vale para FCOJ, NFC, polpa e óleos essenciais. Os EUA levaram 48% das exportações de 2025/26: 355,8 mil t FCOJ-equivalente e US$ 1,08 bi.",
+   "url": "https://www.noticiasagricolas.com.br/noticias/laranja-citrus/424830-suco-de-laranja-brasileiro-fica-fora-da-nova-sobretaxa-de-25-anunciada-pelos-estados-unidos.amp.html"
+  },
+  {
+   "data": "2026-06-01",
+   "titulo": "Greening avança, derruba safra de citros e pressiona por novas tecnologias de controle",
+   "veiculo": "SNA",
+   "orgao": "Fundecitrus",
+   "culturas": [
+    "Citros"
+   ],
+   "temas": [
+    "Sanidade",
+    "P&D",
+    "Produção"
+   ],
+   "resumo": "Incidência de HLB de 47,6% e severidade de 22,7%; setor busca alternativas como o sistema TreciseR (Invaio), ainda em registro no Brasil.",
+   "url": "https://sna.agr.br/greening-avanca-derruba-safra-de-citros-e-pressiona-por-novas-tecnologias-de-controle/"
+  },
+  {
+   "data": "2026-05-28",
+   "titulo": "Expocitros 2026: expansão da citricultura e manejo integrado do greening",
+   "veiculo": "Fundecitrus",
+   "orgao": "Fundecitrus",
+   "culturas": [
+    "Citros"
+   ],
+   "temas": [
+    "Sanidade",
+    "Produção"
+   ],
+   "resumo": "Em Cordeirópolis, pesquisadores defendem manejo precoce, contínuo e integrado: greening e psilídeo já estão presentes em todos os novos plantios, inclusive nas novas regiões.",
+   "url": "https://www.fundecitrus.com.br/noticias/fundecitrus-debate-expansao-da-citricultura-e-controle-do-greening-na-expocitros-2026/"
+  },
+  {
+   "data": "2026-05-15",
+   "titulo": "Embrapa leva cultivares de mandioca BRS 429 e BRS 418 à AgroBrasília 2026",
+   "veiculo": "Agrolink",
+   "orgao": "Embrapa",
+   "culturas": [
+    "Mandioca"
+   ],
+   "temas": [
+    "P&D"
+   ],
+   "resumo": "BRS 429 (mesa, polpa amarela intensa, colheita em 8–10 meses) e BRS 418 (indústria de farinha e fécula, em teste final para uso das folhas na alimentação animal).",
+   "url": "https://www.agrolink.com.br/noticias/embrapa-participa-da-agrobrasilia-2026-com-lancamentos--tecnologias-e-eventos-tecnicos_514591.html"
+  },
+  {
+   "data": "2026-05-13",
+   "titulo": "Feibanana 2026 celebra a Indicação Geográfica da Banana do Vale do Ribeira",
+   "veiculo": "Agrolink",
+   "orgao": "SAA-SP / INPI",
+   "culturas": [
+    "Banana"
+   ],
+   "temas": [
+    "Mercado",
+    "Políticas",
+    "Produção"
+   ],
+   "resumo": "Região de Registro gera ~R$ 1,6 bi em VPA com banana e concentra ~80% da produção paulista (~¼ do país). IG reconhecida pelo INPI em abril.",
+   "url": "https://www.agrolink.com.br/noticias/secretaria-de-agricultura-participa-da-feibanana-2026-no-vale-do-ribeira_514429.html"
+  },
+  {
+   "data": "2026-05-08",
+   "titulo": "Fundecitrus: safra de laranja 2026/27 deve cair 12,9% no cinturão citrícola",
+   "veiculo": "Revista Cultivar",
+   "orgao": "Fundecitrus",
+   "culturas": [
+    "Citros"
+   ],
+   "temas": [
+    "Produção",
+    "Sanidade"
+   ],
+   "resumo": "Estimativa inicial de 255,2 mi cx (−12,9%; −14,7% vs média de 10 anos); produtividade de 697 cx/ha (−13,8%), com bienalidade, queda de frutos e greening.",
+   "url": "https://www.revistacultivar.com.br/noticias/safra-de-laranja-deve-cair-12-9-no-cinturao-citricola"
+  },
+  {
+   "data": "2026-04-17",
+   "titulo": "Banana/Cepea: oferta de nanica começa a escalar no norte de Santa Catarina",
+   "veiculo": "HF Brasil",
+   "orgao": "Cepea",
+   "culturas": [
+    "Banana"
+   ],
+   "temas": [
+    "Preços",
+    "Produção"
+   ],
+   "resumo": "Nanica a R$ 0,98/kg (−13% na semana) no norte de SC; prata sobe 28%, para ~R$ 2,95/kg, com oferta menor.",
+   "url": "https://www.hfbrasil.org.br/br/banana-cepea-oferta-de-nanica-comeca-a-escalar-no-norte-de-santa-catarina.aspx"
+  },
+  {
+   "data": "2026-03-23",
+   "titulo": "CNA leva 63 produtores à Fruit Attraction São Paulo 2026",
+   "veiculo": "CNA",
+   "orgao": "CNA / ApexBrasil",
+   "culturas": [
+    "Banana",
+    "Abacaxi",
+    "Mamão",
+    "Citros"
+   ],
+   "temas": [
+    "Mercado"
+   ],
+   "resumo": "Comitiva do projeto agroBR: 40 produtores nas agendas de negócios e 23 na rodada Exporta Mais Frutas Frescas (ApexBrasil). Notícia setorial de fruticultura, sem foco em uma cultura.",
+   "url": "https://cnabrasil.org.br/noticias/cna-amplia-insercao-internacional-de-produtores-na-fruit-attraction-sao-paulo-2026"
+  },
+  {
+   "data": "2026-03-09",
+   "titulo": "Oferta restrita de mandioca eleva preços pela 5ª semana consecutiva",
+   "veiculo": "Band Agro",
+   "orgao": "Cepea",
+   "culturas": [
+    "Mandioca"
+   ],
+   "temas": [
+    "Preços",
+    "Clima"
+   ],
+   "resumo": "Média de R$ 503,96/t (+2,5% na semana; +7,2% em 4 semanas), com solo seco atrasando a colheita; ainda 10,4% abaixo de 2025 (−8,7% real).",
+   "url": "https://www.band.com.br/agro/noticias/oferta-restrita-de-mandioca-eleva-precos-pela-5-semana-consecutiva-202603091050"
+  },
+  {
+   "data": "2026-01-19",
+   "titulo": "Banana/Cepea: com retomada de qualidade, exportações devem ser semelhantes em 2026",
+   "veiculo": "HF Brasil",
+   "orgao": "Cepea",
+   "culturas": [
+    "Banana"
+   ],
+   "temas": [
+    "Mercado"
+   ],
+   "resumo": "Em 2025 o Brasil exportou ~80 mil t (+64%) e US$ 32 mi (+49,8%), com Uruguai (45%) e Argentina (40%) como destinos; 2026 deve repetir o volume, com pico entre abril e junho.",
+   "url": "https://www.hfbrasil.org.br/br/banana-cepea-com-retomada-de-qualidade-exportacoes-devem-ser-semelhantes-em-2026.aspx"
+  },
+  {
+   "data": "2026-01-02",
+   "titulo": "Mandioca/Cepea: produção menor e preços mais estáveis devem marcar 2026",
+   "veiculo": "Notícias Agrícolas",
+   "orgao": "Cepea / IBGE",
+   "culturas": [
+    "Mandioca"
+   ],
+   "temas": [
+    "Produção",
+    "Preços"
+   ],
+   "resumo": "Após dois anos de expansão de área, fase de ajuste: produção de ~20 mi t (−2,5%), área colhida de 1,26 mi ha (−1,7%) e produtividade de 15,7 t/ha (−0,8%); juros e custos de mão de obra pesam.",
+   "url": "https://www.noticiasagricolas.com.br/noticias/hortifruti/413256-mandioca-cepea-producao-menor-e-precos-mais-estaveis-devem-marcar-2026.amp.html"
+  },
+  {
+   "data": "2025-12-29",
+   "titulo": "Após ano difícil com tarifaço, Abrafrutas projeta novo recorde de exportações",
+   "veiculo": "Canal Rural",
+   "orgao": "Abrafrutas",
+   "culturas": [
+    "Banana",
+    "Abacaxi",
+    "Mamão",
+    "Citros"
+   ],
+   "temas": [
+    "Mercado",
+    "Políticas"
+   ],
+   "resumo": "No 3º trimestre de 2025, exportações de frutas cresceram 30% em volume e 16% em receita sobre 2024, apesar da tarifa dos EUA de julho/2025. Notícia setorial de fruticultura.",
+   "url": "https://www.canalrural.com.br/agricultura/hortifruti/apos-ano-dificil-com-tarifaco-abrafrutas-projeta-novo-recorde-de-exportacoes/"
+  },
+  {
+   "data": "2025-08-26",
+   "titulo": "Embrapa: BRS Princesa e BRS Platina resistem ao Fusarium raça 4 tropical",
+   "veiculo": "Revista Cultivar",
+   "orgao": "Embrapa / AgroSavia",
+   "culturas": [
+    "Banana"
+   ],
+   "temas": [
+    "P&D",
+    "Sanidade"
+   ],
+   "resumo": "Testes com a AgroSavia (Colômbia) indicam resistência à FOC R4T, ausente no Brasil mas presente em Colômbia, Peru e Venezuela; vigilância e biosseguridade seguem essenciais.",
+   "url": "https://www.revistacultivar.com.br/noticias/brasil-tem-variedades-de-banana-resistentes-a-fusarium-r4t"
+  },
+  {
+   "data": "2025-06-30",
+   "titulo": "Tabocão (TO) abriga a maior fazenda de abacaxi do mundo, com alta tecnologia",
+   "veiculo": "Tocantins Rural",
+   "orgao": "Seagro-TO",
+   "culturas": [
+    "Abacaxi"
+   ],
+   "temas": [
+    "Produção",
+    "Agricultura digital"
+   ],
+   "resumo": "Mais de 3 mil ha (Pérola e Imperial) e 100–150 mil t/ano; gotejamento, monitoramento por drones, análise automatizada de solo e irrigação inteligente. Exporta para UE e EUA.",
+   "url": "https://tocantinsrural.com.br/tabocao-to-abriga-a-maior-fazenda-de-abacaxi-do-mundo-com-alta-tecnologia-no-campo/"
+  }
+ ],
+ "sinteses": {
+  "_data": "2026-10-27",
+  "Mandioca": {
+   "sinais": [
+    {
+     "k": "Preço da raiz",
+     "d": "up"
+    },
+    {
+     "k": "Fécula e farinha",
+     "d": "down"
+    },
+    {
+     "k": "Produção 2026",
+     "d": "down"
+    },
+    {
+     "k": "El Niño no NE",
+     "d": "alert"
+    }
+   ],
+   "texto": "Raiz no maior nível nominal desde fev/2025 (Cepea, fim de out/26): chuvas atrasam a colheita e a oferta fica abaixo da demanda industrial, sobretudo no PR, enquanto fécula e farinha perdem força. P&D ativo (URTs no MA, mudas limpas no TO, BRS 429 e 418). Atenção à seca prevista para o Nordeste no 1º semestre de 2027."
+  },
+  "Banana": {
+   "sinais": [
+    {
+     "k": "Atacado (set–out)",
+     "d": "down"
+    },
+    {
+     "k": "Rentabilidade 1º sem.",
+     "d": "up"
+    },
+    {
+     "k": "Exportação 2026",
+     "d": "flat"
+    },
+    {
+     "k": "FOC R4T",
+     "d": "alert"
+    }
+   ],
+   "texto": "Preços em baixa nas Ceasas em setembro (−2,6%, Conab) e no início de outubro, após alta em agosto. No 1º semestre, a nanica do Vale do Ribeira ganhou rentabilidade, mas com margem estreita. IG da Banana do Vale do Ribeira (INPI, abr/26). Vigilância contra a raça 4 tropical do Fusarium; BRS Princesa e BRS Platina mostraram resistência."
+  },
+  "Abacaxi": {
+   "sinais": [
+    {
+     "k": "Pouca cobertura na mídia",
+     "d": "alert"
+    },
+    {
+     "k": "P&D regional",
+     "d": "up"
+    }
+   ],
+   "texto": "Cobertura escassa em 2026 nas fontes especializadas consultadas. Destaques: novo Sistema de Produção de Abacaxi para o Amazonas (Embrapa, jul/26) e a escala tecnológica da maior fazenda do mundo, em Tabocão (TO). Para preço e produção, acompanhar Ceasas e PAM."
+  },
+  "Mamão": {
+   "sinais": [
+    {
+     "k": "Havaí",
+     "d": "down"
+    },
+    {
+     "k": "Formosa",
+     "d": "up"
+    },
+    {
+     "k": "Exportação jan–set",
+     "d": "up"
+    },
+    {
+     "k": "Antracnose",
+     "d": "alert"
+    }
+   ],
+   "texto": "Havaí pressionado por mais oferta e antracnose no Norte do ES (R$ 2,42/kg, fim de out/26); formosa em alta no ES e no Sul da BA (≈ R$ 4/kg). No atacado, quedas de 10,9% em agosto e 8,9% em setembro (Conab). Exportações de mamão +4,1% em jan–set (MDIC)."
+  },
+  "Citros": {
+   "sinais": [
+    {
+     "k": "Safra 2026/27",
+     "d": "down"
+    },
+    {
+     "k": "Preço à indústria",
+     "d": "down"
+    },
+    {
+     "k": "Greening desacelera",
+     "d": "flat"
+    },
+    {
+     "k": "Suco isento nos EUA",
+     "d": "up"
+    }
+   ],
+   "texto": "Safra 2026/27 revisada para 263,15 mi cx (+3,1% vs maio, mas ≈ 10% abaixo de 2025/26). Laranja para indústria recua em outubro (R$ 27,65/cx em 23/10) com estoques altos de suco. Greening em 48,08% das plantas, menor avanço em nove anos. Suco brasileiro fora da sobretaxa de 25% dos EUA."
+  }
+ }
+}
