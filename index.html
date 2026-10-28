@@ -607,6 +607,28 @@
         .tab.active .tab-tx small { opacity: .88; }
         .tab:focus-visible { outline: 3px solid var(--t2); outline-offset: 2px; }
         @media (max-width: 768px) { .tabs { flex-direction: row; grid-template-columns: repeat(2, minmax(0, 1fr)); } .tab { padding: 9px 10px; gap: 8px; } .tab .tab-ic { flex-basis: 30px; height: 30px; font-size: 1rem; } .tab .tab-tx b { white-space: normal; font-size: .84rem; } .tab .tab-tx small { display: none; } }
+
+        /* ===== Evolução percentual (mapas pequenos por variável) ===== */
+        .mob-per { display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; font-weight: 600; color: #2d3436; }
+        .mob-per select { padding: 6px 8px; border: 1px solid #dfe6e9; border-radius: 8px; font-family: inherit; font-size: .85rem; background: #fff; cursor: pointer; }
+        .mob-evo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+        @media (max-width: 900px) { .mob-evo-grid { grid-template-columns: 1fr; } }
+        .mob-evo-cell { background: linear-gradient(180deg, #f8fbfd 0%, #f3f8f5 100%); border: 1px solid #e6edf0; border-radius: 12px; padding: 12px 14px; }
+        .mob-evo-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 6px; }
+        .mob-evo-head h4 { font-size: .98rem; color: #1e272e; }
+        .mob-evo-head h4 small { display: block; font-size: .74rem; font-weight: 500; color: #95a5a6; margin-top: 2px; }
+        .mob-evo-tot { font-size: 1.35rem; font-weight: 800; white-space: nowrap; }
+        .mob-evo-tot.up { color: #00866a; } .mob-evo-tot.down { color: #c0392b; } .mob-evo-tot.flat { color: #95a5a6; }
+        .mob-evo-tot small { display: block; font-size: .68rem; font-weight: 600; color: #95a5a6; text-align: right; }
+        .mob-evo-cell svg { width: 100%; height: auto; max-height: 430px; display: block; }
+        .mob-evo-cell .me-unit { cursor: pointer; }
+        .mob-evo-cell .me-unit:hover { stroke: #1e272e; }
+        .mob-evo-cell .me-ghost { fill: none; stroke: #c0392b; stroke-dasharray: 2 2; pointer-events: none; }
+        .mob-evo-stats { font-size: .78rem; color: #4b5559; line-height: 1.5; margin-top: 6px; }
+        .mob-evo-stats b { color: #1e272e; }
+        .mob-evo-leg { display: flex; align-items: center; gap: 8px; font-size: .72rem; color: #636e72; margin-top: 6px; flex-wrap: wrap; }
+        .mob-evo-leg .bar { flex: 0 0 150px; height: 8px; border-radius: 999px; background: linear-gradient(90deg,#c0392b,#f4f6f5 50%,#008a64); }
+        .mob-evo-leg i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
     </style>
 </head>
 <body>
@@ -1187,6 +1209,8 @@
                             <label for="mobVar">Variável</label>
                             <select id="mobVar">
                                 <option value="Quantidade Produzida">Quantidade produzida</option>
+                                <option value="Área Colhida">Área colhida</option>
+                                <option value="Valor da Produção">Valor da produção</option>
                                 <option value="Produtividade">Produtividade (rendimento médio)</option>
                             </select>
                         </div>
@@ -1233,6 +1257,21 @@
                         <div class="map-side" id="mobMapSide"></div>
                     </div>
                 </div>
+                <div class="chart-card full" style="--accent:#e84393" id="mobEvoCard">
+                    <div class="chart-head">
+                        <div class="chart-title" id="mobEvoTitle">📊 Evolução percentual por variável</div>
+                        <div class="map-head-actions">
+                            <span class="mob-per">De <select id="mobEvoFrom"></select> até <select id="mobEvoTo"></select></span>
+                            <div class="mode-toggle" id="mobEvoLevel">
+                                <button type="button" data-level="mun" class="active">Municípios</button>
+                                <button type="button" data-level="uf">Estados</button>
+                                <button type="button" data-level="ti">Territórios BA</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-note" id="mobEvoNote"></div>
+                    <div class="mob-evo-grid" id="mobEvoGrid"></div>
+                </div>
                 <div class="charts-section">
                     <div class="chart-card" style="--accent:#6c5ce7">
                         <div class="chart-title" id="mobShareTitle">🧩 Participação na produção</div>
@@ -1246,7 +1285,7 @@
                     </div>
                 </div>
                 <div class="table-section summary">
-                    <div class="table-title">🎯 Centro de gravidade da produção, ano a ano</div>
+                    <div class="table-title">🎯 Centro de gravidade, ano a ano</div>
                     <div class="chart-note" id="mobCgNote"></div>
                     <div id="mobCgTable" style="overflow-x:auto"></div>
                 </div>
@@ -5166,11 +5205,19 @@
         const mobPct = v => (v >= 0 ? '+' : '') + v.toLocaleString('pt-BR', {maximumFractionDigits: 1}) + '%';
         const mobPP = v => (v >= 0 ? '+' : '') + v.toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + ' p.p.';
         const mobCityName = c => c.replace(/ \([A-Z]{2}\)$/, '');
+        // métricas do mapa: nome, substantivo para o texto e unidade
+        const MOB_MET = {'Quantidade Produzida': {nome: 'Quantidade produzida', sub: 'produção'}, 'Área Colhida': {nome: 'Área colhida', sub: 'área colhida', un: 'ha'},
+            'Área Plantada': {nome: 'Área plantada', sub: 'área plantada', un: 'ha'}, 'Valor da Produção': {nome: 'Valor da produção', sub: 'valor da produção', un: 'R$', masc: true},
+            'Produtividade': {nome: 'Produtividade', sub: 'produção'}};
+        const mobArt = (m, f, mas) => mas ? m : f;   // concordância: o/a, do/da, no/na, pelo/pela
+        // Territórios de Identidade da Bahia: município → nº do território
+        const MOB_TI = {}; Object.entries(tibaTI.m).forEach(([c, t]) => { MOB_TI[c] = t; });
+        const MOB_TI_NOME = Object.fromEntries(tibaTI.t.map(([n, nome]) => [n, nome]));
         // séries da cultura (por métrica e ano), lidas direto do formato compacto
         function mobData(cult) {
             if (MOB.cache[cult]) return MOB.cache[cult];
             const cu = citiesCompact.culturas.indexOf(cult), n = citiesCompact.cidades.length, out = {};
-            const want = {'Quantidade Produzida': 1, 'Área Colhida': 1, 'Produtividade': 1};
+            const want = {'Quantidade Produzida': 1, 'Área Colhida': 1, 'Área Plantada': 1, 'Valor da Produção': 1, 'Produtividade': 1};
             citiesCompact.groups.forEach(([y, c, m, ds, vs]) => {
                 if (c !== cu) return;
                 const met = citiesCompact.metricas[m]; if (!want[met]) return;
@@ -5184,6 +5231,7 @@
         function mobScopeOk(i, scope) {
             if (scope === 'BR') return true;
             if (scope.startsWith('R:')) return MOB.reg[i] === scope.slice(2);
+            if (scope.startsWith('TI:')) return MOB.ti[i] === +scope.slice(3);
             return MOB.uf[i] === scope.slice(3);
         }
         function initMob() {
@@ -5192,6 +5240,7 @@
             MOB.yi = MOB.years.length - 1;
             MOB.uf = citiesCompact.cidades.map(ufOf);
             MOB.reg = MOB.uf.map(u => UF_REGION[u] || '');
+            MOB.ti = citiesCompact.cidades.map(c => MOB_TI[c] || 0);
             const cs = document.getElementById('mobCulture');
             const radar = MOB_RADAR_CULTS.filter(c => citiesCompact.culturas.includes(c));
             cs.innerHTML = `<optgroup label="Culturas do Radar">${radar.map(c => `<option value="${c}">${c}</option>`).join('')}</optgroup>` +
@@ -5202,7 +5251,8 @@
             const ufs = Object.keys(UF_NAME).sort((a, b) => UF_NAME[a].localeCompare(UF_NAME[b], 'pt-BR'));
             sc.innerHTML = '<option value="BR">Brasil</option>' +
                 `<optgroup label="Regiões">${regs.map(r => `<option value="R:${r}">${r}</option>`).join('')}</optgroup>` +
-                `<optgroup label="Estados">${ufs.map(u => `<option value="UF:${u}">${UF_NAME[u]} (${u})</option>`).join('')}</optgroup>`;
+                `<optgroup label="Estados">${ufs.map(u => `<option value="UF:${u}">${UF_NAME[u]} (${u})</option>`).join('')}</optgroup>` +
+                `<optgroup label="Territórios de Identidade (BA)">${tibaTI.t.map(([n, nome]) => `<option value="TI:${n}">${String(n).padStart(2, '0')} · ${nome}</option>`).join('')}</optgroup>`;
             const sl = document.getElementById('mobYear');
             sl.max = MOB.years.length - 1; sl.value = MOB.yi;
             document.getElementById('mobTicks').innerHTML = MOB.years.map((y, i) => `<button type="button" data-i="${i}">${y}</button>`).join('');
@@ -5216,17 +5266,24 @@
                 document.querySelectorAll('#mobMapMode button').forEach(x => x.classList.toggle('active', x === b));
                 mobRenderYear();
             }));
+            // mapas de evolução percentual
+            const ef = document.getElementById('mobEvoFrom'), et = document.getElementById('mobEvoTo');
+            ef.innerHTML = et.innerHTML = MOB.years.map(y => `<option value="${y}">${y}</option>`).join('');
+            ef.value = MOB.years[0]; et.value = MOB.years[MOB.years.length - 1];
+            [ef, et].forEach(x => x.addEventListener('change', mobEvoMaps));
+            MOB.evoLevel = null; MOB.evoScope = null;
+            document.querySelectorAll('#mobEvoLevel button').forEach(b => b.addEventListener('click', () => { MOB.evoLevel = b.dataset.level; mobEvoMaps(); }));
             // mapa
             const svg = document.getElementById('mobMap');
             svg.setAttribute('viewBox', `0 0 ${GEO.W} ${GEO.H}`);
-            const gBg = svgEl('g', {}), gReg = svgEl('g', {}), gG = svgEl('g', {id: 'mobGhosts'}), gC = svgEl('g', {id: 'mobCircles'}), gT = svgEl('g', {id: 'mobTrail'}), gLab = svgEl('g', {id: 'mobLabels', 'pointer-events': 'none'});
+            const gBg = svgEl('g', {}), gReg = svgEl('g', {}), gG = svgEl('g', {id: 'mobGhosts'}), gC = svgEl('g', {id: 'mobCircles'}), gT = svgEl('g', {id: 'mobTrail'}), gTer = svgEl('g', {id: 'mobTerr', 'pointer-events': 'none'}), gLab = svgEl('g', {id: 'mobLabels', 'pointer-events': 'none'});
             Object.entries(GEO.states).forEach(([uf, o]) => gBg.appendChild(svgEl('path', {d: o.d, class: 'cm-state', 'data-uf': uf})));
             Object.values(GEO.regions).forEach(o => gReg.appendChild(svgEl('path', {d: o.d, class: 'gm-region-line'})));
             for (let i = 0; i < citiesCompact.cidades.length; i++) {
                 const c = svgEl('circle', {cx: GEO.cxy[2 * i], cy: GEO.cxy[2 * i + 1], r: 0, 'data-i': i, class: 'cm-dot'});
                 MOB.dots.push(c); gC.appendChild(c);
             }
-            svg.append(gBg, gReg, gG, gC, gT, gLab);
+            svg.append(gBg, gReg, gTer, gG, gC, gT, gLab);
             gC.addEventListener('mousemove', ev => { const i = ev.target.dataset && ev.target.dataset.i; mapTip(i !== undefined ? mobTip(+i) : null, ev); });
             gC.addEventListener('mouseleave', () => mapTip(null));
             MOB.built = true;
@@ -5255,19 +5312,20 @@
             const cult = document.getElementById('mobCulture').value, variable = document.getElementById('mobVar').value, scope = document.getElementById('mobScope').value;
             const D = mobData(cult), Y = MOB.years, n = citiesCompact.cidades.length;
             const isFr = cult.endsWith('*');
-            const qUnit = isFr ? 'mil frutos' : 't', pUnit = isFr ? 'frutos/ha' : 'kg/ha';
+            const isProdV = variable === 'Produtividade', mKey = isProdV ? 'Quantidade Produzida' : variable;
+            const qUnit = MOB_MET[mKey].un || (isFr ? 'mil frutos' : 't'), pUnit = isFr ? 'frutos/ha' : 'kg/ha';
             const idx = []; for (let i = 0; i < n; i++) if (mobScopeOk(i, scope)) idx.push(i);
             const per = Y.map(y => {
-                const q = D['Quantidade Produzida'][y], a = D['Área Colhida'][y], p = D['Produtividade'][y];
-                let tq = 0, ta = 0, sx = 0, sy = 0, np = 0;
-                idx.forEach(i => { if (q[i] > 0) { tq += q[i]; np++; sx += q[i] * GEO.cxy[2 * i]; sy += q[i] * GEO.cxy[2 * i + 1]; } if (a[i] > 0) ta += a[i]; });
+                const q = D[mKey][y], qq = D['Quantidade Produzida'][y], a = D['Área Colhida'][y], p = D['Produtividade'][y];
+                let tq = 0, ta = 0, tqq = 0, sx = 0, sy = 0, np = 0;
+                idx.forEach(i => { if (q[i] > 0) { tq += q[i]; np++; sx += q[i] * GEO.cxy[2 * i]; sy += q[i] * GEO.cxy[2 * i + 1]; } if (a[i] > 0) ta += a[i]; if (qq[i] > 0) tqq += qq[i]; });
                 const ord = idx.filter(i => q[i] > 0).sort((x, z) => q[z] - q[x]);
                 const top10 = ord.slice(0, 10).reduce((s, i) => s + q[i], 0);
                 const cx = tq ? sx / tq : null, cy = tq ? sy / tq : null;
                 let near = null;
                 if (cx !== null) { let best = Infinity; idx.forEach(i => { const d = (GEO.cxy[2 * i] - cx) ** 2 + (GEO.cxy[2 * i + 1] - cy) ** 2; if (d < best) { best = d; near = i; } }); }
                 return {y, q, a, p, tq, ta, np, ord, top10: tq ? top10 / tq * 100 : 0, cx, cy, ll: cx !== null ? mobLonLat(cx, cy) : null, near,
-                    prod: ta > 0 ? tq / ta * 1000 : 0, br: (brProd(y) || {})[cult] || 0};
+                    prod: ta > 0 ? tqq / ta * 1000 : 0, br: (brProd(y) || {})[cult] || 0};
             });
             // escala fixa entre anos (o tamanho das bolhas é comparável no tempo)
             const sizeKey = variable === 'Produtividade' ? 'a' : 'q';
@@ -5277,19 +5335,29 @@
             if (scope !== 'BR') {
                 let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
                 idx.forEach(i => { const x = GEO.cxy[2 * i], y = GEO.cxy[2 * i + 1]; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); });
-                if (x1 >= x0) { const span = Math.max(x1 - x0, (y1 - y0) * GEO.W / GEO.H, 90) * 1.15, h = span * GEO.H / GEO.W, cx = (x0 + x1) / 2, cy = (y0 + y1) / 2; vb = [cx - span / 2, cy - h / 2, span, h]; }
+                if (x1 >= x0) { const span = Math.max(x1 - x0, (y1 - y0) * GEO.W / GEO.H, scope.startsWith('TI:') ? 30 : 90) * (scope.startsWith('TI:') ? 1.3 : 1.15), h = span * GEO.H / GEO.W, cx = (x0 + x1) / 2, cy = (y0 + y1) / 2; vb = [cx - span / 2, cy - h / 2, span, h]; }
             }
             document.getElementById('mobMap').setAttribute('viewBox', vb.join(' '));
-            const scopeLabel = scope === 'BR' ? 'Brasil' : scope.startsWith('R:') ? 'Região ' + scope.slice(2) : UF_NAME[scope.slice(3)];
-            MOB.st = {cult, variable, scope, scopeLabel, idx, per, maxS, sizeKey, vb, z: vb[2] / GEO.W, qUnit, pUnit, isFr, selUF: scope.startsWith('UF:') ? scope.slice(3) : null};
+            const tiN = scope.startsWith('TI:') ? +scope.slice(3) : 0;
+            const scopeLabel = scope === 'BR' ? 'Brasil' : scope.startsWith('R:') ? 'Região ' + scope.slice(2) : tiN ? 'TI ' + MOB_TI_NOME[tiN] + ' (BA)' : UF_NAME[scope.slice(3)];
+            MOB.st = {cult, variable, scope, scopeLabel, idx, per, maxS, sizeKey, vb, z: vb[2] / GEO.W, qUnit, pUnit, isFr, mKey, met: MOB_MET[mKey], tiN,
+                selUF: scope.startsWith('UF:') ? scope.slice(3) : tiN ? 'BA' : null};
             const selUF = MOB.st.selUF, selReg = scope.startsWith('R:') ? scope.slice(2) : null;
+            // contorno dos Territórios de Identidade (recorte Bahia ou um território)
+            const gTer = document.getElementById('mobTerr'); gTer.innerHTML = '';
+            if (selUF === 'BA' && typeof tibaGeo !== 'undefined') Object.entries(tibaGeo.terr).forEach(([n, o]) => {
+                const on = tiN && +n === tiN;
+                if (tiN && !on) return;
+                gTer.appendChild(svgEl('path', {d: o.d, fill: on ? 'rgba(245,195,66,.12)' : 'none', stroke: on ? '#b9770e' : 'rgba(30,39,46,.45)', 'stroke-width': (on ? 2.2 : 0.9) * MOB.st.z, 'stroke-linejoin': 'round'}));
+            });
             document.querySelectorAll('#mobMap .cm-state').forEach(p => p.classList.toggle('hl', selUF ? p.dataset.uf === selUF : selReg ? UF_REGION[p.dataset.uf] === selReg : false));
             mobDrawTrail();
             mobCharts();
             mobCgTable();
+            mobEvoMaps();
             mobRenderYear();
         }
-        const mobFmtQ = v => formatCompactBR(v, 2) + ' ' + MOB.st.qUnit;
+        const mobFmtQ = v => MOB.st.qUnit === 'R$' ? 'R$ ' + formatCompactBR(v * 1000, 2) : formatCompactBR(v, 2) + ' ' + MOB.st.qUnit;
         const mobFmtP = v => Math.round(v).toLocaleString('pt-BR') + ' ' + MOB.st.pUnit;
         function mobDrawTrail() {
             const st = MOB.st, z = st.z, g = document.getElementById('mobTrail'); g.innerHTML = '';
@@ -5369,37 +5437,37 @@
                 t.style.fontSize = (12 * z) + 'px'; t.style.strokeWidth = (3 * z) + 'px'; t.textContent = mobCityName(citiesCompact.cidades[i]); gLab.appendChild(t);
             });
             // títulos e notas
-            const label = isProd ? `Produtividade (${st.pUnit})` : `Quantidade produzida (${st.qUnit})`;
+            const label = isProd ? `Produtividade (${st.pUnit})` : `${st.met.nome} (${st.qUnit})`;
             document.getElementById('mobMapTitle').textContent = `🗺️ ${st.cult} · ${label} · ${st.scopeLabel} · ${P.y}${MOB.mode === 'var' ? ' vs ' + P0.y : ''}`;
             let note = isProd
                 ? `Tamanho da bolha = área colhida em ${P.y} (escala fixa entre os anos); ` + (MOB.mode === 'var'
                     ? `cor = variação da produtividade vs ${P0.y} (verde = mais produtivo, vermelho = menos; roxo = não produzia em ${P0.y}). `
                     : `cor = produtividade vs média do Brasil em ${P.y} (${P.br ? mobFmtP(P.br) : 'sem média oficial'}; verde = acima, vermelho = abaixo). `)
-                : `Tamanho da bolha = quantidade produzida em ${P.y}, com a mesma escala em todos os anos, para comparar o crescimento e o encolhimento de cada polo; ` + (MOB.mode === 'var'
-                    ? `cor = variação vs ${P0.y} (verde = cresceu, vermelho = caiu; roxo = novo produtor). Círculos tracejados = ${exits.toLocaleString('pt-BR')} município(s) que produziam em ${P0.y} e não produziram em ${P.y}. `
+                : `Tamanho da bolha = ${st.met.sub} em ${P.y}, com a mesma escala em todos os anos, para comparar o crescimento e o encolhimento de cada polo; ` + (MOB.mode === 'var'
+                    ? `cor = variação vs ${P0.y} (verde = cresceu, vermelho = caiu; roxo = novo produtor). Círculos tracejados = ${exits.toLocaleString('pt-BR')} município(s) com ${st.met.sub} em ${P0.y} e sem dado em ${P.y}. `
                     : 'cor = região. ');
-            note += 'A linha tracejada liga o centro de gravidade da produção de cada ano (média das posições dos municípios ponderada pela quantidade produzida); o ponto amarelo é o ano selecionado. Use ▶ para animar.';
+            note += `A linha tracejada liga o centro de gravidade de cada ano (média das posições dos municípios ponderada ${isProd ? 'pela quantidade produzida' : mobArt('pelo', 'pela', st.met.masc) + ' ' + st.met.sub}); o ponto amarelo é o ano selecionado. ${st.tiN || st.selUF === 'BA' ? 'Contornos = Territórios de Identidade. ' : ''}Use ▶ para animar.`;
             document.getElementById('mobMapNote').textContent = note;
             // legenda
             const sizeFmt = isProd ? (v => formatCompactBR(v, 2) + ' ha') : mobFmtQ;
             const sizeLeg = [1, 0.25, 0.04].map(f => { const rr = 1.2 + Math.sqrt(f) * 18; return `<span class="sz"><svg width="${2 * rr + 4}" height="${2 * rr + 4}"><circle cx="${rr + 2}" cy="${rr + 2}" r="${rr}" fill="none" stroke="#636e72"/></svg>${sizeFmt(st.maxS * f)}</span>`; }).join('');
             let leg = '';
-            if (MOB.mode === 'var') leg = legendDiv(lim, isProd ? `Variação da produtividade vs ${P0.y}` : `Variação da quantidade vs ${P0.y}`).replace('sem base de comparação', `<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#6c5ce7"></span> novo produtor desde ${P0.y}`);
+            if (MOB.mode === 'var') leg = legendDiv(lim, isProd ? `Variação da produtividade vs ${P0.y}` : `Variação ${mobArt('do', 'da', st.met.masc)} ${st.met.sub} vs ${P0.y}`).replace('sem base de comparação', `<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#6c5ce7"></span> novo produtor desde ${P0.y}`);
             else if (isProd) leg = legendDiv(limRel, 'Produtividade vs média do Brasil').replace('sem base de comparação', 'sem média nacional');
             else leg = `<div class="lg-title">Cor = região</div><div class="lg-chips">${['Norte', 'Nordeste', 'Centro-Oeste', 'Sudeste', 'Sul'].map(r => `<span class="chip" style="--chip:${REGION_COLORS[r]}">${r}</span>`).join('')}</div>`;
-            document.getElementById('mobMapLegend').innerHTML = leg + `<div class="lg-title" style="margin-top:8px">Tamanho = ${isProd ? 'área colhida' : 'quantidade produzida'}</div><div class="lg-sizes">${sizeLeg}</div>
-                <div class="lg-na" style="margin-top:6px"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#f5c342;border:2px solid #1e272e"></span>centro de gravidade da produção no ano</div>`;
+            document.getElementById('mobMapLegend').innerHTML = leg + `<div class="lg-title" style="margin-top:8px">Tamanho = ${isProd ? 'área colhida' : st.met.sub}</div><div class="lg-sizes">${sizeLeg}</div>
+                <div class="lg-na" style="margin-top:6px"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#f5c342;border:2px solid #1e272e"></span>centro de gravidade no ano</div>`;
             mobSide(P, Pprev, rankArr, isProd);
             mobKpis();
             mobInsight();
             // tabela: destaca ano
             document.querySelectorAll('#mobCgTable tbody tr').forEach(tr => tr.classList.toggle('cur', +tr.dataset.y === P.y));
-            document.getElementById('mobSubtitle').textContent = `${st.cult} · ${st.scopeLabel} · ${isProd ? 'produtividade' : 'quantidade produzida'} por município · fonte IBGE/PAM. A barra de ano anima a série 2020–2025.`;
+            document.getElementById('mobSubtitle').textContent = `${st.cult} · ${st.scopeLabel} · ${isProd ? 'produtividade' : st.met.sub} por município · fonte IBGE/PAM. A barra de ano anima a série 2020–2025.`;
         }
         function mobTip(i) {
             const st = MOB.st; if (!st) return '';
             const P = st.per[MOB.yi], c = citiesCompact.cidades[i], isProd = st.variable === 'Produtividade';
-            const serie = st.per.map(Q => `${Q.y}: ${isProd ? (Q.p[i] > 0 ? Math.round(Q.p[i]).toLocaleString('pt-BR') : '—') : (Q.q[i] > 0 ? formatCompactBR(Q.q[i], 1) : '—')}`).join(' · ');
+            const serie = st.per.map(Q => `${Q.y}: ${isProd ? (Q.p[i] > 0 ? Math.round(Q.p[i]).toLocaleString('pt-BR') : '—') : (Q.q[i] > 0 ? (st.qUnit === 'R$' ? formatCompactBR(Q.q[i] * 1000, 1) : formatCompactBR(Q.q[i], 1)) : '—')}`).join(' · ');
             let h = `<b>${c}</b><br>`;
             if (isProd) {
                 const rel = st.relMap[i];
@@ -5407,11 +5475,11 @@
                     `<br>Área colhida: ${formatCompactBR(P.a[i], 2)} ha`;
             } else {
                 const r = P.ord.indexOf(i);
-                h += `Produção ${P.y}: <b>${mobFmtQ(P.q[i])}</b><br>${(P.q[i] / P.tq * 100).toLocaleString('pt-BR', {maximumFractionDigits: 2})}% do recorte · ${r + 1}º lugar`;
+                h += `${st.met.nome} ${P.y}: <b>${mobFmtQ(P.q[i])}</b><br>${(P.q[i] / P.tq * 100).toLocaleString('pt-BR', {maximumFractionDigits: 2})}% do recorte · ${r + 1}º lugar`;
             }
             const pc = st.pctMap[i];
-            h += `<br>${pc === undefined ? `não produzia em ${st.per[0].y}` : `${mobPct(pc)} vs ${st.per[0].y}`}`;
-            return h + `<br><span class="tip-hint">${serie} (${isProd ? st.pUnit : st.qUnit})</span>`;
+            h += `<br>${pc === undefined ? `sem dado em ${st.per[0].y}` : `${mobPct(pc)} vs ${st.per[0].y}`}`;
+            return h + `<br><span class="tip-hint">${serie} (${isProd ? st.pUnit : st.qUnit === 'R$' ? 'R$' : st.qUnit})</span>`;
         }
         function mobSide(P, Pprev, rankArr, isProd) {
             const el = document.getElementById('mobMapSide'), top = rankArr.slice(0, 20);
@@ -5433,7 +5501,7 @@
                     }
                     const col = REGION_COLORS[MOB.reg[i]] || '#636e72';
                     return `<div class="rank-row" style="cursor:default"><span class="rk">${r + 1}</span><span class="rn">${citiesCompact.cidades[i]}${mv}</span>
-                        <span class="rv">${isProd ? Math.round(val(i)).toLocaleString('pt-BR') : formatCompactBR(val(i), 1)}</span>
+                        <span class="rv">${isProd ? Math.round(val(i)).toLocaleString('pt-BR') : MOB.st.qUnit === 'R$' ? 'R$ ' + formatCompactBR(val(i) * 1000, 1) : formatCompactBR(val(i), 1)}</span>
                         <span class="rb"><i style="width:${val(i) / max * 100}%;background:${col}"></i></span></div>`;
                 }).join('') : '<div class="no-data" style="padding:16px">Sem produção no recorte neste ano.</div>');
         }
@@ -5460,12 +5528,12 @@
                     foot: P0.prod ? `${mobFmtP(P0.prod)} → ${mobFmtP(P.prod)}` : ''});
             } else {
                 const dq = Pp ? d(P.tq, Pp.tq, Pp.y) : {};
-                cards.push({icon: '🌾', label: `Produção · ${P.y}`, val: formatCompactBR(P.tq, 2) + ` <small>${st.qUnit}</small>`, ...dq, c1: '#0b3d2e', c2: '#117a65',
+                cards.push({icon: '🌾', label: `${st.met.nome} · ${P.y}`, val: st.qUnit === 'R$' ? 'R$ ' + formatCompactBR(P.tq * 1000, 2) : formatCompactBR(P.tq, 2) + ` <small>${st.qUnit}</small>`, ...dq, c1: '#0b3d2e', c2: '#117a65',
                     foot: P0.tq > 0 && MOB.yi ? `${mobPct((P.tq / P0.tq - 1) * 100)} vs ${P0.y}` : st.scopeLabel});
                 const dn = Pp ? {delta: `${P.np >= Pp.np ? '▲' : '▼'} ${(P.np - Pp.np).toLocaleString('pt-BR')} vs ${Pp.y}`, cls: P.np >= Pp.np ? '' : 'down'} : {};
-                cards.push({icon: '📍', label: 'Municípios produtores', val: P.np.toLocaleString('pt-BR'), ...dn, c1: '#0a3d62', c2: '#0984e3', foot: `${P0.np.toLocaleString('pt-BR')} em ${P0.y}`});
+                cards.push({icon: '📍', label: 'Municípios com registro', val: P.np.toLocaleString('pt-BR'), ...dn, c1: '#0a3d62', c2: '#0984e3', foot: `${P0.np.toLocaleString('pt-BR')} em ${P0.y}`});
                 cards.push({icon: '🎯', label: 'Concentração · 10 maiores', val: P.top10.toLocaleString('pt-BR', {maximumFractionDigits: 1}) + '%', c1: '#6c5ce7', c2: '#a29bfe',
-                    delta: MOB.yi ? `${P.top10 >= P0.top10 ? '▲' : '▼'} ${mobPP(P.top10 - P0.top10)} vs ${P0.y}` : '', cls: '', foot: 'Participação dos 10 maiores municípios do recorte'});
+                    delta: MOB.yi ? `${P.top10 >= P0.top10 ? '▲' : '▼'} ${mobPP(P.top10 - P0.top10)} vs ${P0.y}` : '', cls: '', foot: `Participação dos 10 maiores municípios ${mobArt('no', 'na', st.met.masc)} ${st.met.sub}`});
             }
             // centro de gravidade
             let cg = '—', foot = '';
@@ -5479,13 +5547,14 @@
         }
         function mobInsight() {
             const st = MOB.st, P = st.per[MOB.yi], P0 = st.per[0], isProd = st.variable === 'Produtividade', el = document.getElementById('mobInsight');
-            if (!P.tq) { el.innerHTML = `Sem produção de <b>${st.cult}</b> em ${st.scopeLabel} em ${P.y}.`; return; }
-            if (!MOB.yi) { el.innerHTML = `📍 Em <b>${P.y}</b>, ${st.scopeLabel} produziu <b>${mobFmtQ(P.tq)}</b> de ${st.cult} em ${P.np.toLocaleString('pt-BR')} municípios; o centro de gravidade da produção ficava perto de <b>${citiesCompact.cidades[P.near]}</b>. Avance a barra de ano (ou ▶) para ver o deslocamento.`; return; }
+            const sub = isProd ? 'produção' : st.met.sub;
+            if (!P.tq) { el.innerHTML = `Sem dados de <b>${st.cult}</b> em ${st.scopeLabel} em ${P.y}.`; return; }
+            if (!MOB.yi) { el.innerHTML = `📍 Em <b>${P.y}</b>, ${st.scopeLabel} registrou <b>${mobFmtQ(P.tq)}</b> de ${sub} de ${st.cult} em ${P.np.toLocaleString('pt-BR')} municípios; o centro de gravidade ficava perto de <b>${citiesCompact.cidades[P.near]}</b>. Avance a barra de ano (ou ▶) para ver o deslocamento.`; return; }
             const km = P.ll && P0.ll ? mobKm(P0.ll, P.ll) : 0;
-            let s = `🧭 Entre <b>${P0.y}</b> e <b>${P.y}</b>, o centro de gravidade da produção de ${st.cult} (${st.scopeLabel}) `;
+            let s = `🧭 Entre <b>${P0.y}</b> e <b>${P.y}</b>, o centro de gravidade ${mobArt('do', 'da', !isProd && st.met.masc)} ${sub} de ${st.cult} (${st.scopeLabel}) `;
             s += km < 5 ? `ficou praticamente parado (${Math.round(km)} km), perto de <b>${citiesCompact.cidades[P.near]}</b>. `
                 : `deslocou-se <b>${Math.round(km).toLocaleString('pt-BR')} km rumo ${mobDir(P0.ll, P.ll)}</b>, de perto de ${citiesCompact.cidades[P0.near]} para perto de <b>${citiesCompact.cidades[P.near]}</b>. `;
-            s += `A produção ${P.tq >= P0.tq ? 'cresceu' : 'caiu'} ${mobPct((P.tq / P0.tq - 1) * 100).replace('+', '')} e o número de municípios produtores passou de ${P0.np.toLocaleString('pt-BR')} para ${P.np.toLocaleString('pt-BR')}; `;
+            s += `${mobArt('O', 'A', !isProd && st.met.masc)} ${sub} ${P.tq >= P0.tq ? 'cresceu' : 'caiu'} ${mobPct((P.tq / P0.tq - 1) * 100).replace('+', '')} e o número de municípios com registro passou de ${P0.np.toLocaleString('pt-BR')} para ${P.np.toLocaleString('pt-BR')}; `;
             s += `os 10 maiores concentram ${P.top10.toLocaleString('pt-BR', {maximumFractionDigits: 1})}% (eram ${P0.top10.toLocaleString('pt-BR', {maximumFractionDigits: 1})}%). `;
             const g = st.groupShares;
             if (g && g.keys.length > 1) {
@@ -5498,8 +5567,8 @@
         function mobCharts() {
             const st = MOB.st, Y = MOB.years, per = st.per, isProd = st.variable === 'Produtividade', last = per[per.length - 1];
             // agrupamento: UF (Brasil/região) ou município (estado)
-            const byCity = !!st.selUF;
-            const gOf = i => byCity ? mobCityName(citiesCompact.cidades[i]) : MOB.uf[i];
+            const byTerr = st.scope === 'UF:BA', byCity = !!st.selUF && !byTerr;
+            const gOf = i => byTerr ? (MOB_TI_NOME[MOB.ti[i]] || 'Sem território') : byCity ? mobCityName(citiesCompact.cidades[i]) : MOB.uf[i];
             const agg = per.map(P => { const o = {}, a = {}; st.idx.forEach(i => { if (P.q[i] > 0) { const k = gOf(i); o[k] = (o[k] || 0) + P.q[i]; a[k] = (a[k] || 0) + P.a[i]; } }); return {q: o, a}; });
             const tot = {}; agg.forEach(A => Object.entries(A.q).forEach(([k, v]) => { tot[k] = (tot[k] || 0) + v; }));
             const keys = Object.keys(tot).sort((a, b) => (agg[agg.length - 1].q[b] || 0) - (agg[agg.length - 1].q[a] || 0) || tot[b] - tot[a]).slice(0, 7);
@@ -5509,21 +5578,21 @@
             st.groupShares = {keys: allKeys, share};
             const o = getChartOptions(false);
             o.plugins = {...o.plugins, datalabels: {display: false}, legend: {display: true, position: 'top', labels: {usePointStyle: true, padding: 10, font: {size: 11, weight: '600'}}}};
-            const lab = k => byCity || k === 'Outros' ? k : `${UF_NAME[k] || k}`;
+            const lab = k => byCity || byTerr || k === 'Outros' ? k : `${UF_NAME[k] || k}`;
             if (!isProd) {
                 o.plugins.tooltip = {mode: 'index', intersect: false, callbacks: {label: c => ` ${c.dataset.label}: ${c.parsed.y.toLocaleString('pt-BR', {maximumFractionDigits: 1})}%`}};
                 o.plugins.datalabels = {display: c => c.dataset.data[c.dataIndex] >= 6, color: c => c.dataset.label === 'Outros' ? '#636e72' : '#fff', font: {size: 10, weight: 'bold'}, formatter: v => Math.round(v) + '%'};
                 o.scales = {x: {stacked: true, grid: {display: false}}, y: {stacked: true, max: 100, ticks: {callback: v => v + '%'}, grid: {color: 'rgba(0,0,0,0.05)'}}};
                 createOrUpdateChart('mobShareChart', {type: 'bar', data: {labels: Y, datasets: allKeys.map((k, j) => ({label: lab(k), data: share[k], backgroundColor: k === 'Outros' ? '#dfe6e9' : MOB_PAL[j % 7], borderWidth: 0}))}, options: o});
-                document.getElementById('mobShareTitle').textContent = `🧩 Participação na produção por ${byCity ? 'município' : 'estado'}`;
-                document.getElementById('mobShareNote').textContent = `${byCity ? 'Os 7 maiores municípios' : 'Os 7 maiores estados'} em ${last.y} e os demais somados (% da quantidade produzida de ${st.cult} no recorte, ${st.scopeLabel}).`;
+                document.getElementById('mobShareTitle').textContent = `🧩 Participação ${mobArt('no', 'na', st.met.masc)} ${st.met.sub} por ${byTerr ? 'Território de Identidade' : byCity ? 'município' : 'estado'}`;
+                document.getElementById('mobShareNote').textContent = `${byTerr ? 'Os 7 maiores territórios' : byCity ? 'Os 7 maiores municípios' : 'Os 7 maiores estados'} em ${last.y} e os demais somados (% ${mobArt('do', 'da', st.met.masc)} ${st.met.sub} de ${st.cult} no recorte, ${st.scopeLabel}).`;
             } else {
                 const ds = keys.map((k, j) => ({label: lab(k), data: agg.map(A => A.a[k] > 0 ? A.q[k] / A.a[k] * 1000 : null), borderColor: MOB_PAL[j % 7], backgroundColor: MOB_PAL[j % 7], tension: .25, borderWidth: 2, pointRadius: 3}));
                 ds.push({label: 'Média do Brasil (IBGE)', data: per.map(P => P.br || null), borderColor: '#1e272e', backgroundColor: '#1e272e', borderDash: [6, 4], borderWidth: 2.5, pointRadius: 0, tension: .25});
                 o.plugins.tooltip = {mode: 'index', intersect: false, callbacks: {label: c => ` ${c.dataset.label}: ${c.parsed.y === null ? '—' : Math.round(c.parsed.y).toLocaleString('pt-BR') + ' ' + st.pUnit}`}};
                 o.scales = {x: {grid: {display: false}}, y: {grace: '8%', ticks: {callback: v => formatCompactBR(v)}, grid: {color: 'rgba(0,0,0,0.05)'}}};
                 createOrUpdateChart('mobShareChart', {type: 'line', data: {labels: Y, datasets: ds}, options: o});
-                document.getElementById('mobShareTitle').textContent = `🌱 Produtividade dos ${byCity ? 'maiores municípios' : 'maiores estados'} (${st.pUnit})`;
+                document.getElementById('mobShareTitle').textContent = `🌱 Produtividade dos ${byTerr ? 'maiores territórios' : byCity ? 'maiores municípios' : 'maiores estados'} (${st.pUnit})`;
                 document.getElementById('mobShareNote').textContent = `Quantidade ÷ área colhida dos 7 maiores produtores em ${last.y}, comparada à média nacional oficial.`;
             }
             mobGainChart();
@@ -5547,7 +5616,7 @@
                 tooltip: {callbacks: {label: c => {
                     const i = sel[c.dataIndex][0];
                     return isProd ? ` ${mobPct(c.parsed.x)} (${Math.round(P0.p[i]).toLocaleString('pt-BR')} → ${Math.round(P.p[i]).toLocaleString('pt-BR')} ${st.pUnit})`
-                        : ` ${mobPP(c.parsed.x)} (${formatCompactBR(P0.q[i], 1)} → ${formatCompactBR(P.q[i], 1)} ${st.qUnit})`;
+                        : ` ${mobPP(c.parsed.x)} (${mobFmtQ(P0.q[i])} → ${mobFmtQ(P.q[i])})`;
                 }}}};
             o.layout = {padding: {left: 40, right: 40}};
             o.scales = {x: {grace: '15%', grid: {color: c => c.tick.value === 0 ? 'rgba(0,0,0,0.4)' : 'rgba(0,0,0,0.05)'}, ticks: {callback: v => v + (isProd ? '%' : ' p.p.')}}, y: {grid: {display: false}, ticks: {font: {size: 11}}}};
@@ -5556,11 +5625,11 @@
             document.getElementById('mobGainTitle').textContent = isProd ? `↕️ Maiores ganhos e perdas de produtividade · ${P0.y}–${P.y}` : `↕️ Quem ganhou e quem perdeu participação · ${P0.y}–${P.y}`;
             document.getElementById('mobGainNote').textContent = isProd
                 ? `Variação % da produtividade entre ${P0.y} e ${P.y}, só municípios com ao menos 0,2% da área colhida do recorte nos dois anos.`
-                : `Variação da participação de cada município na produção do recorte (pontos percentuais), de ${P0.y} para ${P.y}: é o retrato da migração da produção.`;
+                : `Variação da participação de cada município ${mobArt('no', 'na', st.met.masc)} ${st.met.sub} do recorte (pontos percentuais), de ${P0.y} para ${P.y}: é o retrato da migração espacial.`;
         }
         function mobCgTable() {
-            const st = MOB.st, per = st.per, P0 = per[0];
-            let h = `<table class="compact"><thead><tr><th>Ano</th><th class="num">Produção</th><th class="num">Municípios produtores</th><th class="num">10 maiores (%)</th>
+            const st = MOB.st, per = st.per, P0 = per[0], isProdT = st.variable === 'Produtividade';
+            let h = `<table class="compact"><thead><tr><th>Ano</th><th class="num">${isProdT ? 'Produção' : st.met.nome}</th><th class="num">Municípios com registro</th><th class="num">10 maiores (%)</th>
                 <th class="num">Produtividade média</th><th>Centro de gravidade (lat, lon)</th><th>Município mais próximo</th><th class="num">Deslocamento vs ano anterior</th><th class="num">Acumulado desde ${P0.y}</th></tr></thead><tbody>`;
             per.forEach((P, k) => {
                 const prev = k ? per[k - 1] : null;
@@ -5572,7 +5641,110 @@
                     <td class="num">${ak === null ? '—' : `<strong>${Math.round(ak).toLocaleString('pt-BR')} km</strong>${ak >= 1 ? ' · ' + mobDir(P0.ll, P.ll) : ''}`}</td></tr>`;
             });
             document.getElementById('mobCgTable').innerHTML = h + '</tbody></table>';
-            document.getElementById('mobCgNote').textContent = `Centro de gravidade = média das coordenadas das sedes municipais ponderada pela quantidade produzida de ${st.cult} (${st.scopeLabel}). Distâncias em linha reta, aproximadas a partir da projeção do mapa (erro típico de poucos km).`;
+            document.getElementById('mobCgNote').textContent = `Centro de gravidade = média das coordenadas das sedes municipais ponderada ${isProdT ? 'pela quantidade produzida' : mobArt('pelo', 'pela', st.met.masc) + ' ' + st.met.sub} de ${st.cult} (${st.scopeLabel}). Distâncias em linha reta, aproximadas a partir da projeção do mapa (erro típico de poucos km).`;
+        }
+
+
+        // ---------- mapas de evolução percentual: uma variável por mapa ----------
+        const MOB_EVO_VARS = [['Quantidade Produzida', '🌾 Quantidade produzida'], ['Área Colhida', '🟩 Área colhida'], ['Valor da Produção', '💰 Valor da produção'], ['Produtividade', '🌱 Produtividade']];
+        function mobEvoMaps() {
+            const st = MOB.st; if (!st) return;
+            mapTip(null);
+            let y0 = +document.getElementById('mobEvoFrom').value, y1 = +document.getElementById('mobEvoTo').value;
+            if (y0 > y1) [y0, y1] = [y1, y0];
+            const D = mobData(st.cult), n = citiesCompact.cidades.length;
+            // níveis disponíveis para o recorte
+            const canUF = st.scope === 'BR' || st.scope.startsWith('R:'), canTI = st.scope === 'UF:BA';
+            // ao trocar de recorte, abre no nível mais legível: estados (Brasil/região), territórios (Bahia) ou municípios
+            if (MOB.evoScope !== st.scope || !MOB.evoLevel) { MOB.evoScope = st.scope; MOB.evoLevel = canUF ? 'uf' : canTI ? 'ti' : 'mun'; }
+            if ((MOB.evoLevel === 'uf' && !canUF) || (MOB.evoLevel === 'ti' && !canTI)) MOB.evoLevel = 'mun';
+            document.querySelectorAll('#mobEvoLevel button').forEach(b => {
+                const ok = b.dataset.level === 'mun' || (b.dataset.level === 'uf' && canUF) || (b.dataset.level === 'ti' && canTI);
+                b.style.display = ok ? '' : 'none'; b.classList.toggle('active', b.dataset.level === MOB.evoLevel);
+            });
+            const lvl = MOB.evoLevel, z = st.z, vb = st.vb.join(' ');
+            const keyOf = i => lvl === 'uf' ? MOB.uf[i] : lvl === 'ti' ? MOB.ti[i] : i;
+            const nameOf = k => lvl === 'uf' ? `${UF_NAME[k]} (${k})` : lvl === 'ti' ? `TI ${MOB_TI_NOME[k]}` : citiesCompact.cidades[k];
+            const isFr = st.cult.endsWith('*'), unitOf = m => m === 'Produtividade' ? (isFr ? 'frutos/ha' : 'kg/ha') : (MOB_MET[m].un || (isFr ? 'mil frutos' : 't'));
+            const fmtV = (m, v) => m === 'Valor da Produção' ? 'R$ ' + formatCompactBR(v * 1000, 2) : m === 'Produtividade' ? Math.round(v).toLocaleString('pt-BR') + ' ' + unitOf(m) : formatCompactBR(v, 2) + ' ' + unitOf(m);
+            // agrega por unidade (município, UF ou território)
+            const agg = y => {
+                const Q = D['Quantidade Produzida'][y], A = D['Área Colhida'][y], V = D['Valor da Produção'][y], P = D['Produtividade'][y], o = {};
+                st.idx.forEach(i => {
+                    if (!(Q[i] > 0 || A[i] > 0 || V[i] > 0)) return;
+                    const k = keyOf(i); if (lvl === 'ti' && !k) return;
+                    const r = o[k] || (o[k] = {q: 0, a: 0, v: 0, p: 0});
+                    r.q += Q[i]; r.a += A[i]; r.v += V[i]; if (lvl === 'mun') r.p = P[i];
+                });
+                Object.values(o).forEach(r => { if (lvl !== 'mun') r.p = r.a > 0 ? r.q / r.a * 1000 : 0; });
+                return o;
+            };
+            const A0 = agg(y0), A1 = agg(y1), keys = [...new Set([...Object.keys(A0), ...Object.keys(A1)])];
+            const fld = {'Quantidade Produzida': 'q', 'Área Colhida': 'a', 'Valor da Produção': 'v', 'Produtividade': 'p'};
+            const tot = A => { let q = 0, a = 0, v = 0; Object.values(A).forEach(r => { q += r.q; a += r.a; v += r.v; }); return {q, a, v, p: a > 0 ? q / a * 1000 : 0}; };
+            const T0 = tot(A0), T1 = tot(A1);
+            MOB.evo = {lvl, y0, y1, A0, A1, nameOf, fmtV};
+            const bg = Object.entries(GEO.states).map(([uf, o]) => `<path d="${o.d}" class="cm-state${st.selUF === uf || (st.scope.startsWith('R:') && UF_REGION[uf] === st.scope.slice(2)) ? ' hl' : ''}"/>`).join('') +
+                Object.values(GEO.regions).map(o => `<path d="${o.d}" class="gm-region-line"/>`).join('');
+            const terrLines = st.selUF === 'BA' && typeof tibaGeo !== 'undefined' ? Object.entries(tibaGeo.terr).filter(([k]) => !st.tiN || +k === st.tiN).map(([, o]) => `<path d="${o.d}" fill="none" stroke="rgba(30,39,46,.45)" stroke-width="${0.9 * z}"/>`).join('') : '';
+            const html = MOB_EVO_VARS.map(([m, title]) => {
+                const f = fld[m], rows = keys.map(k => {
+                    const a = A0[k] ? A0[k][f] : 0, b = A1[k] ? A1[k][f] : 0;
+                    const w = m === 'Produtividade' ? Math.max(A0[k] ? A0[k].a : 0, A1[k] ? A1[k].a : 0) : Math.max(a, b);
+                    return {k, a, b, w, pct: a > 0 && b > 0 ? (b / a - 1) * 100 : null, novo: !(a > 0) && b > 0, saiu: a > 0 && !(b > 0)};
+                }).filter(r => r.w > 0);
+                const totW = rows.reduce((s, r) => s + r.w, 0) || 1, totA = rows.reduce((s, r) => s + (m === 'Produtividade' ? (A0[r.k] ? A0[r.k].a : 0) : r.a), 0) || 1;
+                const baseShare = r => (m === 'Produtividade' ? (A0[r.k] ? A0[r.k].a : 0) : r.a) / totA;
+                const lim = Math.min(100, niceLimit(rows.filter(r => r.pct !== null && baseShare(r) >= (lvl === 'mun' ? 0.001 : 0.002)).map(r => r.pct)));
+                const maxW = Math.max(1e-9, ...rows.map(r => r.w));
+                let shapes = '';
+                const baPoly = lvl === 'mun' && st.selUF === 'BA' && typeof tibaGeo !== 'undefined';   // Bahia: polígono de cada município
+                if (baPoly) {
+                    rows.forEach(r => {
+                        const d = tibaGeo.mun[citiesCompact.cidades[+r.k]]; if (!d) return;
+                        shapes += `<path d="${d}" class="me-unit" data-k="${r.k}" data-m="${m}" fill="${r.novo ? '#6c5ce7' : r.saiu ? '#7f1d1d' : divColor(r.pct, lim)}" stroke="#fff" stroke-width="${0.5 * z}"/>`;
+                    });
+                } else if (lvl === 'mun') {
+                    rows.sort((p, q) => q.w - p.w).forEach(r => {
+                        const i = +r.k, rr = ((0.9 + Math.sqrt(r.w / maxW) * 11) * z).toFixed(2), cx = GEO.cxy[2 * i], cy = GEO.cxy[2 * i + 1];
+                        if (r.saiu) shapes += `<circle cx="${cx}" cy="${cy}" r="${rr}" class="me-ghost" stroke-width="${0.8 * z}"/>`;
+                        else shapes += `<circle cx="${cx}" cy="${cy}" r="${rr}" class="me-unit" data-k="${i}" data-m="${m}" fill="${r.novo ? '#6c5ce7' : divColor(r.pct, lim)}" fill-opacity=".9" stroke="rgba(255,255,255,.7)" stroke-width="${0.3 * z}"/>`;
+                    });
+                } else {
+                    rows.forEach(r => {
+                        const d = lvl === 'uf' ? (GEO.states[r.k] || {}).d : (tibaGeo.terr[r.k] || {}).d; if (!d) return;
+                        shapes += `<path d="${d}" class="me-unit" data-k="${r.k}" data-m="${m}" fill="${r.novo ? '#6c5ce7' : r.saiu ? '#7f1d1d' : divColor(r.pct, lim)}" stroke="#fff" stroke-width="${1.2 * z}"/>`;
+                    });
+                }
+                const t0 = T0[f], t1 = T1[f], tp = t0 > 0 && t1 > 0 ? (t1 / t0 - 1) * 100 : null;
+                const cls = tp === null ? 'flat' : tp > 0.05 ? 'up' : tp < -0.05 ? 'down' : 'flat';
+                const relev = rows.filter(r => r.pct !== null && baseShare(r) >= (lvl === 'mun' ? 0.005 : 0.01)).sort((p, q) => q.pct - p.pct);
+                const up = rows.filter(r => r.pct !== null && r.pct > 0).length, dn = rows.filter(r => r.pct !== null && r.pct < 0).length;
+                const nNovo = rows.filter(r => r.novo).length, nSaiu = rows.filter(r => r.saiu).length;
+                const unitW = lvl === 'mun' ? 'municípios' : lvl === 'uf' ? 'estados' : 'territórios';
+                const stats = `<b>${up.toLocaleString('pt-BR')}</b> ${unitW} cresceram · <b>${dn.toLocaleString('pt-BR')}</b> caíram` +
+                    (nNovo || nSaiu ? ` · ${nNovo} novos · ${nSaiu} sem dado em ${y1}` : '') +
+                    (relev.length > 1 ? `<br>Entre os de peso relevante em ${y0} (≥ ${lvl === 'mun' ? '0,5' : '1'}% do recorte): maior alta <b>${nameOf(relev[0].k)}</b> (${mobPct(relev[0].pct)}), maior queda <b>${nameOf(relev[relev.length - 1].k)}</b> (${mobPct(relev[relev.length - 1].pct)}).` : '');
+                return `<div class="mob-evo-cell"><div class="mob-evo-head"><h4>${title}<small>${fmtV(m, t0)} → ${fmtV(m, t1)}</small></h4>
+                    <div class="mob-evo-tot ${cls}">${tp === null ? '—' : mobPct(tp)}<small>${st.scopeLabel}</small></div></div>
+                    <svg viewBox="${vb}" role="img" aria-label="Variação percentual de ${title}">${bg}${terrLines}<g class="me-g">${shapes}</g></svg>
+                    <div class="mob-evo-leg"><span>≤ −${lim.toLocaleString('pt-BR')}%</span><span class="bar"></span><span>≥ +${lim.toLocaleString('pt-BR')}%</span><span><i style="background:#6c5ce7"></i> novo em ${y1}</span>${lvl === 'mun' && !baPoly ? '<span><i style="border:1.5px dashed #c0392b"></i> sem dado em ' + y1 + '</span>' : '<span><i style="background:#7f1d1d"></i> sem dado em ' + y1 + '</span>'}</div>
+                    <div class="mob-evo-stats">${stats}</div></div>`;
+            }).join('');
+            const grid = document.getElementById('mobEvoGrid');
+            grid.innerHTML = html;
+            grid.querySelectorAll('.me-g').forEach(g => {
+                g.addEventListener('mousemove', ev => {
+                    const t = ev.target; if (!t.dataset || t.dataset.k === undefined) return mapTip(null);
+                    const E = MOB.evo, m = t.dataset.m, f = fld[m], k = t.dataset.k, a = E.A0[k] ? E.A0[k][f] : 0, b = E.A1[k] ? E.A1[k][f] : 0;
+                    const pc = a > 0 && b > 0 ? mobPct((b / a - 1) * 100) : (!(a > 0) && b > 0 ? 'novo' : 'sem dado em ' + E.y1);
+                    mapTip(`<b>${E.nameOf(E.lvl === 'mun' ? +k : k)}</b><br>${MOB_EVO_VARS.find(x => x[0] === m)[1]}<br>${E.y0}: ${a > 0 ? E.fmtV(m, a) : '—'}<br>${E.y1}: ${b > 0 ? E.fmtV(m, b) : '—'}<br>Variação: <b>${pc}</b>`, ev);
+                });
+                g.addEventListener('mouseleave', () => mapTip(null));
+            });
+            document.getElementById('mobEvoTitle').textContent = `📊 Evolução percentual por variável · ${st.cult} · ${st.scopeLabel} · ${y0}–${y1}`;
+            document.getElementById('mobEvoNote').textContent = `Cada mapa mostra a variação % de uma variável entre ${y0} e ${y1}, por ${lvl === 'mun' ? (st.selUF === 'BA' ? 'município (cada polígono é um município; municípios sem a cultura ficam sem cor)' : 'município (tamanho da bolha = maior valor da variável nos dois anos; na produtividade, a área colhida)') : lvl === 'uf' ? 'estado' : 'Território de Identidade'}. ` +
+                'Verde = cresceu, vermelho = caiu; a escala de cor de cada mapa se ajusta às variações dele (veja a legenda; variações acima de ±100% ficam na cor máxima). O valor da produção está em reais correntes, sem desconto da inflação. Produtividade por estado ou território = quantidade ÷ área colhida.';
         }
 
         // ================= RADAR DE INFORMAÇÕES =================
