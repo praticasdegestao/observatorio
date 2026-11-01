@@ -727,6 +727,78 @@
         .ac-filters .filter-group.locked label::after { content: " 🔒"; }
         .ac-filters .filter-group.locked select, .ac-filters .filter-group.locked input { cursor: not-allowed; background: #eceff1; }
         #acClear.pulse { border-color: #2f4a9e; color: #2f4a9e; font-weight: 700; box-shadow: 0 0 0 3px rgba(47,74,158,.12); }
+
+        /* ===== Aba Comparativo de Desenvolvimento ===== */
+        .tab.tab-half { grid-column: span 2; justify-content: center; }
+        .tab.tab-half .tab-tx { flex-direction: column; }
+        @media (max-width: 768px) { .tab.tab-half { grid-column: 1 / -1; } }
+        .cp-hero { background: linear-gradient(120deg, #3b1d64 0%, #6c3fb0 50%, #c2410c 100%); box-shadow: 0 8px 22px rgba(59,29,100,.25); }
+        .cp-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) auto minmax(0, 1.4fr); align-items: end; gap: 14px; }
+        @media (max-width: 900px) { .cp-grid { grid-template-columns: 1fr; } }
+        .cp-a { border-color: #0a6fb8 !important; } .cp-a label { color: #0a6fb8 !important; }
+        .cp-b { border-color: #e8590c !important; } .cp-b label { color: #e8590c !important; }
+        .cp-swap { height: 44px; font-size: 1.2rem; margin-bottom: 10px; }
+        .cp-report-head { margin: 4px 0 18px; }
+        .cp-vs { font-size: 1.55rem; font-weight: 800; color: #1e272e; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .cp-vs .a { color: #0a6fb8; } .cp-vs .b { color: #e8590c; } .cp-vs .x { font-size: 1rem; color: #95a5a6; background: #f1f2f6; border-radius: 999px; padding: 2px 10px; }
+        .cp-duel { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; margin-bottom: 18px; }
+        .cp-dc { background: #fff; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.06); padding: 14px 16px; border-top: 4px solid #2f4a9e; }
+        .cp-dc h5 { font-size: .8rem; text-transform: uppercase; letter-spacing: .4px; color: #636e72; margin-bottom: 8px; display: flex; justify-content: space-between; }
+        .cp-dc h5 span { text-transform: none; letter-spacing: 0; font-weight: 600; color: #95a5a6; }
+        .cp-dv { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .cp-dv div { border-radius: 10px; padding: 8px 10px; background: #f8fafc; }
+        .cp-dv div.win { box-shadow: inset 0 0 0 2px var(--c); background: color-mix(in srgb, var(--c) 7%, #fff); }
+        .cp-dv b { display: block; font-size: 1.2rem; font-weight: 800; color: var(--c); line-height: 1.15; }
+        .cp-dv small { font-size: .72rem; color: #636e72; font-weight: 600; }
+        .cp-bar { display: flex; height: 6px; border-radius: 999px; overflow: hidden; margin-top: 10px; background: #eef1f4; }
+        .cp-bar i { display: block; height: 100%; }
+        .cp-exec { background: linear-gradient(120deg, #f6f3fd 0%, #fff7f0 100%); border: 1px solid #e7dff6; border-left: 6px solid #6c3fb0; border-radius: 14px; padding: 18px 22px; margin-bottom: 28px; font-size: .93rem; line-height: 1.65; color: #2d3436; }
+        .cp-exec h4 { font-size: 1rem; color: #3b1d64; margin: 10px 0 6px; }
+        .cp-exec h4:first-child { margin-top: 0; }
+        .cp-exec ul { margin: 4px 0 0 18px; } .cp-exec li { margin: 3px 0; }
+        .cp-exec .a { color: #0a6fb8; font-weight: 700; } .cp-exec .b { color: #e8590c; font-weight: 700; }
+        .cp-score { display: flex; gap: 10px; flex-wrap: wrap; margin: 6px 0 4px; }
+        .cp-score span { border-radius: 999px; padding: 4px 12px; font-weight: 800; font-size: .85rem; color: #fff; }
+        .cp-porter { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; margin-bottom: 25px; align-items: start; }
+        @media (max-width: 1000px) { .cp-porter { grid-template-columns: 1fr; } }
+        .cp-dims { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .cp-dims { grid-template-columns: 1fr; } }
+        .cp-dim { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.06); padding: 12px 14px; border-left: 4px solid var(--dc, #2f4a9e); }
+        .cp-dim.ext { background: #fafbfc; border-left-style: dashed; }
+        .cp-dim h5 { font-size: .9rem; color: #1e272e; margin-bottom: 4px; }
+        .cp-dim p { font-size: .78rem; color: #4b5559; line-height: 1.45; margin-top: 6px; }
+        .cp-sc { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .cp-sc div { font-size: .76rem; font-weight: 600; color: #636e72; }
+        .cp-sc b { font-size: 1.25rem; display: block; }
+        .cp-sc .a b { color: #0a6fb8; } .cp-sc .b b { color: #e8590c; }
+        .cp-tbl td { vertical-align: top; }
+        .cp-tbl td.cm { font-size: .8rem; color: #3d4649; line-height: 1.45; min-width: 300px; white-space: normal !important; }
+        .cp-tbl td:first-child { white-space: normal !important; min-width: 170px; }
+        .cp-tbl th, .cp-tbl td { padding: 8px 8px !important; }
+        .cp-tbl th { white-space: normal !important; }
+        .cp-tbl tr.dim td { background: #eef1f8; font-weight: 800; color: #2f4a9e; font-size: .82rem; }
+        .cp-tbl .va { color: #0a6fb8; font-weight: 700; } .cp-tbl .vb { color: #e8590c; font-weight: 700; }
+        .cp-win { display: inline-block; border-radius: 999px; padding: 2px 9px; font-size: .74rem; font-weight: 800; color: #fff; white-space: nowrap; }
+        .cp-pct { font-size: .74rem; color: #95a5a6; white-space: nowrap; }
+        .cp-recs { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 16px; }
+        .cp-rec { background: #fff; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.06); padding: 14px 16px; border-top: 4px solid var(--dc); }
+        .cp-rec h4 { font-size: .98rem; color: #1e272e; margin-bottom: 8px; }
+        .cp-rec .it { border-left: 3px solid var(--c); background: color-mix(in srgb, var(--c) 5%, #fff); border-radius: 8px; padding: 8px 10px; margin-top: 8px; font-size: .84rem; line-height: 1.5; color: #3d4649; }
+        .cp-rec .it b.t { color: var(--c); }
+        .cp-rec .ref { font-size: .76rem; color: #636e72; margin-top: 4px; }
+        .cp-rec .none { font-size: .84rem; color: #95a5a6; }
+        .cp-lab { font-weight: 800; paint-order: stroke; stroke: rgba(255,255,255,.95); pointer-events: none; }
+        .cp-link { stroke: #1e272e; stroke-dasharray: 6 4; fill: none; }
+        @media print { .cp-swap { display: none !important; } .cp-rec, .cp-dim, .cp-dc { break-inside: avoid; } }
+        .cp-cropbar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 16px; padding: 12px 14px; background: #fff; border: 1.5px dashed #c9d3d8; border-radius: 12px; }
+        .cp-cropbox { flex: 1 1 360px; min-width: 280px; }
+        .cp-cropbox .ms { position: relative; }
+        .cp-croplg { display: flex; gap: 12px; flex-wrap: wrap; font-size: .74rem; color: #636e72; margin-top: 6px; }
+        .cp-croplg span { display: inline-flex; align-items: center; gap: 5px; } .cp-croplg i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+        .cp-cropst { font-size: .84rem; color: #4b5559; flex: 1 1 100%; }
+        .cp-banner { background: #e9f7f1; border: 1px solid #b9e4d2; border-left: 6px solid #117a65; border-radius: 12px; padding: 12px 16px; margin-bottom: 18px; font-size: .9rem; line-height: 1.55; color: #1e4d3c; }
+        .cp-tbl td.cpk-h { font-size: .92rem; color: #0b3d2e !important; background: #e9f7f1 !important; white-space: normal !important; }
+        .cpk-txt { font-weight: 500; font-size: .8rem; color: #3d4649; margin-top: 3px; line-height: 1.45; }
     </style>
 </head>
 <body>
@@ -763,7 +835,8 @@
                 <button class="tab" data-tab="tiba" onclick="switchTab('tiba')" style="--t1:#0f7c86;--t2:#22aab5"><span class="tab-ic">🧭</span><span class="tab-tx"><b>Territórios BA</b><small>Identidade territorial</small></span></button>
                 <button class="tab" data-tab="mob" onclick="switchTab('mob')" style="--t1:#2f4a9e;--t2:#4f6fd1"><span class="tab-ic">🛰️</span><span class="tab-tx"><b>Evolução Espacial</b><small>Dinâmica 2020–2025</small></span></button>
                 <button class="tab" data-tab="radar" onclick="switchTab('radar')" style="--t1:#b8860b;--t2:#e3ac1f"><span class="tab-ic">📡</span><span class="tab-tx"><b>Radar de Mercado</b><small>Notícias e sinais</small></span></button>
-                <button class="tab tab-wide" data-tab="ac" onclick="switchTab('ac')" style="--t1:#2f4a9e;--t2:#0f7c86"><span class="tab-ic">🧠</span><span class="tab-tx"><b>Análise Crítica Integrada</b><small>Município · cultura · estado · região · território — PAM, Censo, PIB e mobilidade espacial</small></span></button>
+                <button class="tab tab-half" data-tab="ac" onclick="switchTab('ac')" style="--t1:#2f4a9e;--t2:#0f7c86"><span class="tab-ic">🧠</span><span class="tab-tx"><b>Análise Crítica Integrada</b><small>Município · cultura · estado · região · território</small></span></button>
+                <button class="tab tab-half" data-tab="cp" onclick="switchTab('cp')" style="--t1:#6c3fb0;--t2:#c2410c"><span class="tab-ic">⚖️</span><span class="tab-tx"><b>Comparativo de Desenvolvimento Agrícola e Regional</b><small>Dois locais lado a lado · diamante de Porter · recomendações</small></span></button>
             </div>
         </div>
 
@@ -1596,6 +1669,113 @@
                 <div class="ac-method" id="acMethod"></div>
             </div>
         </div>
+        <div id="cp-content" class="tab-content">
+            <div class="content-wrapper">
+                <div class="ac-hero cp-hero">
+                    <div class="ac-hero-ic">⚖️</div>
+                    <div>
+                        <div class="ac-hero-t">Comparativo de Desenvolvimento Agrícola e Regional</div>
+                        <div class="ac-hero-s">Relatório gerencial entre dois locais do mesmo tipo: resumo executivo, análise crítica de cada indicador, diamante de Porter, mapas, gráficos, tabelas e recomendações com base nos locais de melhores indicadores.</div>
+                    </div>
+                </div>
+                <div class="filters-section ac-filters">
+                    <div class="filters-title">Monte a comparação</div>
+                    <div class="ac-hint">Escolha o tipo de comparação e os dois locais. Os dois são sempre do mesmo tipo (dois municípios, dois territórios, dois estados ou duas regiões).</div>
+                    <div class="filters-grid cp-grid">
+                        <div class="filter-group on"><label for="cpType">🔀 Tipo de comparação</label>
+                            <select id="cpType">
+                                <option value="M">Dois municípios</option>
+                                <option value="TI">Dois Territórios de Identidade (BA)</option>
+                                <option value="UF" selected>Dois estados</option>
+                                <option value="R">Duas regiões</option>
+                            </select></div>
+                        <div class="filter-group cp-a"><label for="cpA">🔵 Local A</label><div id="cpABox"></div></div>
+                        <button type="button" class="map-btn cp-swap" id="cpSwap" title="Inverter A e B">⇄</button>
+                        <div class="filter-group cp-b"><label for="cpB">🟠 Local B</label><div id="cpBBox"></div></div>
+                    </div>
+                    <div class="cp-cropbar">
+                        <label class="switch" title="Restringir a comparação a uma ou mais culturas">
+                            <input type="checkbox" id="cpCropOn">
+                            <span class="switch-track"><span class="switch-thumb"></span></span>
+                            <span class="switch-text">Comparar cultura(s) agrícola(s)</span>
+                        </label>
+                        <div id="cpCropBox" class="cp-cropbox" style="display:none">
+                            <div class="ms" id="cpCrops2"></div>
+                            <div class="cp-croplg"><span><i style="background:#117a65"></i>nos dois locais</span><span><i style="background:#0a6fb8"></i>só no Local A</span><span><i style="background:#e8590c"></i>só no Local B</span></div>
+                        </div>
+                        <div class="cp-cropst" id="cpCropStatus"></div>
+                    </div>
+                    <div class="ac-active"><span id="cpActive"></span></div>
+                </div>
+
+                <div class="cp-report-head">
+                    <div><div class="cp-vs" id="cpVs"></div><div class="section-sub" id="cpSub" style="padding-left:0"></div></div>
+                </div>
+
+                <div class="cp-banner" id="cpCropBanner" style="display:none"></div>
+                <div class="ac-block"><span>1</span>Resumo executivo</div>
+                <div class="cp-duel" id="cpDuel"></div>
+                <div class="cp-exec" id="cpExec"></div>
+
+                <div id="cpCropBlock" style="display:none">
+                    <div class="ac-block"><span>🌱</span>Culturas selecionadas · área, quantidade, rendimento e valor</div>
+                    <div class="chart-note">Escolha a cultura para os gráficos de evolução 2020–2025:</div>
+                    <div class="rd-chipbar" id="cpKChips" style="margin-bottom:14px"></div>
+                    <div class="charts-section cp-k4">
+                        <div class="chart-card" style="--accent:#0a6fb8"><div class="chart-title" id="cpKT1"></div><div class="chart-container" style="height:250px"><canvas id="cpK1"></canvas></div></div>
+                        <div class="chart-card" style="--accent:#117a65"><div class="chart-title" id="cpKT2"></div><div class="chart-container" style="height:250px"><canvas id="cpK2"></canvas></div></div>
+                        <div class="chart-card" style="--accent:#00b894"><div class="chart-title" id="cpKT3"></div><div class="chart-note">Linha tracejada: média do Brasil.</div><div class="chart-container" style="height:250px"><canvas id="cpK3"></canvas></div></div>
+                        <div class="chart-card" style="--accent:#a8336b"><div class="chart-title" id="cpKT4"></div><div class="chart-container" style="height:250px"><canvas id="cpK4"></canvas></div></div>
+                    </div>
+                    <div class="charts-section">
+                        <div class="chart-card" style="--accent:#0b8f6a"><div class="chart-title">🌱 Rendimento relativo ao Brasil · 2025</div><div class="chart-note">Rendimento do local ÷ rendimento médio do Brasil × 100, em cada cultura selecionada.</div><div class="chart-container tall"><canvas id="cpK5"></canvas></div></div>
+                        <div class="chart-card" style="--accent:#0f7c86"><div class="chart-title">🧭 Participação na produção nacional · 2025</div><div class="chart-note">% da quantidade produzida no Brasil em cada cultura selecionada.</div><div class="chart-container tall"><canvas id="cpK6"></canvas></div></div>
+                    </div>
+                    <div class="table-section summary"><div class="table-title">📋 Comparação por cultura e variável</div><div class="chart-note">Para cada cultura: área colhida, quantidade, rendimento e valor em 2025, variações 2020–2025 e leitura crítica (decomposição do crescimento em área e rendimento, em log-pontos, e preço implícito).</div><div id="cpKTable" class="ac-tbl-wrap cp-tbl"></div></div>
+                </div>
+
+                <div class="ac-block"><span>2</span>Diamante de Porter</div>
+                <div class="cp-porter">
+                    <div class="chart-card" style="--accent:#2f4a9e"><div class="chart-title">💎 Diamante de competitividade</div>
+                        <div class="chart-note" id="cpPorterNote"></div>
+                        <div class="chart-container" style="height:430px"><canvas id="cpC1"></canvas></div></div>
+                    <div class="cp-dims" id="cpDims"></div>
+                </div>
+
+                <div class="ac-block"><span>3</span>Mapa e posição relativa</div>
+                <div class="chart-card full" style="--accent:#0f7c86">
+                    <div class="chart-head"><div class="chart-title" id="cpMapTitle">🗺️ Localização</div>
+                        <div class="mode-toggle" id="cpMapMode"><button type="button" data-m="lvl" class="active">Valor 2025</button><button type="button" data-m="var">Variação 2020–25</button><button type="button" data-m="lisa">Clusters LISA</button></div></div>
+                    <div class="chart-note" id="cpMapNote"></div>
+                    <div class="map-wrap">
+                        <div class="map-box"><svg id="cpMap" role="img" aria-label="Mapa comparativo"></svg><div class="map-legend" id="cpMapLegend"></div></div>
+                        <div class="map-side" id="cpMapSide"></div>
+                    </div>
+                </div>
+                <div class="charts-section">
+                    <div class="chart-card" style="--accent:#6c5ce7"><div class="chart-title">📊 Posição entre os pares · percentil por indicador</div><div class="chart-note" id="cpN2"></div><div class="chart-container" style="height:560px"><canvas id="cpC2"></canvas></div></div>
+                    <div class="chart-card" style="--accent:#117a65"><div class="chart-title">📈 Evolução do valor da produção · índice 2020 = 100</div><div class="chart-note">Reais correntes; a linha tracejada é o Brasil.</div><div class="chart-container" style="height:250px"><canvas id="cpC3"></canvas></div>
+                        <div class="chart-title" style="margin-top:18px">⚖️ Decomposição do crescimento 2020–2025 (shift-share)</div><div class="chart-note">Em % do valor de 2020: nacional + composição + competitivo = crescimento observado.</div><div class="chart-container" style="height:230px"><canvas id="cpC7"></canvas></div></div>
+                </div>
+
+                <div class="ac-block"><span>4</span>Estrutura produtiva, economia e perfil dos produtores</div>
+                <div class="charts-section">
+                    <div class="chart-card" style="--accent:#117a65"><div class="chart-title">🧺 Composição do valor da produção · 2025</div><div class="chart-note">Participação de cada cultura no valor de cada local (principais culturas dos dois).</div><div class="chart-container tall"><canvas id="cpC4"></canvas></div></div>
+                    <div class="chart-card" style="--accent:#0b8f6a"><div class="chart-title">🌱 Produtividade nas culturas em comum · Brasil = 100</div><div class="chart-note" id="cpN8"></div><div class="chart-container tall"><canvas id="cpC8"></canvas></div></div>
+                    <div class="chart-card" style="--accent:#a8336b"><div class="chart-title">🏦 PIB per capita · 2010–2023</div><div class="chart-note">Reais correntes (PIB ÷ população implícita).</div><div class="chart-container tall"><canvas id="cpC5"></canvas></div></div>
+                    <div class="chart-card" style="--accent:#b05a12"><div class="chart-title">👨‍🌾 Perfil dos estabelecimentos · Censo 2017</div><div class="chart-note">% do número de estabelecimentos agropecuários.</div><div class="chart-container tall"><canvas id="cpC6"></canvas></div></div>
+                </div>
+
+                <div class="ac-block"><span>5</span>Análise crítica indicador a indicador</div>
+                <div class="table-section summary"><div class="chart-note" id="cpTblNote"></div><div id="cpTable" class="ac-tbl-wrap cp-tbl"></div></div>
+                <div class="table-section summary"><div class="table-title">🌾 Culturas: quem produz o quê</div><div class="chart-note">Principais culturas dos dois locais em 2025: valor, peso na pauta, especialização (QL) e produtividade relativa ao Brasil.</div><div id="cpCrops" class="ac-tbl-wrap"></div></div>
+
+                <div class="ac-block"><span>6</span>Recomendações de desenvolvimento agrícola e regional</div>
+                <div class="chart-note" id="cpRecNote"></div>
+                <div class="cp-recs" id="cpRecs"></div>
+                <div class="ac-method" id="cpMethod"></div>
+            </div>
+        </div>
     </div>
     <div class="map-tip" id="mapTip"></div>
     <div class="footer-note">
@@ -1611,6 +1791,7 @@
         PIB per capita agregado = soma do PIB ÷ soma da população implícita (PIB ÷ PIB per capita de cada município).
         Aba Evolução Espacial: IBGE/PAM 2020–2025 por município; o centro de gravidade é a média das coordenadas das sedes municipais ponderada pela quantidade produzida, e as distâncias são aproximadas a partir da projeção do mapa.
         Aba Análise Crítica: integra PAM, Censo 2017 e PIB por recorte único (município, cultura, estado, região ou Território de Identidade), com quociente locacional, shift-share, centro de gravidade e clusters LISA calculados no navegador.
+        Aba Comparativo: dois locais do mesmo tipo comparados por percentis entre os pares, diamante de Porter adaptado com proxies da PAM, Censo e PIB, e recomendações com benchmarks dos melhores pares.
         Aba Radar: notícias da mídia especializada e de instituições (Cepea, Conab, Embrapa, Fundecitrus, CNA, MAPA e outras), com link para a matéria original; os resumos são sínteses, não reproduções.
     </div>
 
@@ -1706,13 +1887,14 @@
         function switchTab(tab) {
             currentTab = tab;
             document.querySelectorAll('.tab').forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tab));
-            const panel = ['cities', 'census', 'pib', 'tiba', 'mob', 'radar', 'ac'].includes(tab) ? tab : 'states';   // estados e regiões compartilham o mesmo painel
+            const panel = ['cities', 'census', 'pib', 'tiba', 'mob', 'radar', 'ac', 'cp'].includes(tab) ? tab : 'states';   // estados e regiões compartilham o mesmo painel
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             document.getElementById(panel + '-content').classList.add('active');
             if (tab !== 'mob' && typeof mobStop === 'function') mobStop();
             if (tab === 'mob') { if (!MOB.built) updateMob(); else mobRenderYear(); initClu(); }
             else if (tab === 'radar') { initRadar(); renderRadar(); }
             else if (tab === 'ac') { renderAC(); }
+            else if (tab === 'cp') { cpRender(); }
             else if (tab === 'census') { initCensus(); updateCensus(); }
             else if (tab === 'pib') { initPib(); updatePib(); }
             else if (tab === 'tiba') { initPib(); initTiba(); updateTiba(); }
@@ -7250,6 +7432,587 @@
             const C = acLisaCount(L, st.isM ? st.ctx : st.mask);
             el.innerHTML += `<div class="side-title" style="margin-top:10px">Clusters LISA <span>${st.isM ? 'no estado' : 'no recorte'}</span></div><div class="ac-lisa-sum">${[1, 3, 4, 2, 0].map(c => `<div><i style="background:${CLU_CLS[c][1]}"></i>${CLU_CLS[c][0]}: <b>${C[c]}</b></div>`).join('')}</div>`;
             el.querySelectorAll('.rank-row[data-i]').forEach(r => r.addEventListener('click', () => acSelect('M', +r.dataset.i)));
+        }
+
+
+        // ================= COMPARATIVO DE DESENVOLVIMENTO AGRÍCOLA E REGIONAL =================
+        const CP = {built: false, type: 'UF', a: 'BA', b: 'PE', units: {}, peers: {}, mode: 'lvl', br: {}, crops: null, cropOn: false, cropSel: [], kc: null, arr: {}, lisa: {}};
+        const cpKey = () => CP.crops ? CP.crops.join(',') : 'all';
+        const CP_C = {A: '#0a6fb8', B: '#e8590c'};
+        const CP_PEER = {M: 'municípios', TI: 'Territórios de Identidade da Bahia', UF: 'estados', R: 'regiões'};
+        const CP_DEF = {M: [String(5564), String(5564)], TI: ['1', '4'], UF: ['BA', 'PE'], R: ['Nordeste', 'Sul']};
+        const CP_DIM = {
+            F: {n: 'Condições de fatores', ic: '🧱', c: '#117a65', d: 'Recursos produtivos e tecnologia incorporada: produtividade, intensidade (valor/ha e por estabelecimento), água (irrigação) e capital humano (idade dos dirigentes).'},
+            D: {n: 'Condições de demanda', ic: '🛒', c: '#a8336b', d: 'Força do mercado: renda local (PIB per capita), dinamismo da economia e se a pauta está em cadeias de demanda crescente (efeito composição).'},
+            E: {n: 'Estratégia, estrutura e rivalidade', ic: '♟️', c: '#6c5ce7', d: 'Desempenho competitivo: ganho de espaço dentro das próprias cadeias (efeito competitivo), crescimento e diversificação da pauta.'},
+            S: {n: 'Indústrias correlatas e de apoio', ic: '🤝', c: '#0a6fb8', d: 'Ecossistema de suporte: assistência técnica, cooperativas e empresas integradoras, base de indústria e serviços e aglomeração em polos de expansão.'},
+            G: {n: 'Governo', ic: '🏛️', c: '#636e72', d: 'Fator externo: presença da orientação técnica pública junto aos estabelecimentos.'},
+            X: {n: 'Acaso', ic: '🎲', c: '#b9770e', d: 'Fator externo: exposição a choques, medida pela volatilidade das taxas anuais do valor da produção (menor é melhor).'},
+            C: {n: 'Contexto e escala', ic: '📏', c: '#95a5a6', d: 'Dimensões descritivas, sem melhor ou pior a priori.'}
+        };
+        const CP_LCLS = {1: 100, 4: 70, 0: 50, 2: 30, 3: 0};
+        const cpLc = s => s.charAt(0).toLowerCase() + s.slice(1);
+        const cpRS = v => acOk(v) ? 'R$ ' + formatCompactBR(v, v >= 1e6 ? 2 : 0) : '—';
+        const CP_IND = [
+            {k: 'v5', l: 'Valor da produção agrícola 2025', dim: 'C', pol: 0, f: acRS, ctx: 'Mede a escala da agricultura, não a eficiência.'},
+            {k: 'sh', l: 'Participação no valor agrícola do Brasil', dim: 'C', pol: 0, f: acShareA, ctx: 'Peso na produção nacional.'},
+            {k: 'a5', l: 'Área colhida 2025', dim: 'C', pol: 0, f: acHa, ctx: 'Base física da produção.'},
+            {k: 'gA', l: 'Variação da área colhida 2020–2025', dim: 'C', pol: 0, f: v => acPct(v), ctx: 'Expansão de área pode ser fronteira dinâmica ou pressão sobre novas terras.'},
+            {k: 'est', l: 'Estabelecimentos agropecuários (2017)', dim: 'C', pol: 0, f: acInt, ctx: 'Número de unidades produtivas.'},
+            {k: 'af', l: 'Agricultura familiar (% dos estabelecimentos)', dim: 'C', pol: 0, f: v => acShare(v), ctx: 'Define o público e os instrumentos de política mais adequados (Pronaf, PAA, PNAE).'},
+            {k: 'agro', l: 'Peso da agropecuária no VAB', dim: 'C', pol: 0, f: v => acShare(v), ctx: 'Maior peso = economia mais dependente do agro e mais exposta a choques de safra.'},
+            {k: 'mul', l: 'Estabelecimentos dirigidos por mulheres', dim: 'C', pol: 0, f: v => acShare(v), ctx: 'Indicador de inclusão produtiva e de público para políticas de gênero.'},
+            {k: 'struct', l: 'Mudança estrutural da pauta 2020–2025', dim: 'C', pol: 0, f: v => acNum(v, 1) + ' p.p.', ctx: 'Quanto o valor se realocou entre culturas; alto = reconversão produtiva em curso.'},
+            {k: 'pidx', l: 'Produtividade relativa (Brasil = 100)', dim: 'F', pol: 1, f: v => acNum(v, 0), why: 'Média das produtividades relativas das culturas, ponderada pelo valor: reflete tecnologia, manejo e condições edafoclimáticas.', rec: 'Programa de difusão tecnológica nas culturas com hiato (cultivares adaptadas, manejo de solo e nutrição, densidade de plantio), com unidades demonstrativas em parceria com Embrapa, OEPAs e universidades.'},
+            {k: 'vha', l: 'Valor da produção por hectare', dim: 'F', pol: 1, f: v => 'R$ ' + acInt(v), why: 'Intensidade econômica do uso da terra: culturas de maior valor, qualidade e preço obtido.', rec: 'Agregar valor por hectare: introduzir culturas e produtos de maior valor (fruticultura, olericultura, especialidades), certificações, beneficiamento e acesso a mercados diferenciados.'},
+            {k: 'vEst', l: 'Valor da produção por estabelecimento', dim: 'F', pol: 1, f: cpRS, why: 'Proxy de renda bruta agrícola por unidade produtiva e de escala econômica.', rec: 'Elevar a renda por estabelecimento: ganho de escala via cooperativas, crédito de investimento (Pronaf, Pronamp), gestão rural e acesso a mercados institucionais.'},
+            {k: 'irr', l: 'Estabelecimentos com irrigação', dim: 'F', pol: 1, f: v => acShare(v), why: 'Segurança hídrica e possibilidade de produzir com estabilidade e na entressafra.', rec: 'Expandir a irrigação eficiente (gotejamento, microaspersão, fertirrigação), reservação e reúso de água, regularização de outorgas e energia rural para bombeamento.'},
+            {k: 'i55', l: 'Dirigentes com 55 anos ou mais', dim: 'F', pol: -1, f: v => acShare(v), why: 'Envelhecimento reduz adoção de inovações e ameaça a sucessão rural (menor é melhor).', rec: 'Sucessão e juventude rural: Pronaf Jovem, ensino técnico agrícola, conectividade e agricultura digital, e programas de acesso à terra para jovens.'},
+            {k: 'pc', l: 'PIB per capita 2023', dim: 'D', pol: 1, f: v => 'R$ ' + acInt(v), why: 'Renda média local: tamanho e poder de compra do mercado próximo.', rec: 'Fortalecer o mercado local: circuitos curtos, feiras, compras públicas (PAA e PNAE) e agroindústrias que gerem emprego e renda no território.'},
+            {k: 'cagr', l: 'Crescimento nominal do PIB 2010–2023 (a.a.)', dim: 'D', pol: 1, f: v => acPct(v), why: 'Dinamismo da economia que absorve a produção e financia investimentos.', rec: 'Dinamizar a economia regional articulando o agro com serviços e indústria de transformação (distritos agroindustriais, logística, turismo rural).'},
+            {k: 'mixP', l: 'Efeito composição da pauta (% do valor de 2020)', dim: 'D', pol: 1, f: v => acPct(v), why: 'Positivo quando a pauta está em culturas cuja demanda/valor cresceu acima do total nacional.', rec: 'Reorientar a pauta para cadeias de demanda crescente, com inteligência de mercado, estudos de viabilidade e diversificação planejada.'},
+            {k: 'compP', l: 'Efeito competitivo (% do valor de 2020)', dim: 'E', pol: 1, f: v => acPct(v), why: 'Ganho ou perda de espaço dentro das mesmas culturas frente ao restante do país.', rec: 'Recuperar competitividade nas cadeias principais: reduzir custos logísticos, reforçar sanidade, ATER e organização da comercialização (contratos, marcas coletivas).'},
+            {k: 'gV', l: 'Crescimento do valor da produção 2020–2025', dim: 'E', pol: 1, f: v => acPct(v), why: 'Dinamismo da agricultura (nominal; compare com o Brasil para descontar a inflação comum).', rec: 'Plano de desenvolvimento das cadeias prioritárias com metas de produção e produtividade, crédito orientado e monitoramento de resultados.'},
+            {k: 'hhi', l: 'Concentração da pauta (HHI)', dim: 'E', pol: -1, f: v => acNum(v, 3), why: 'Pauta concentrada aumenta o risco de choques numa única cadeia (menor é melhor).', rec: 'Diversificar a pauta: sistemas integrados (ILPF, consórcios), novas cadeias complementares, seguro rural e instrumentos de gestão de risco.'},
+            {k: 'ot', l: 'Orientação técnica (% dos estabelecimentos)', dim: 'S', pol: 1, f: v => acShare(v), why: 'Cobertura de assistência técnica: principal canal de difusão de tecnologia.', rec: 'Ampliar a ATER (pública, privada e cooperativa), com metas de cobertura, ATER digital e foco nas culturas e públicos com maior hiato.'},
+            {k: 'coop', l: 'Orientação de cooperativas, integradoras e empresas', dim: 'S', pol: 1, f: v => acShare(v), why: 'Densidade das cadeias organizadas (cooperativas, integração, empresas de planejamento).', rec: 'Estimular o cooperativismo e a integração com agroindústrias, fornecedores de insumos e empresas de planejamento; apoiar a governança das organizações.'},
+            {k: 'indserv', l: 'Indústria + serviços no VAB', dim: 'S', pol: 1, f: v => acShare(v), why: 'Base urbano-industrial que fornece insumos, serviços, armazenagem e processa a produção.', rec: 'Atrair agroindústria e serviços de apoio (armazenagem, frio, logística, manutenção de máquinas), adensando a cadeia no próprio território.'},
+            {k: 'lisa', l: 'Inserção em polos de expansão (LISA)', dim: 'S', pol: 1, f: v => acNum(v, 0), why: 'Aglomeração espacial do crescimento: municípios em clusters Alto-Alto se beneficiam de transbordamentos.', rec: 'Articulação intermunicipal (consórcios, arranjos produtivos locais) para conectar-se aos polos vizinhos e formar manchas contínuas de expansão.'},
+            {k: 'gov', l: 'Orientação técnica de origem governamental', dim: 'G', pol: 1, f: v => acShare(v), why: 'Alcance da extensão rural pública e dos programas governamentais.', rec: 'Ampliar a presença institucional: extensão pública, programas estaduais e federais, crédito orientado e integração das agências locais.'},
+            {k: 'vol', l: 'Volatilidade do valor (desvio das taxas anuais)', dim: 'X', pol: -1, f: v => acNum(v, 1) + ' p.p.', why: 'Oscilação ano a ano do valor da produção: exposição a clima, pragas e preços (menor é melhor).', rec: 'Gestão de risco: zoneamento agrícola (ZARC), seguro rural, Garantia-Safra, armazenagem para regular a venda e contratos de comercialização.'}
+        ];
+
+        function cpUnits(type) {
+            if (CP.units[type]) return CP.units[type];
+            const cc = citiesCompact; let u;
+            if (type === 'M') u = cc.cidades.map((c, i) => ({key: String(i), label: c, idx: [i]}));
+            else {
+                const g = {};
+                for (let i = 0; i < AC.N; i++) { const k = type === 'UF' ? AC.uf[i] : type === 'R' ? AC.reg[i] : AC.ti[i]; if (!k) continue; (g[k] = g[k] || []).push(i); }
+                u = Object.keys(g).map(k => ({key: String(k), label: type === 'UF' ? UF_NAME[k] : type === 'R' ? k : `${String(k).padStart(2, '0')} · ${MOB_TI_NOME[k]}`, idx: g[k]}));
+                u.sort((a, b) => type === 'TI' ? +a.key - +b.key : a.label.localeCompare(b.label, 'pt-BR'));
+            }
+            return (CP.units[type] = u);
+        }
+        function cpInit() {
+            if (CP.built) return;
+            initAC();
+            const cc = citiesCompact, N = AC.N, NC = cc.culturas.length;
+            CP.NC = NC;
+            const mk = () => new Float64Array(NC * N);
+            CP.M = {V0: mk(), V5: mk(), A0: mk(), A5: mk(), Q5: mk()};
+            AC.G.forEach(g => {
+                const key = (g.k === 'V' ? 'V' : g.k === 'A' ? 'A' : 'Q') + (g.yi === 0 ? '0' : g.yi === 5 ? '5' : '');
+                const arr = CP.M[key]; if (!arr) return;
+                const o = g.cu * N;
+                for (let j = 0; j < g.idx.length; j++) arr[o + g.idx[j]] += g.v[j];
+            });
+            CP_DEF.M = [String(AC.pos['Cruz das Almas (BA)'] ?? 0), String(AC.pos['Petrolina (PE)'] ?? 1)];
+            const all = []; for (let i = 0; i < N; i++) all.push(i);
+            CP.all = all;
+            document.getElementById('cpType').addEventListener('change', e => { CP.type = e.target.value; [CP.a, CP.b] = CP_DEF[CP.type]; cpBuildPickers(); cpRender(); });
+            document.getElementById('cpSwap').addEventListener('click', () => { [CP.a, CP.b] = [CP.b, CP.a]; cpBuildPickers(); cpRender(); });
+            document.querySelectorAll('#cpMapMode button').forEach(b => b.addEventListener('click', () => {
+                CP.mode = b.dataset.m; document.querySelectorAll('#cpMapMode button').forEach(x => x.classList.toggle('active', x === b)); cpMap(); }));
+            // culturas (opcional)
+            CP.ms = new MultiSelect(document.getElementById('cpCrops2'), {allLabel: 'Escolha uma ou mais culturas', everyLabel: 'Todas as culturas listadas', noneLabel: 'Limpar', search: 'Buscar cultura',
+                onChange: () => { clearTimeout(CP.tm); CP.tm = setTimeout(() => { CP.cropSel = CP.ms.selected.slice(); cpRender(); }, 250); },
+                color: n => { const c = citiesCompact.culturas.indexOf(cpCropName(n)), inA = CP.presA && CP.presA[c], inB = CP.presB && CP.presB[c]; return inA && inB ? '#117a65' : inA ? CP_C.A : inB ? CP_C.B : '#b2bec3'; }});
+            document.getElementById('cpCropOn').addEventListener('change', e => { CP.cropOn = e.target.checked; document.getElementById('cpCropBox').style.display = CP.cropOn ? '' : 'none'; CP.autoPick = CP.cropOn && !CP.cropSel.length; cpRender(); });
+            cpBuildMap();
+            cpBuildPickers();
+            CP.built = true;
+        }
+        function cpBuildPickers() {
+            const t = CP.type, U = cpUnits(t);
+            ['A', 'B'].forEach(s => {
+                const box = document.getElementById('cp' + s + 'Box'), cur = s === 'A' ? CP.a : CP.b;
+                if (t === 'M') {
+                    box.innerHTML = `<input id="cp${s}" list="acCityList" class="ac-input" autocomplete="off" placeholder="Digite e escolha o município" value="${citiesCompact.cidades[+cur].replace(/"/g, '&quot;')}">`;
+                    const el = document.getElementById('cp' + s);
+                    el.addEventListener('change', () => {
+                        const v = el.value.trim(); let f = AC.pos[v] !== undefined ? v : citiesCompact.cidades.find(c => c.toLowerCase() === v.toLowerCase());
+                        if (!f) { const m = citiesCompact.cidades.filter(c => c.toLowerCase().startsWith(v.toLowerCase())); if (m.length === 1) f = m[0]; }
+                        if (!f) { el.classList.add('bad'); return; }
+                        el.classList.remove('bad'); el.value = f; cpSet(s, String(AC.pos[f]));
+                    });
+                } else {
+                    box.innerHTML = `<select id="cp${s}">${U.map(u => `<option value="${u.key}">${u.label}</option>`).join('')}</select>`;
+                    const el = document.getElementById('cp' + s); el.value = cur;
+                    el.addEventListener('change', () => cpSet(s, el.value));
+                }
+            });
+        }
+        function cpSet(s, v) {
+            const other = s === 'A' ? CP.b : CP.a;
+            if (v === other) { document.getElementById('cpActive').innerHTML = '<b style="color:#d63031">Escolha dois locais diferentes.</b>'; cpBuildPickers(); return; }
+            if (s === 'A') CP.a = v; else CP.b = v;
+            cpRender();
+        }
+
+        // indicadores de uma unidade (lista de municípios da PAM)
+        const cpCropName = o => o.replace(/ \(mil frutos\)$/, '*');
+        const cpCropLabel = n => n.replace(/\*$/, ' (mil frutos)');
+        // valor (ou área) por município somando só as culturas selecionadas
+        function cpArr(m, yi) {
+            if (!CP.crops) return AC.tot[m][yi];
+            const key = cpKey() + m + yi; if (CP.arr[key]) return CP.arr[key];
+            const out = new Float64Array(AC.N); CP.crops.forEach(c => { const a = acCrop(c)[m][yi]; for (let i = 0; i < AC.N; i++) out[i] += a[i]; });
+            return (CP.arr[key] = out);
+        }
+        function cpLisa() {
+            if (!CP.crops) return acLisaTerr('V');
+            if (CP.crops.length === 1) return acLisaCrop(CP.crops[0], 'V');
+            const key = cpKey(); if (CP.lisa[key]) return CP.lisa[key];
+            const a = cpArr('V', 0), b = cpArr('V', 5), g = new Float64Array(AC.N).fill(NaN);
+            for (let i = 0; i < AC.N; i++) if (a[i] > 0 && b[i] > 0) g[i] = Math.log(b[i] / a[i]);
+            return (CP.lisa[key] = acLisa(g));
+        }
+        function cpBR() { const k = cpKey(); return CP.br[k] || (CP.br[k] = cpCompute(CP.all)); }
+        function cpCompute(idx) {
+            const N = AC.N, NC = CP.NC, M = CP.M, caf = AC.cafe, sel = CP.crops ? new Uint8Array(NC) : null;
+            if (sel) CP.crops.forEach(c => { sel[c] = 1; });
+            const use = c => sel ? sel[c] === 1 : c !== caf;
+            const V0 = new Float64Array(NC), V5 = new Float64Array(NC), A0 = new Float64Array(NC), A5 = new Float64Array(NC), Q5 = new Float64Array(NC);
+            for (const i of idx) for (let c = 0; c < NC; c++) { if (!use(c)) continue; const o = c * N + i; if (M.V5[o] || M.V0[o] || M.A5[o]) { V0[c] += M.V0[o]; V5[c] += M.V5[o]; A0[c] += M.A0[o]; A5[c] += M.A5[o]; Q5[c] += M.Q5[o]; } }
+            let T0 = 0, T5 = 0, TA0 = 0, TA5 = 0;
+            for (let c = 0; c < NC; c++) if (use(c)) { T0 += V0[c]; T5 += V5[c]; TA0 += A0[c]; TA5 += A5[c]; }
+            const TV = AC_Y.map((_, yi) => { const arr = cpArr('V', yi); let s = 0; for (const i of idx) s += arr[i]; return s; });
+            const rates = []; for (let y = 1; y < 6; y++) if (TV[y - 1] > 0) rates.push((TV[y] / TV[y - 1] - 1) * 100);
+            const mr = rates.reduce((a, b) => a + b, 0) / (rates.length || 1);
+            const vol = rates.length >= 3 ? Math.sqrt(rates.reduce((a, r) => a + (r - mr) ** 2, 0) / rates.length) : null;
+            let hhi = 0, st = 0, mix = 0, comp = 0, pw = 0, ps = 0;
+            let B0 = 0, B5 = 0; for (let c = 0; c < NC; c++) if (use(c) && AC.br[c]) { B0 += AC.br[c].V[0]; B5 += AC.br[c].V[5]; }
+            const gN = B0 > 0 ? B5 / B0 - 1 : 0, one = sel && CP.crops.length === 1;
+            for (let c = 0; c < NC; c++) {
+                if (!use(c)) continue;
+                if (T5 > 0) hhi += (V5[c] / T5) ** 2;
+                if (T5 > 0 && T0 > 0) st += Math.abs(V5[c] / T5 - V0[c] / T0);
+                const b = AC.br[c]; if (!b) continue;
+                const gc = b.V[0] > 0 ? b.V[5] / b.V[0] - 1 : gN;
+                mix += V0[c] * (gc - gN); comp += V5[c] - V0[c] * (1 + gc);
+                if (A5[c] > 0 && Q5[c] > 0 && b.A[5] > 0 && b.Q[5] > 0 && V5[c] > 0) { pw += V5[c]; ps += V5[c] * Math.min(300, (Q5[c] / A5[c]) / (b.Q[5] / b.A[5]) * 100); }
+            }
+            // Censo e PIB
+            const CT = new Array(CENSUS_NF).fill(0);
+            let pib = 0, pop = 0, pib0 = 0, ag = 0, vab = 0, is = 0; const pcY = PIB.anos.map(() => [0, 0]);
+            for (const i of idx) {
+                const c = AC.cenI[i]; if (c >= 0) { const r = CENSO.d[c]; for (let j = 0; j < CENSUS_NF; j++) CT[j] += r[j]; }
+                const p = AC.pibI[i]; if (p >= 0) { const d = PIB.d[p];
+                    d.forEach((r, yi) => { if (r) { pcY[yi][0] += r[0]; pcY[yi][1] += r[1]; } });
+                    const r = d[AC.yv], r2 = d[AC.yp], r0 = d[0];
+                    if (r2) { pib += r2[0]; pop += r2[1]; } if (r0) pib0 += r0[0];
+                    if (r && r.length > 5) { ag += r[2]; vab += r[2] + r[3] + r[4] + r[5]; is += r[3] + r[4]; } }
+            }
+            const e = CT[0], pctC = v => e > 0 ? v / e * 100 : null;
+            const L = cpLisa();
+            let lisa = null;
+            if (idx.length === 1) { const c = L.cls[idx[0]]; lisa = c >= 0 ? CP_LCLS[c] : null; }
+            else { let n = 0, hh = 0; for (const i of idx) if (L.cls[i] >= 0) { n++; if (L.cls[i] === 1) hh++; } lisa = n ? hh / n * 100 : null; }
+            return {idx, V0, V5, A5, Q5, TV, T0, T5,
+                v5: T5, B5, sh: B5 ? T5 / B5 * 100 : null, a5: TA5, gA: acG(TA0, TA5), gV: acG(T0, T5), est: e || null,
+                af: pctC(CT[1]), mul: pctC(CT[4]), i55: pctC(CT[12] + CT[13] + CT[14]), ot: pctC(CT[24]), irr: pctC(CT[34]),
+                coop: pctC(CT[28] + CT[29] + CT[30]), gov: pctC(CT[26]),
+                agro: vab > 0 ? ag / vab * 100 : null, indserv: vab > 0 ? is / vab * 100 : null, pc: pop > 0 ? pib * 1000 / pop : null,
+                cagr: pibCagr(pib0, pib, PIB.anos[AC.yp] - PIB.anos[0]), pib, pcY: pcY.map(([a, b]) => b > 0 ? a * 1000 / b : null),
+                hhi: T5 > 0 && !one ? hhi : null, struct: one ? null : st / 2 * 100, mixP: T0 > 0 && !one ? mix / T0 * 100 : null, compP: T0 > 0 ? comp / T0 * 100 : null,
+                pidx: pw > 0 ? ps / pw : null, vha: TA5 > 0 ? T5 * 1000 / TA5 : null, vEst: e > 0 && T5 > 0 ? T5 * 1000 / e : null, vol, lisa, CT};
+        }
+        // indicadores de todos os pares do mesmo tipo (para percentis e benchmarks)
+        function cpPeers(type) {
+            const pk = type + '|' + cpKey();
+            if (CP.peers[pk]) return CP.peers[pk];
+            const U = cpUnits(type), R = U.map(u => cpCompute(u.idx));
+            const sorted = {};
+            CP_IND.forEach(ind => { sorted[ind.k] = R.map(r => r[ind.k]).filter(acOk).sort((a, b) => a - b); });
+            // pares "relevantes" para benchmark de municípios: valor agrícola acima da mediana e ao menos 50 estabelecimentos
+            const vm = sorted.v5[Math.floor(sorted.v5.length / 2)] || 0;
+            const relevant = R.map((r, j) => type !== 'M' || (r.v5 >= vm && r.est >= 50));
+            return (CP.peers[pk] = {U, R, sorted, relevant});
+        }
+        function cpPct(type, k, v) {
+            const s = cpPeers(type).sorted[k]; if (!acOk(v) || !s.length) return null;
+            let lo = 0, hi = s.length; while (lo < hi) { const m = (lo + hi) >> 1; if (s[m] < v) lo = m + 1; else hi = m; }
+            let eq = lo; while (eq < s.length && s[eq] === v) eq++;
+            return s.length === 1 ? 50 : ((lo + (eq - lo) / 2) / s.length) * 100;
+        }
+        const cpScore = (type, ind, v) => { const p = cpPct(type, ind.k, v); return p === null ? null : ind.pol < 0 ? 100 - p : p; };
+        function cpDimScore(type, X, d) {
+            const v = CP_IND.filter(i => i.dim === d).map(i => cpScore(type, i, X[i.k])).filter(acOk);
+            return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null;
+        }
+
+        function cpRender() {
+            cpInit();
+            const t = CP.type, U = cpUnits(t);
+            const ua = U.find(u => u.key === CP.a), ub = U.find(u => u.key === CP.b);
+            if (!ua || !ub) return;
+            cpCropOptions(ua, ub);
+            const cropMode = CP.cropOn && CP.cropSel.length > 0;
+            CP.crops = cropMode ? CP.cropSel.map(n => citiesCompact.culturas.indexOf(cpCropName(n))).filter(c => c >= 0).sort((a, b) => a - b) : null;
+            const P = cpPeers(t);
+            const A = cpCompute(ua.idx), B = cpCompute(ub.idx), BR = cpBR();
+            const cropTxt = cropMode ? CP.crops.map(c => cpCropLabel(citiesCompact.culturas[c])).join(', ') : '';
+            document.getElementById('cpCropStatus').innerHTML = !CP.cropOn ? 'Desmarcado: a comparação usa <b>todas as culturas</b>.'
+                : cropMode ? `Análise restrita a <b>${CP.crops.length}</b> cultura(s): ${cropTxt}.` : '<b style="color:#d63031">Selecione ao menos uma cultura</b> — enquanto isso, a comparação usa todas as culturas.';
+            document.getElementById('cpCropBanner').style.display = cropMode ? '' : 'none';
+            document.getElementById('cpCropBanner').innerHTML = cropMode ? `🌱 <b>Comparação restrita às culturas selecionadas:</b> ${cropTxt}. Valor, área, crescimento, produtividade, shift-share, mapas, clusters e percentis usam só essas culturas (os pares também são recalculados com elas). PIB e Censo não são separáveis por cultura e aparecem como contexto territorial.` : '';
+            document.getElementById('cpCropBlock').style.display = cropMode ? '' : 'none';
+            const LA = ua.label.replace(/^\d+ · /, t === 'TI' ? 'TI ' : ''), LB = ub.label.replace(/^\d+ · /, t === 'TI' ? 'TI ' : '');
+            const sa = `<span class="a">${LA}</span>`, sb = `<span class="b">${LB}</span>`;
+            CP.st = {t, ua, ub, A, B, LA, LB};
+            document.getElementById('cpActive').innerHTML = `Comparação: <span class="ac-tag">${{M: 'Municípios', TI: 'Territórios', UF: 'Estados', R: 'Regiões'}[t]}</span><b style="color:${CP_C.A}">${LA}</b> × <b style="color:${CP_C.B}">${LB}</b>`;
+            document.getElementById('cpVs').innerHTML = `<span class="a">${LA}</span><span class="x">vs</span><span class="b">${LB}</span>`;
+            document.getElementById('cpSub').textContent = `Relatório comparativo · ${ua.idx.length === 1 ? '' : ua.idx.length + ' × ' + ub.idx.length + ' municípios · '}PAM 2020–2025, Censo Agropecuário 2017 e PIB dos Municípios 2010–2023 · percentis entre os ${P.U.length.toLocaleString('pt-BR')} ${CP_PEER[t]}`;
+
+            // ---------- placar e Porter ----------
+            const perf = CP_IND.filter(i => i.pol !== 0);
+            let wa = 0, wb = 0; const gaps = [];
+            perf.forEach(ind => {
+                const a = A[ind.k], b = B[ind.k]; if (!acOk(a) || !acOk(b) || a === b) return;
+                const aBetter = ind.pol * (a - b) > 0; aBetter ? wa++ : wb++;
+                const pa = cpScore(t, ind, a), pb = cpScore(t, ind, b);
+                if (acOk(pa) && acOk(pb)) gaps.push({ind, lead: aBetter ? 'A' : 'B', gap: Math.abs(pa - pb), pa, pb});
+            });
+            gaps.sort((x, y) => y.gap - x.gap);
+            const dims = ['F', 'D', 'E', 'S'], ext = ['G', 'X'];
+            const DS = {}; dims.concat(ext).forEach(d => { DS[d] = {a: cpDimScore(t, A, d), b: cpDimScore(t, B, d)}; });
+            const pA = dims.map(d => DS[d].a).filter(acOk), pB = dims.map(d => DS[d].b).filter(acOk);
+            const portA = pA.reduce((a, b) => a + b, 0) / (pA.length || 1), portB = pB.reduce((a, b) => a + b, 0) / (pB.length || 1);
+
+            // ---------- duelo de indicadores-chave ----------
+            const duel = [
+                {l: 'Valor da produção 2025', a: A.v5, b: B.v5, f: acRS, pol: 0},
+                {l: 'Crescimento do valor 2020–25', a: A.gV, b: B.gV, f: v => acPct(v), pol: 1, br: BR.gV},
+                {l: 'Produtividade relativa (BR = 100)', a: A.pidx, b: B.pidx, f: v => acNum(v, 0), pol: 1, br: 100},
+                {l: 'PIB per capita 2023', a: A.pc, b: B.pc, f: v => 'R$ ' + acInt(v), pol: 1, br: BR.pc},
+                {l: 'Orientação técnica (Censo)', a: A.ot, b: B.ot, f: v => acShare(v), pol: 1, br: BR.ot},
+                {l: 'Índice do diamante de Porter', a: portA, b: portB, f: v => acNum(v, 0) + '/100', pol: 1, br: 50}
+            ];
+            acSet('cpDuel', duel.map(d => {
+                const win = d.pol && acOk(d.a) && acOk(d.b) && d.a !== d.b ? (d.a > d.b ? 'A' : 'B') : null;
+                const tot = Math.abs(d.a || 0) + Math.abs(d.b || 0) || 1;
+                return `<div class="cp-dc"><h5>${d.l}<span>${d.br !== undefined ? 'Brasil: ' + d.f(d.br) : ''}</span></h5><div class="cp-dv">
+                    <div class="${win === 'A' ? 'win' : ''}" style="--c:${CP_C.A}"><b>${d.f(d.a)}</b><small>${LA}</small></div>
+                    <div class="${win === 'B' ? 'win' : ''}" style="--c:${CP_C.B}"><b>${d.f(d.b)}</b><small>${LB}</small></div></div>
+                    <div class="cp-bar"><i style="width:${Math.abs(d.a || 0) / tot * 100}%;background:${CP_C.A}"></i><i style="width:${Math.abs(d.b || 0) / tot * 100}%;background:${CP_C.B}"></i></div></div>`;
+            }).join(''));
+
+            // ---------- resumo executivo ----------
+            const ratio = B.v5 > 0 ? A.v5 / B.v5 : null;
+            const top = X => { const r = []; for (let c = 0; c < CP.NC; c++) if (c !== AC.cafe && X.V5[c] > 0) r.push([c, X.V5[c]]); return r.sort((p, q) => q[1] - p[1]); };
+            const tA = top(A), tB = top(B), cn = c => citiesCompact.culturas[c].replace(/\*$/, '');
+            let dot = 0, na = 0, nb = 0; for (let c = 0; c < CP.NC; c++) if (c !== AC.cafe) { dot += A.V5[c] * B.V5[c]; na += A.V5[c] ** 2; nb += B.V5[c] ** 2; }
+            const sim = na && nb ? dot / Math.sqrt(na * nb) : null;
+            const common = tA.slice(0, 10).map(x => x[0]).filter(c => tB.slice(0, 10).some(y => y[0] === c));
+            const mA = new Uint8Array(AC.N), mB = new Uint8Array(AC.N); ua.idx.forEach(i => { mA[i] = 1; }); ub.idx.forEach(i => { mB[i] = 1; });
+            const V5a = cpArr('V', 5), cA = acCentroid(V5a, mA), cB = acCentroid(V5a, mB), dist = cA && cB ? mobKm(cA.ll, cB.ll) : null;
+            CP.st.cA = cA; CP.st.cB = cB; CP.st.mA = mA; CP.st.mB = mB;
+            const strong = (X, Y) => dims.filter(d => acOk(DS[d][X]) && acOk(DS[d][Y]) && DS[d][X] - DS[d][Y] >= 8).map(d => cpLc(CP_DIM[d].n));
+            const lead = portA >= portB ? sa : sb;
+            const recsA = gaps.filter(g => g.lead === 'B' && g.gap >= 15).slice(0, 3), recsB = gaps.filter(g => g.lead === 'A' && g.gap >= 15).slice(0, 3);
+            let ex = (cropMode ? `<h4>Escopo</h4><p>Comparação restrita a: <b>${cropTxt}</b>. ${cpCropExec(ua, ub, sa, sb)}</p>` : '') + `<h4>Visão geral</h4><p>${sa} e ${sb} ${dist !== null ? `ficam a cerca de ${acInt(dist)} km um do outro (entre os centros de gravidade da produção). ` : ''}`;
+            ex += ratio ? `${ratio >= 1 ? sa : sb} tem ${cropMode ? 'a maior produção das culturas selecionadas' : 'a maior agricultura'}: <b>${acNum(Math.max(ratio, 1 / ratio), 1)}×</b> o valor da produção do outro (${acRS(A.v5)} vs ${acRS(B.v5)} em 2025). ` : '';
+            ex += `Entre ${2020}–2025, o valor cresceu ${acPct(A.gV)} em ${sa} e ${acPct(B.gV)} em ${sb} (Brasil ${acPct(BR.gV)}).</p>`;
+            ex += `<div class="cp-score"><span style="background:${CP_C.A}">${LA}: vence ${wa} indicadores</span><span style="background:${CP_C.B}">${LB}: vence ${wb}</span><span style="background:#2f4a9e">Porter: ${acNum(portA, 0)} × ${acNum(portB, 0)}</span></div>`;
+            ex += `<h4>Competitividade (diamante de Porter)</h4><p>${lead} tem o diamante mais robusto (média ${acNum(Math.max(portA, portB), 0)} vs ${acNum(Math.min(portA, portB), 0)}, em percentis entre os ${CP_PEER[t]}). `;
+            const sA = strong('a', 'b'), sB = strong('b', 'a');
+            ex += `${sA.length ? `${sa} se destaca em ${sA.join(', ')}` : `${sa} não tem vantagem clara em nenhum determinante`}; ${sB.length ? `${sb}, em ${sB.join(', ')}` : `${sb} não tem vantagem clara em nenhum determinante`}.</p>`;
+            ex += `<h4>Estrutura produtiva</h4><p>Principais culturas — ${sa}: ${tA.slice(0, 3).map(x => `${cn(x[0])} (${acShare(x[1] / A.T5 * 100, 0)})`).join(', ')}; ${sb}: ${tB.slice(0, 3).map(x => `${cn(x[0])} (${acShare(x[1] / B.T5 * 100, 0)})`).join(', ')}. `;
+            ex += acOk(sim) ? `Similaridade das pautas: <b>${acNum(sim, 2)}</b> (0 = complementares, 1 = idênticas) — ${sim > 0.7 ? 'competem nas mesmas cadeias; a comparação de produtividade e custos é direta' : sim < 0.3 ? 'pautas <b>complementares</b>, com espaço para cooperação comercial e logística conjunta' : 'sobreposição parcial de cadeias'}${common.length ? `; culturas em comum entre as 10 principais: ${common.map(cn).join(', ')}` : ''}.</p>` : '</p>';
+            ex += `<h4>Maiores distâncias entre os dois</h4><ul>${gaps.slice(0, 4).map(g => `<li><b>${g.ind.l}</b>: ${g.lead === 'A' ? sa : sb} à frente (${g.ind.f(A[g.ind.k])} vs ${g.ind.f(B[g.ind.k])}; ${acNum(g.gap, 0)} pontos de percentil).</li>`).join('')}</ul>`;
+            ex += `<h4>Agenda prioritária</h4><ul>`;
+            ex += `<li>${sa}: ${recsA.length ? recsA.map(g => cpLc(g.ind.l)).join('; ') : 'manter as vantagens e mirar os melhores ' + CP_PEER[t] + ' do país (ver recomendações)'}.</li>`;
+            ex += `<li>${sb}: ${recsB.length ? recsB.map(g => cpLc(g.ind.l)).join('; ') : 'manter as vantagens e mirar os melhores ' + CP_PEER[t] + ' do país (ver recomendações)'}.</li></ul>`;
+            acSet('cpExec', ex);
+
+            // ---------- Porter ----------
+            document.getElementById('cpPorterNote').textContent = `Cada vértice é a média dos percentis (0–100) dos indicadores do determinante, entre os ${P.U.length.toLocaleString('pt-BR')} ${CP_PEER[t]}; 50 = mediana dos pares (linha tracejada). Indicadores em que “menor é melhor” têm a escala invertida.`;
+            const ro = acOpts({legend: true});
+            ro.scales = {r: {min: 0, max: 100, ticks: {stepSize: 25, backdropColor: 'transparent', font: {size: 9}}, pointLabels: {font: {size: 12, weight: '700'}, color: '#1e272e'}, grid: {color: 'rgba(0,0,0,.08)'}, angleLines: {color: 'rgba(0,0,0,.12)'}}};
+            ro.plugins.tooltip = {callbacks: {label: c => ` ${c.dataset.label}: ${acNum(c.parsed.r, 0)}`}};
+            acChart('cpC1', {type: 'radar', data: {labels: [['Condições', 'de fatores'], ['Condições', 'de demanda'], ['Estratégia, estrutura', 'e rivalidade'], ['Indústrias correlatas', 'e de apoio']],
+                datasets: [{label: LA, data: dims.map(d => DS[d].a), borderColor: CP_C.A, backgroundColor: CP_C.A + '33', borderWidth: 2.5, pointRadius: 4},
+                    {label: LB, data: dims.map(d => DS[d].b), borderColor: CP_C.B, backgroundColor: CP_C.B + '33', borderWidth: 2.5, pointRadius: 4},
+                    {label: 'Mediana dos pares', data: dims.map(() => 50), borderColor: '#95a5a6', borderDash: [5, 4], backgroundColor: 'transparent', borderWidth: 1.5, pointRadius: 0}]}, options: ro});
+            acSet('cpDims', dims.concat(ext).map(d => {
+                const inds = CP_IND.filter(i => i.dim === d), a = DS[d].a, b = DS[d].b;
+                const lead = acOk(a) && acOk(b) ? (Math.abs(a - b) < 5 ? 'equilíbrio entre os dois' : `vantagem de ${a > b ? LA : LB}`) : '';
+                return `<div class="cp-dim ${ext.includes(d) ? 'ext' : ''}" style="--dc:${CP_DIM[d].c}"><h5>${CP_DIM[d].ic} ${CP_DIM[d].n}${ext.includes(d) ? ' <small style="color:#95a5a6">(externo)</small>' : ''}</h5>
+                    <div class="cp-sc"><div class="a"><b>${acNum(a, 0)}</b>${LA}</div><div class="b"><b>${acNum(b, 0)}</b>${LB}</div></div>
+                    <p><b>${lead}</b>. ${CP_DIM[d].d} <i>Indicadores: ${inds.map(i => cpLc(i.l)).join('; ')}.</i></p></div>`;
+            }).join(''));
+
+            // ---------- percentis ----------
+            const pi = perf.filter(i => acOk(A[i.k]) || acOk(B[i.k]));
+            document.getElementById('cpN2').textContent = `Percentil de cada local entre os ${CP_PEER[t]} (100 = melhor). Indicadores em que menor é melhor já aparecem invertidos.`;
+            const o2 = acOpts({h: true, legend: true, min: 0, max: 100, fmt: v => acNum(v, 0), ref: {value: 50, label: 'mediana'}});
+            o2.plugins.tooltip = {callbacks: {label: c => ` ${c.dataset.label}: percentil ${acNum(c.parsed.x, 0)} · ${pi[c.dataIndex].f((c.datasetIndex ? B : A)[pi[c.dataIndex].k])}`}};
+            acChart('cpC2', {type: 'bar', data: {labels: pi.map(i => `${CP_DIM[i.dim].ic} ${i.l.length > 38 ? i.l.slice(0, 37) + '…' : i.l}`),
+                datasets: [{label: LA, data: pi.map(i => cpScore(t, i, A[i.k])), backgroundColor: CP_C.A, borderRadius: 3}, {label: LB, data: pi.map(i => cpScore(t, i, B[i.k])), backgroundColor: CP_C.B, borderRadius: 3}]}, options: o2});
+            // ---------- evolução e shift-share ----------
+            const ix = arr => arr.map(v => arr[0] > 0 ? v / arr[0] * 100 : null);
+            acChart('cpC3', {type: 'line', data: {labels: AC_Y.map(String), datasets: [
+                {label: LA, data: ix(A.TV), borderColor: CP_C.A, backgroundColor: CP_C.A, borderWidth: 3, tension: .25},
+                {label: LB, data: ix(B.TV), borderColor: CP_C.B, backgroundColor: CP_C.B, borderWidth: 3, tension: .25},
+                {label: 'Brasil', data: ix(BR.TV), borderColor: '#636e72', borderDash: [6, 4], borderWidth: 1.6, pointRadius: 0, tension: .25}]}, options: acOpts({legend: true, zero: false, fmt: v => acNum(v, 1), ref: {value: 100}})});
+            const gN = BR.TV[0] > 0 ? (BR.TV[5] / BR.TV[0] - 1) * 100 : 0;
+            const ss = X => [X.gV, gN, X.mixP, X.compP];
+            acChart('cpC7', {type: 'bar', data: {labels: ['Crescimento observado', 'Efeito nacional', 'Efeito composição', 'Efeito competitivo'], datasets: [
+                {label: LA, data: ss(A), backgroundColor: CP_C.A, borderRadius: 3}, {label: LB, data: ss(B), backgroundColor: CP_C.B, borderRadius: 3}]}, options: acOpts({legend: true, fmt: v => acPct(v), axis: v => acNum(v, 0) + '%'})});
+            // ---------- composição ----------
+            const uni = [...new Set(tA.slice(0, 6).map(x => x[0]).concat(tB.slice(0, 6).map(x => x[0])))].sort((p, q) => (B.V5[q] / B.T5 + A.V5[q] / A.T5) - (B.V5[p] / B.T5 + A.V5[p] / A.T5));
+            acChart('cpC4', {type: 'bar', data: {labels: uni.map(cn), datasets: [{label: LA, data: uni.map(c => A.T5 ? A.V5[c] / A.T5 * 100 : 0), backgroundColor: CP_C.A, borderRadius: 3},
+                {label: LB, data: uni.map(c => B.T5 ? B.V5[c] / B.T5 * 100 : 0), backgroundColor: CP_C.B, borderRadius: 3}]}, options: acOpts({h: true, legend: true, fmt: v => acShare(v), axis: v => v + '%'})});
+            // ---------- produtividade em comum ----------
+            const pIdx = (X, c) => { const b = AC.br[c]; return X.A5[c] > 0 && X.Q5[c] > 0 && b && b.A[5] > 0 && b.Q[5] > 0 ? (X.Q5[c] / X.A5[c]) / (b.Q[5] / b.A[5]) * 100 : null; };
+            const com = []; for (let c = 0; c < CP.NC; c++) if (c !== AC.cafe && acOk(pIdx(A, c)) && acOk(pIdx(B, c))) com.push(c);
+            com.sort((p, q) => (A.V5[q] + B.V5[q]) - (A.V5[p] + B.V5[p]));
+            const c8 = com.slice(0, 10);
+            document.getElementById('cpN8').textContent = c8.length ? `Produtividade de cada local ÷ produtividade do Brasil × 100, nas ${c8.length} culturas em comum de maior valor somado.` : 'Os dois locais não têm culturas em comum com área colhida.';
+            acChart('cpC8', {type: 'bar', data: {labels: c8.map(cn), datasets: [{label: LA, data: c8.map(c => pIdx(A, c)), backgroundColor: CP_C.A, borderRadius: 3}, {label: LB, data: c8.map(c => pIdx(B, c)), backgroundColor: CP_C.B, borderRadius: 3}]},
+                options: acOpts({h: true, legend: true, fmt: v => acNum(v, 0), ref: {value: 100, label: 'Brasil'}})});
+            // ---------- PIB per capita ----------
+            acChart('cpC5', {type: 'line', data: {labels: PIB.anos.map(String), datasets: [
+                {label: LA, data: A.pcY, borderColor: CP_C.A, backgroundColor: CP_C.A, borderWidth: 3, tension: .25},
+                {label: LB, data: B.pcY, borderColor: CP_C.B, backgroundColor: CP_C.B, borderWidth: 3, tension: .25},
+                {label: 'Brasil', data: BR.pcY, borderColor: '#636e72', borderDash: [6, 4], borderWidth: 1.6, pointRadius: 0, tension: .25}]}, options: acOpts({legend: true, fmt: v => 'R$ ' + acInt(v), axis: v => 'R$ ' + formatCompactBR(v, 0)})});
+            // ---------- Censo ----------
+            const ck = ['af', 'ot', 'coop', 'gov', 'irr', 'i55', 'mul'], cl = {af: 'Agric. familiar', ot: 'Orientação técnica', coop: 'Orient. cooperativa/empresa', gov: 'Orient. governamental', irr: 'Irrigação', i55: 'Dirigente 55+', mul: 'Dirigidos por mulheres'};
+            acChart('cpC6', {type: 'bar', data: {labels: ck.map(k => cl[k]), datasets: [{label: LA, data: ck.map(k => A[k]), backgroundColor: CP_C.A, borderRadius: 3},
+                {label: LB, data: ck.map(k => B[k]), backgroundColor: CP_C.B, borderRadius: 3}, {label: 'Brasil', data: ck.map(k => BR[k]), backgroundColor: '#b2bec3', borderRadius: 3}]},
+                options: acOpts({h: true, legend: true, fmt: v => acShare(v), axis: v => v + '%'})});
+
+            // ---------- tabela crítica ----------
+            document.getElementById('cpTblNote').textContent = `Cada indicador com os valores dos dois locais, a referência Brasil, o percentil entre os ${CP_PEER[t]} (A / B, 100 = melhor) e a leitura crítica. Agrupado pelos determinantes do diamante de Porter.`;
+            let h = `<table><thead><tr><th>Indicador</th><th class="num">${LA}</th><th class="num">${LB}</th><th class="num">Brasil</th><th>Vantagem</th><th class="num">Percentis</th><th>Análise crítica</th></tr></thead><tbody>`;
+            ['F', 'D', 'E', 'S', 'G', 'X', 'C'].forEach(d => {
+                h += `<tr class="dim"><td colspan="7">${CP_DIM[d].ic} ${CP_DIM[d].n}</td></tr>`;
+                CP_IND.filter(i => i.dim === d).forEach(ind => {
+                    const a = A[ind.k], b = B[ind.k], br = ind.k === 'lisa' ? null : ind.k === 'pidx' ? 100 : BR[ind.k];
+                    const pa = ind.pol ? cpScore(t, ind, a) : cpPct(t, ind.k, a), pb = ind.pol ? cpScore(t, ind, b) : cpPct(t, ind.k, b);
+                    const fv = v => ind.k === 'lisa' && t === 'M' ? (acOk(v) ? {100: 'Alto-Alto', 70: 'Alto-Baixo', 50: 'Não signif.', 30: 'Baixo-Alto', 0: 'Baixo-Baixo'}[v] : 'sem base') : ind.k === 'lisa' && acOk(v) ? acShare(v, 0) + ' dos mun.' : ind.f(v);
+                    let win = '—';
+                    if (ind.pol && acOk(a) && acOk(b) && a !== b) { const w = ind.pol * (a - b) > 0 ? 'A' : 'B'; win = `<span class="cp-win" style="background:${CP_C[w]}">${w === 'A' ? LA : LB}</span>`; }
+                    h += `<tr><td><strong>${ind.l}</strong></td><td class="num va">${fv(a)}</td><td class="num vb">${fv(b)}</td><td class="num">${acOk(br) ? ind.f(br) : '—'}</td><td>${win}</td>
+                        <td class="num"><span class="cp-pct">${acNum(pa, 0)} / ${acNum(pb, 0)}</span></td><td class="cm">${cpComment(ind, a, b, br, pa, pb, LA, LB, fv)}</td></tr>`;
+                });
+            });
+            acSet('cpTable', h + '</tbody></table>');
+            // ---------- culturas ----------
+            const cu15 = [...new Set(tA.slice(0, 10).map(x => x[0]).concat(tB.slice(0, 10).map(x => x[0])))].sort((p, q) => (A.V5[q] + B.V5[q]) - (A.V5[p] + B.V5[p]));
+            const ql = (X, c) => X.T5 && AC.br[c] && AC.br[c].V[5] ? (X.V5[c] / X.T5) / (AC.br[c].V[5] / AC.BV[5]) : null;
+            let hc = `<table><thead><tr><th>Cultura</th><th class="num">Valor · ${LA}</th><th class="num">Peso</th><th class="num">QL</th><th class="num">Produtiv. (BR=100)</th><th class="num">Valor · ${LB}</th><th class="num">Peso</th><th class="num">QL</th><th class="num">Produtiv. (BR=100)</th><th>Leitura</th></tr></thead><tbody>`;
+            cu15.forEach(c => {
+                const qa = ql(A, c), qb = ql(B, c), pa = pIdx(A, c), pb = pIdx(B, c);
+                let r = '';
+                if (A.V5[c] > 0 && B.V5[c] > 0) r = acOk(pa) && acOk(pb) ? `Ambos produzem; ${pa > pb ? LA : LB} é mais produtivo (${acNum(Math.max(pa, pb), 0)} vs ${acNum(Math.min(pa, pb), 0)}).` : 'Ambos produzem.';
+                else r = `Só ${A.V5[c] > 0 ? LA : LB} produz — ${(A.V5[c] > 0 ? qa : qb) >= 1.5 ? 'especialização' : 'presença'} sem concorrência direta do outro.`;
+                hc += `<tr><td><strong>${cn(c)}</strong></td><td class="num va">${A.V5[c] > 0 ? acRS(A.V5[c]) : '—'}</td><td class="num">${A.V5[c] > 0 ? acShare(A.V5[c] / A.T5 * 100) : '—'}</td><td class="num">${A.V5[c] > 0 ? acNum(qa, 1) : '—'}</td><td class="num">${acNum(pa, 0)}</td>
+                    <td class="num vb">${B.V5[c] > 0 ? acRS(B.V5[c]) : '—'}</td><td class="num">${B.V5[c] > 0 ? acShare(B.V5[c] / B.T5 * 100) : '—'}</td><td class="num">${B.V5[c] > 0 ? acNum(qb, 1) : '—'}</td><td class="num">${acNum(pb, 0)}</td><td class="cm" style="white-space:normal;font-size:.8rem">${r}</td></tr>`;
+            });
+            acSet('cpCrops', hc + '</tbody></table>');
+            // ---------- recomendações ----------
+            cpRecs(t, A, B, LA, LB, gaps);
+            if (cropMode) cpCropSection(ua, ub, LA, LB); 
+            cpMap();
+            acSet('cpMethod', `<b>Notas de método.</b> Indicadores calculados a partir da PAM (2020–2025), do Censo Agropecuário 2017 e do PIB dos Municípios (VAB setorial até ${PIB.lastVab}; PIB e população até ${PIB.anos[AC.yp]}), somando os municípios de cada local. Percentis comparam o local com todos os ${CP_PEER[t]} (para regiões, só existem 5 pares, então a escala é grosseira).
+                <b>Diamante de Porter</b> (Porter, 1990), adaptado com proxies disponíveis: fatores = produtividade relativa, valor/ha, valor por estabelecimento, irrigação e idade dos dirigentes; demanda = PIB per capita, crescimento do PIB e efeito composição; estratégia e rivalidade = efeito competitivo, crescimento do valor e concentração da pauta; correlatas e apoio = orientação técnica, orientação de cooperativas/integradoras/empresas, peso de indústria e serviços e inserção em clusters LISA Alto-Alto; governo = orientação técnica pública; acaso = volatilidade do valor.
+                <b>Benchmarks</b>: os ${CP_PEER[t]} com melhor resultado em cada indicador${t === 'M' ? ' (entre municípios com valor agrícola acima da mediana e ao menos 50 estabelecimentos, para evitar bases muito pequenas)' : ''}. Valores em reais correntes. As recomendações são orientações gerais derivadas dos indicadores e devem ser validadas com conhecimento local.`);
+        }
+
+        function cpComment(ind, a, b, br, pa, pb, LA, LB, fv) {
+            if (!acOk(a) || !acOk(b)) return `Sem dado para ${!acOk(a) ? LA : LB}.`;
+            const rel = (x, y) => y !== 0 && Math.sign(x) === Math.sign(y) && Math.abs(y) > 1e-9 ? Math.abs(x / y) : null;
+            const brTxt = acOk(br) ? (a > br && b > br ? ' Ambos acima do Brasil.' : a < br && b < br ? ' Ambos abaixo do Brasil.' : ` Só ${(a > br) === (ind.pol >= 0) ? LA : LB} está do lado favorável da referência nacional (${ind.f(br)}).`) : '';
+            if (!ind.pol) {
+                const r = rel(a, b);
+                return `${a > b ? LA : LB} tem o maior valor${r && r !== 1 && Math.max(r, 1 / r) < 50 && ['v5', 'a5', 'est'].includes(ind.k) ? ` (${acNum(Math.max(r, 1 / r), 1)}×)` : ''}. ${ind.ctx}${acOk(br) && !['v5', 'a5', 'est', 'sh'].includes(ind.k) ? brTxt.replace(/Só .*$/, '') : ''}`;
+            }
+            if (a === b) return `Empate. ${ind.why}`;
+            const lead = ind.pol * (a - b) > 0 ? LA : LB, lag = lead === LA ? LB : LA, gap = acOk(pa) && acOk(pb) ? Math.abs(pa - pb) : null;
+            const r = rel(a, b);
+            let s = gap !== null && gap < 8 ? `Praticamente empatados (diferença de ${acNum(gap, 0)} pontos de percentil); leve vantagem de ${lead}. ` : `<b>${lead}</b> à frente${r && ['pidx', 'vha', 'vEst', 'irr', 'pc', 'ot', 'coop', 'indserv', 'gov'].includes(ind.k) && Math.max(r, 1 / r) >= 1.15 ? ` (${acNum(Math.max(r, 1 / r), 1)}× o valor de ${lag})` : ''}${gap !== null ? `, ${acNum(gap, 0)} pontos de percentil de distância` : ''}. `;
+            s += ind.why + brTxt;
+            if (gap !== null && gap >= 25) s += ` <b>Lacuna relevante</b> para ${lag}.`;
+            return s;
+        }
+
+        function cpRecs(t, A, B, LA, LB, gaps) {
+            const P = cpPeers(t), out = {};
+            const best = (ind, n = 3) => P.R.map((r, j) => ({j, v: r[ind.k]})).filter(x => acOk(x.v) && P.relevant[x.j]).sort((x, y) => ind.pol * (y.v - x.v)).slice(0, n)
+                .map(x => `${P.U[x.j].label.replace(/^\d+ · /, '')} (${ind.k === 'lisa' && t === 'M' ? 'Alto-Alto' : ind.k === 'lisa' ? acShare(x.v, 0) : ind.f(x.v)})`);
+            CP_IND.filter(i => i.pol !== 0).forEach(ind => {
+                const a = A[ind.k], b = B[ind.k], sa = cpScore(t, ind, a), sb = cpScore(t, ind, b);
+                if (!acOk(sa) && !acOk(sb)) return;
+                const items = out[ind.dim] || (out[ind.dim] = []);
+                const fv = v => ind.k === 'lisa' ? (t === 'M' ? (acOk(v) ? {100: 'Alto-Alto', 70: 'Alto-Baixo', 50: 'não significativo', 30: 'Baixo-Alto', 0: 'Baixo-Baixo'}[v] : 'sem base') : acShare(v, 0) + ' dos municípios') : ind.f(v);
+                if (acOk(sa) && acOk(sb) && Math.abs(sa - sb) >= 15) {
+                    const lagA = sa < sb, who = lagA ? 'A' : 'B';
+                    items.push({w: who, gap: Math.abs(sa - sb), t: `<b class="t">${lagA ? LA : LB} · ${ind.l}</b> (${fv(lagA ? a : b)}, percentil ${acNum(Math.min(sa, sb), 0)}): ${ind.rec}`,
+                        ref: `Referência: ${lagA ? LB : LA} (${fv(lagA ? b : a)}). Melhores ${CP_PEER[t]}: ${best(ind).join(', ')}.`});
+                } else if ((acOk(sa) ? sa : 100) < 40 && (acOk(sb) ? sb : 100) < 40) {
+                    items.push({w: 'AB', gap: 80 - (sa + sb) / 2, t: `<b class="t">Ambos · ${ind.l}</b> (${fv(a)} e ${fv(b)}; abaixo do 40º percentil): ${ind.rec}`, ref: `Melhores ${CP_PEER[t]}: ${best(ind).join(', ')}.`});
+                }
+            });
+            const col = {A: CP_C.A, B: CP_C.B, AB: '#6c3fb0'};
+            document.getElementById('cpRecNote').innerHTML = `Recomendações organizadas pelos determinantes do diamante de Porter. Para cada indicador em que um local fica ao menos 15 pontos de percentil atrás do outro, a ação proposta usa o mais bem posicionado e os <b>melhores ${CP_PEER[t]} do país</b> como referência; quando os dois estão abaixo do 40º percentil, a recomendação vale para ambos.`;
+            acSet('cpRecs', ['F', 'D', 'E', 'S', 'G', 'X'].map(d => {
+                const it = (out[d] || []).sort((x, y) => y.gap - x.gap);
+                return `<div class="cp-rec" style="--dc:${CP_DIM[d].c}"><h4>${CP_DIM[d].ic} ${CP_DIM[d].n}</h4>${it.length ? it.map(x => `<div class="it" style="--c:${col[x.w]}">${x.t}<div class="ref">📌 ${x.ref}</div></div>`).join('')
+                    : '<div class="none">Sem lacunas relevantes entre os dois neste determinante: manter as práticas atuais e acompanhar os melhores pares.</div>'}</div>`;
+            }).join(''));
+        }
+
+        // ---------- mapa comparativo ----------
+        function cpBuildMap() {
+            const svg = document.getElementById('cpMap');
+            svg.setAttribute('viewBox', `0 0 ${GEO.W} ${GEO.H}`);
+            const gBg = svgEl('g', {}), gReg = svgEl('g', {}), gTer = svgEl('g', {id: 'cpTerr', 'pointer-events': 'none'}), gC = svgEl('g', {id: 'cpDots'}), gT = svgEl('g', {id: 'cpTop', 'pointer-events': 'none'});
+            Object.entries(GEO.states).forEach(([uf, o]) => gBg.appendChild(svgEl('path', {d: o.d, class: 'cm-state', 'data-uf': uf})));
+            Object.values(GEO.regions).forEach(o => gReg.appendChild(svgEl('path', {d: o.d, class: 'gm-region-line'})));
+            CP.dots = [];
+            for (let i = 0; i < AC.N; i++) { const c = svgEl('circle', {cx: GEO.cxy[2 * i], cy: GEO.cxy[2 * i + 1], r: 0, 'data-i': i, class: 'cm-dot'}); CP.dots.push(c); gC.appendChild(c); }
+            svg.append(gBg, gReg, gTer, gC, gT);
+            gC.addEventListener('mousemove', ev => { const i = ev.target.dataset && ev.target.dataset.i; if (i === undefined) return mapTip(null);
+                const L = cpLisa(), k = +i; mapTip(`<b>${acCityShort(k)}</b><br>Valor 2025${CP.crops ? ' (culturas selecionadas)' : ''}: <b>${acRS(cpArr('V', 5)[k])}</b><br>Variação 2020–25: ${acPct(L.gp[k])}<br>Cluster: ${L.cls[k] >= 0 ? CLU_CLS[L.cls[k]][0] : 'sem base'}`, ev); });
+            gC.addEventListener('mouseleave', () => mapTip(null));
+        }
+        function cpMap() {
+            const st = CP.st; if (!st) return;
+            const N = AC.N, svg = document.getElementById('cpMap'), mA = st.mA, mB = st.mB, L = cpLisa(), mode = CP.mode, t = st.t, V5 = cpArr('V', 5);
+            let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+            for (let i = 0; i < N; i++) if (mA[i] || mB[i]) { const x = GEO.cxy[2 * i], y = GEO.cxy[2 * i + 1]; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+            const span = Math.max(x1 - x0, (y1 - y0) * GEO.W / GEO.H, 60) * (t === 'M' ? 1.6 : 1.2), hh = span * GEO.H / GEO.W;
+            const vb = t === 'R' ? [0, 0, GEO.W, GEO.H] : [(x0 + x1) / 2 - span / 2, (y0 + y1) / 2 - hh / 2, span, hh];
+            const z = vb[2] / GEO.W; svg.setAttribute('viewBox', vb.join(' '));
+            const ufA = new Set(st.ua.idx.map(i => AC.uf[i])), ufB = new Set(st.ub.idx.map(i => AC.uf[i]));
+            svg.querySelectorAll('.cm-state').forEach(p => p.classList.toggle('hl', ufA.has(p.dataset.uf) || ufB.has(p.dataset.uf)));
+            const gTer = document.getElementById('cpTerr'); gTer.innerHTML = '';
+            if (t === 'TI' && typeof tibaGeo !== 'undefined') [[st.ua.key, CP_C.A], [st.ub.key, CP_C.B]].forEach(([k, c]) => { const o = tibaGeo.terr[k]; if (o) gTer.appendChild(svgEl('path', {d: o.d, fill: c + '18', stroke: c, 'stroke-width': 2 * z})); });
+            let maxS = 0; for (let i = 0; i < N; i++) if (mA[i] || mB[i]) maxS = Math.max(maxS, V5[i]);
+            const gps = []; for (let i = 0; i < N; i++) if ((mA[i] || mB[i]) && acOk(L.gp[i])) gps.push(L.gp[i]);
+            const lim = niceLimit(gps), R = t === 'M' ? 22 : t === 'R' ? 11 : 15;
+            for (let i = 0; i < N; i++) {
+                const c = CP.dots[i], on = mA[i] || mB[i], s = V5[i];
+                if (!on || !(s > 0)) { c.setAttribute('r', 0); continue; }
+                let col = mA[i] ? CP_C.A : CP_C.B;
+                if (mode === 'var') col = acOk(L.gp[i]) ? divColor(L.gp[i], lim) : '#b2bec3';
+                if (mode === 'lisa') col = L.cls[i] >= 0 ? CLU_CLS[L.cls[i]][1] : '#b2bec3';
+                c.setAttribute('r', (t === 'M' ? 9 : Math.max(1.4, Math.sqrt(s / (maxS || 1)) * R)) * z);
+                c.setAttribute('stroke', mode === 'lvl' ? '#fff' : (mA[i] ? CP_C.A : CP_C.B)); c.setAttribute('stroke-width', (mode === 'lvl' ? 0.5 : 1.4) * z);
+                c.style.fill = col; c.setAttribute('class', 'cm-dot strong');
+            }
+            const gT = document.getElementById('cpTop'); gT.innerHTML = '';
+            if (st.cA && st.cB) {
+                gT.appendChild(svgEl('line', {x1: st.cA.cx, y1: st.cA.cy, x2: st.cB.cx, y2: st.cB.cy, class: 'cp-link', 'stroke-width': 1.8 * z}));
+                [[st.cA, CP_C.A, st.LA], [st.cB, CP_C.B, st.LB]].forEach(([p, c, l]) => {
+                    gT.appendChild(svgEl('circle', t === 'M' ? {cx: p.cx, cy: p.cy, r: 14 * z, fill: 'none', stroke: c, 'stroke-width': 2.5 * z} : {cx: p.cx, cy: p.cy, r: 7 * z, fill: '#fff', stroke: c, 'stroke-width': 3 * z}));
+                    const tx = svgEl('text', {x: p.cx + 10 * z, y: p.cy - 8 * z, class: 'cp-lab', fill: c, 'font-size': 16 * z, 'stroke-width': 3.5 * z}); tx.textContent = l; gT.appendChild(tx);
+                });
+                const km = mobKm(st.cA.ll, st.cB.ll), mx = (st.cA.cx + st.cB.cx) / 2, my = (st.cA.cy + st.cB.cy) / 2;
+                const tk = svgEl('text', {x: mx, y: my + 18 * z, class: 'cp-lab', fill: '#1e272e', 'font-size': 13 * z, 'stroke-width': 3 * z, 'text-anchor': 'middle'}); tk.textContent = `${acInt(km)} km`; gT.appendChild(tk);
+            }
+            document.getElementById('cpMapTitle').textContent = `🗺️ ${st.LA} × ${st.LB}`;
+            document.getElementById('cpMapNote').textContent = `Bolhas nas sedes municipais, tamanho proporcional ao valor da produção 2025${CP.crops ? ' das culturas selecionadas' : ''}. ${t === 'M' ? 'Os anéis marcam os dois municípios' : 'Os círculos brancos marcam o centro de gravidade de cada local'}; a linha tracejada dá a distância entre eles. Passe o mouse para ver os dados.`;
+            document.getElementById('cpMapLegend').innerHTML = mode === 'lvl' ? `<div class="lg-chips"><span class="chip" style="--chip:${CP_C.A}">${st.LA}</span><span class="chip" style="--chip:${CP_C.B}">${st.LB}</span></div>`
+                : mode === 'var' ? legendDiv(lim, 'Variação do valor da produção 2020→2025 (contorno = local)')
+                : `<div class="lg-title">Clusters LISA do crescimento do valor 2020→2025 (contorno = local)</div><div class="clu-leg">${[1, 3, 4, 2, 0].map(c => `<span><i style="background:${CLU_CLS[c][1]}"></i>${CLU_CLS[c][0]}</span>`).join('')}</div>`;
+            // painel lateral: maiores municípios de cada local
+            const side = (m, lab, c) => { const l = []; for (let i = 0; i < N; i++) if (m[i] && V5[i] > 0) l.push(i); l.sort((p, q) => V5[q] - V5[p]);
+                const mx = l.length ? V5[l[0]] : 1;
+                return `<div class="side-title" style="color:${c}">${lab} <span>${l.length > 1 ? 'maiores municípios' : 'município'}</span></div>` + l.slice(0, 8).map((i, r) => `<div class="rank-row" style="cursor:default"><span class="rk">${r + 1}</span><span class="rn">${acCityShort(i)}</span><span class="rv">${acRS(V5[i])}</span><span class="rb"><i style="width:${V5[i] / mx * 100}%;background:${c}"></i></span></div>`).join(''); };
+            document.getElementById('cpMapSide').innerHTML = side(mA, st.LA, CP_C.A) + '<div style="height:12px"></div>' + side(mB, st.LB, CP_C.B);
+        }
+
+        // ---------- comparação por cultura (opcional) ----------
+        function cpCropOptions(ua, ub) {
+            const NC = CP.NC, N = AC.N, M = CP.M, pres = idx => { const p = new Uint8Array(NC); for (const i of idx) for (let c = 0; c < NC; c++) { const o = c * N + i; if (M.V5[o] > 0 || M.V0[o] > 0 || M.A5[o] > 0) p[c] = 1; } return p; };
+            const key = ua.key + '|' + ub.key + '|' + CP.type;
+            if (CP.optKey === key && !CP.autoPick) return;
+            CP.optKey = key; CP.presA = pres(ua.idx); CP.presB = pres(ub.idx);
+            const tot = c => { let s = 0; for (const i of ua.idx) s += M.V5[c * N + i]; for (const i of ub.idx) s += M.V5[c * N + i]; return s; };
+            const list = []; for (let c = 0; c < NC; c++) if (CP.presA[c] || CP.presB[c]) list.push(c);
+            list.sort((p, q) => (CP.presB[q] && CP.presA[q]) - (CP.presB[p] && CP.presA[p]) || tot(q) - tot(p));
+            const names = list.map(c => cpCropLabel(citiesCompact.culturas[c]));
+            let keep = CP.cropSel.filter(n => names.includes(n));
+            if (CP.autoPick || (CP.cropOn && !keep.length && CP.cropSel.length)) { const f = list.find(c => CP.presA[c] && CP.presB[c] && c !== AC.cafe); if (f !== undefined) keep = [cpCropLabel(citiesCompact.culturas[f])]; }
+            CP.autoPick = false; CP.cropSel = keep;
+            CP.ms.setOptions(names, keep);
+        }
+        function cpSeries(idx, c) {
+            const D = acCrop(c), o = {A: [0, 0, 0, 0, 0, 0], Q: [0, 0, 0, 0, 0, 0], V: [0, 0, 0, 0, 0, 0]};
+            ['A', 'Q', 'V'].forEach(m => AC_Y.forEach((_, yi) => { const a = D[m][yi]; let s = 0; for (const i of idx) s += a[i]; o[m][yi] = s; }));
+            o.P = AC_Y.map((_, yi) => o.A[yi] > 0 && o.Q[yi] > 0 ? o.Q[yi] / o.A[yi] * 1000 : null);
+            return o;
+        }
+        function cpBrSeries(c) { const b = AC.br[c] || {A: [0, 0, 0, 0, 0, 0], Q: [0, 0, 0, 0, 0, 0], V: [0, 0, 0, 0, 0, 0]}; return {A: b.A, Q: b.Q, V: b.V, P: AC_Y.map((_, yi) => b.A[yi] > 0 ? b.Q[yi] / b.A[yi] * 1000 : null)}; }
+        const cpU = c => { const fr = citiesCompact.culturas[c].endsWith('*'); return {q: fr ? 'mil frutos' : 't', p: fr ? 'frutos/ha' : 'kg/ha'}; };
+        function cpCropExec(ua, ub, sa, sb) {
+            return CP.crops.slice(0, 4).map(c => {
+                const a = cpSeries(ua.idx, c), b = cpSeries(ub.idx, c), n = cpCropLabel(citiesCompact.culturas[c]), u = cpU(c);
+                if (!a.Q[5] && !b.Q[5]) return `${n}: sem produção em 2025 nos dois locais.`;
+                if (!a.Q[5] || !b.Q[5]) return `<b>${n}</b>: só ${a.Q[5] ? sa : sb} produz em 2025 (${formatCompactBR(a.Q[5] || b.Q[5], 1)} ${u.q}).`;
+                const qa = a.Q[5] >= b.Q[5], pa = acOk(a.P[5]) && acOk(b.P[5]) ? a.P[5] >= b.P[5] : null;
+                return `<b>${n}</b>: ${qa ? sa : sb} produz mais (${formatCompactBR(Math.max(a.Q[5], b.Q[5]), 1)} vs ${formatCompactBR(Math.min(a.Q[5], b.Q[5]), 1)} ${u.q})${pa !== null ? `, e ${pa ? sa : sb} tem o maior rendimento (${acInt(Math.max(a.P[5], b.P[5]))} vs ${acInt(Math.min(a.P[5], b.P[5]))} ${u.p})` : ''}.`;
+            }).join(' ') + (CP.crops.length > 4 ? ' Demais culturas na seção “Culturas selecionadas”.' : '');
+        }
+        function cpCropSection(ua, ub, LA, LB) {
+            const crops = CP.crops, cn = c => cpCropLabel(citiesCompact.culturas[c]);
+            if (!crops.includes(CP.kc)) CP.kc = crops[0];
+            const chips = document.getElementById('cpKChips');
+            chips.innerHTML = crops.map(c => `<button type="button" class="rd-chip ${c === CP.kc ? 'on' : ''}" data-c="${c}" style="--cc:#117a65">${cn(c)}</button>`).join('');
+            chips.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { CP.kc = +b.dataset.c; cpCropSection(ua, ub, LA, LB); }));
+            // séries da cultura escolhida
+            const c = CP.kc, a = cpSeries(ua.idx, c), b = cpSeries(ub.idx, c), br = cpBrSeries(c), u = cpU(c), yl = AC_Y.map(String);
+            const vars = [['A', 'Área colhida', 'ha', acHa], ['Q', 'Quantidade produzida', u.q, v => acOk(v) ? formatCompactBR(v, 2) + ' ' + u.q : '—'], ['P', 'Rendimento médio', u.p, v => acOk(v) ? acInt(v) + ' ' + u.p : '—'], ['V', 'Valor da produção', 'R$', acRS]];
+            vars.forEach(([m, l, un, f], j) => {
+                document.getElementById('cpKT' + (j + 1)).textContent = `${l} · ${cn(c)}`;
+                const ds = [{label: LA, data: a[m], borderColor: CP_C.A, backgroundColor: CP_C.A, borderWidth: 3, tension: .25, spanGaps: true},
+                    {label: LB, data: b[m], borderColor: CP_C.B, backgroundColor: CP_C.B, borderWidth: 3, tension: .25, spanGaps: true}];
+                if (m === 'P') ds.push({label: 'Brasil', data: br.P, borderColor: '#636e72', borderDash: [6, 4], borderWidth: 1.6, pointRadius: 0, tension: .25});
+                acChart('cpK' + (j + 1), {type: 'line', data: {labels: yl, datasets: ds}, options: acOpts({legend: true, fmt: f, axis: v => m === 'V' ? formatCompactBR(v * 1000, 1) : formatCompactBR(v, 1)})});
+            });
+            // comparativos entre culturas
+            const S = crops.map(k => ({c: k, a: cpSeries(ua.idx, k), b: cpSeries(ub.idx, k), br: cpBrSeries(k)}));
+            acChart('cpK5', {type: 'bar', data: {labels: S.map(x => cn(x.c)), datasets: [
+                {label: LA, data: S.map(x => acOk(x.a.P[5]) && x.br.P[5] ? x.a.P[5] / x.br.P[5] * 100 : null), backgroundColor: CP_C.A, borderRadius: 3},
+                {label: LB, data: S.map(x => acOk(x.b.P[5]) && x.br.P[5] ? x.b.P[5] / x.br.P[5] * 100 : null), backgroundColor: CP_C.B, borderRadius: 3}]},
+                options: acOpts({h: true, legend: true, fmt: v => acNum(v, 0), dl: v => acNum(v, 0), ref: {value: 100, label: 'Brasil'}})});
+            acChart('cpK6', {type: 'bar', data: {labels: S.map(x => cn(x.c)), datasets: [
+                {label: LA, data: S.map(x => x.br.Q[5] ? x.a.Q[5] / x.br.Q[5] * 100 : null), backgroundColor: CP_C.A, borderRadius: 3},
+                {label: LB, data: S.map(x => x.br.Q[5] ? x.b.Q[5] / x.br.Q[5] * 100 : null), backgroundColor: CP_C.B, borderRadius: 3}]},
+                options: acOpts({h: true, legend: true, fmt: v => acShareA(v), axis: v => acNum(v, v < 1 ? 2 : 1) + '%', dl: v => acShareA(v)})});
+            // tabela com leitura crítica por cultura e variável
+            let h = `<table><thead><tr><th>Cultura / variável</th><th class="num">${LA} 2025</th><th class="num">${LB} 2025</th><th class="num">Brasil 2025</th><th class="num">Var. ${LA}</th><th class="num">Var. ${LB}</th><th class="num">Var. Brasil</th><th>Vantagem</th><th>Leitura</th></tr></thead><tbody>`;
+            S.forEach(x => {
+                const uu = cpU(x.c), A = x.a, B = x.b, BRs = x.br;
+                const fx = {A: acHa, Q: v => acOk(v) ? formatCompactBR(v, 2) + ' ' + uu.q : '—', P: v => acOk(v) && v ? acInt(v) + ' ' + uu.p : '—', V: acRS};
+                // leitura da cultura
+                const dec = s => s.Q[0] > 0 && s.Q[5] > 0 && s.A[0] > 0 && s.A[5] > 0 ? {a: Math.log(s.A[5] / s.A[0]) * 100, p: Math.log(s.P[5] / s.P[0]) * 100} : null;
+                const da = dec(A), db = dec(B), pa = A.Q[5] ? A.V[5] / A.Q[5] : null, pb = B.Q[5] ? B.V[5] / B.Q[5] : null;
+                const dtxt = (d, L) => d ? `${L}: área ${acNum(d.a, 1)} e rendimento ${acNum(d.p, 1)} log-pontos (${Math.abs(d.a) > Math.abs(d.p) ? 'crescimento extensivo' : 'crescimento intensivo'})` : `${L}: sem base para decompor`;
+                let lt = [];
+                if (A.Q[5] && B.Q[5]) {
+                    lt.push(`${A.Q[5] >= B.Q[5] ? LA : LB} produz ${acNum(Math.max(A.Q[5], B.Q[5]) / Math.min(A.Q[5], B.Q[5]), 1)}× mais`);
+                    if (acOk(A.P[5]) && acOk(B.P[5])) lt.push(`${A.P[5] >= B.P[5] ? LA : LB} tem rendimento ${acPct((Math.max(A.P[5], B.P[5]) / Math.min(A.P[5], B.P[5]) - 1) * 100, 0).replace('+', '')} maior${BRs.P[5] ? ` (Brasil ${acInt(BRs.P[5])} ${uu.p})` : ''}`);
+                    if (pa && pb) lt.push(`preço implícito ${pa >= pb ? LA : LB} ${acPct((Math.max(pa, pb) / Math.min(pa, pb) - 1) * 100, 0).replace('+', '')} maior — pode refletir qualidade, mercado ou período de colheita`);
+                } else lt.push(`só ${A.Q[5] ? LA : LB} produz em 2025`);
+                lt.push(dtxt(da, LA)); lt.push(dtxt(db, LB));
+                h += `<tr class="dim"><td colspan="9" class="cpk-h">🌱 ${cn(x.c)}<div class="cpk-txt">${lt.join('; ')}.</div></td></tr>`;
+                [['A', 'Área colhida', 0], ['Q', 'Quantidade produzida', 0], ['P', 'Rendimento médio', 1], ['V', 'Valor da produção', 0]].forEach(([m, l, pol]) => {
+                    const va = A[m][5], vb = B[m][5], ga = acG(A[m][0], va), gb = acG(B[m][0], vb), gbr = acG(BRs[m][0], BRs[m][5]);
+                    let win = '—', cm = '';
+                    if (acOk(va) && acOk(vb) && va && vb && va !== vb) {
+                        const w = va > vb ? 'A' : 'B'; win = `<span class="cp-win" style="background:${CP_C[w]}">${w === 'A' ? LA : LB}${pol ? '' : ' (maior)'}</span>`;
+                        const lead = w === 'A' ? LA : LB, lag = w === 'A' ? LB : LA;
+                        if (m === 'P') cm = `${lead} ${BRs.P[5] && Math.min(va, vb) < BRs.P[5] && Math.max(va, vb) >= BRs.P[5] ? `supera a média nacional e ${lag} fica abaixo — hiato tecnológico a investigar em ${lag}` : BRs.P[5] && Math.max(va, vb) < BRs.P[5] ? 'é mais produtivo, mas ambos ficam abaixo da média nacional' : 'é mais produtivo; ambos acima da média nacional'}.`;
+                        else cm = `${lead} é ${acNum(Math.max(va, vb) / Math.min(va, vb), 1)}× ${lag}${acOk(ga) && acOk(gb) ? `; ${ga > gb ? LA : LB} cresceu mais desde 2020${acOk(gbr) ? ` (Brasil ${acPct(gbr, 0)})` : ''}` : ''}.`;
+                    } else if (!va || !vb) cm = 'Sem produção em um dos locais.';
+                    h += `<tr><td>${l}</td><td class="num va">${va ? fx[m](va) : '—'}</td><td class="num vb">${vb ? fx[m](vb) : '—'}</td><td class="num">${fx[m](BRs[m][5])}</td><td class="num">${acUpDown(ga)}</td><td class="num">${acUpDown(gb)}</td><td class="num">${acUpDown(gbr)}</td><td>${win}</td><td class="cm">${cm}</td></tr>`;
+                });
+            });
+            acSet('cpKTable', h + '</tbody></table>');
         }
 
         document.addEventListener('DOMContentLoaded', initDashboard);
