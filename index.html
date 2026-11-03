@@ -985,7 +985,7 @@
         .esp-ln { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
         .esp-uf { fill: none; stroke: #2d3436; stroke-width: 1.1; vector-effect: non-scaling-stroke; pointer-events: none; }
         .esp-bio { stroke-width: 1.5; vector-effect: non-scaling-stroke; pointer-events: none; }
-        .esp-bub { stroke: #fff; stroke-width: .8; vector-effect: non-scaling-stroke; fill-opacity: .78; pointer-events: none; }
+        .esp-bub { stroke: #1e272e; stroke-width: .9; stroke-opacity: .7; vector-effect: non-scaling-stroke; fill-opacity: .82; pointer-events: none; }
         .esp-lab { font-weight: 700; fill: #0d47a1; paint-order: stroke; stroke: rgba(255,255,255,.9); pointer-events: none; font-style: italic; }
         .esp-ufl { font-weight: 800; fill: #2d3436; paint-order: stroke; stroke: rgba(255,255,255,.85); pointer-events: none; }
         .esp-side .rank-row { cursor: pointer; }
@@ -1033,6 +1033,10 @@
         .esp-wrap .map-side { max-height: 780px; overflow-y: auto; }
         .esp-ctrl.ac-filters .filter-group select, .esp-ctrl.ac-filters .filter-group input.ac-input { height: 32px; padding: 4px 8px; font-size: .8rem; border-radius: 8px; }
         .esp-ctrl.ac-filters .filter-group { padding: 5px 8px 7px; }
+        .esp-bln { fill: none; stroke-width: 1.8; stroke-opacity: .85; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+        .esp-hlo { vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+        .esp-mb .esp-m, .esp-prodon .esp-m { stroke: rgba(255,255,255,.75); stroke-width: .35; vector-effect: non-scaling-stroke; }
+        .esp-sclab { font-size: .72rem; font-weight: 700; color: #636e72; margin: 6px 0 2px; }
     </style>
 </head>
 <body>
@@ -2226,6 +2230,7 @@
                                 <div class="filter-group on"><label for="espSelC">Cultura</label><select id="espSelC"></select></div>
                                 <div class="filter-group on"><label for="espSelV">Variável</label><select id="espSelV"></select></div>
                                 <div class="filter-group on"><label for="espSelY">Ano</label><select id="espSelY"></select></div>
+                                <div class="esp-sclab">Escala de cores</div><div class="mode-toggle esp-blv" id="espSc"><button type="button" data-s="prop" class="active">Proporcional</button><button type="button" data-s="log">Logarítmica</button><button type="button" data-s="quant">Quantis</button></div>
                             </details>
                             <details open><summary>🌳 Biomas <small>IBGE 2025</small></summary>
                                 <label class="esp-sw"><input type="checkbox" data-l="bio" checked><span></span>Mostrar</label>
@@ -10316,6 +10321,7 @@
             const ds = document.getElementById('espDist');
             ds.addEventListener('input', () => { ESPS.dist = +ds.value; document.getElementById('espDistV').textContent = ds.value + ' km'; clearTimeout(ESPS.tm); ESPS.tm = setTimeout(renderEsp, 200); });
             document.querySelectorAll('.esp-ctrl input[data-l]').forEach(c => c.addEventListener('change', () => { ESPS.L[c.dataset.l] = c.checked ? 1 : 0; espLayers(); espPaint(); }));
+            document.querySelectorAll('#espSc button').forEach(b => b.addEventListener('click', () => { ESPS.sc = b.dataset.s; document.querySelectorAll('#espSc button').forEach(x => x.classList.toggle('active', x === b)); espPaint(); espLabels(); }));
             document.querySelectorAll('#espBlv button').forEach(b => b.addEventListener('click', () => { ESPS.blv = b.dataset.v; document.querySelectorAll('#espBlv button').forEach(x => x.classList.toggle('active', x === b)); if (!ESPS.L.bio) { ESPS.L.bio = 1; document.querySelector('.esp-ctrl input[data-l][data-l="bio"]').checked = true; } espPaint(); renderEspDm(); }));
             document.querySelectorAll('#espHl button').forEach(b => b.addEventListener('click', () => { ESPS.hl = b.dataset.h; document.querySelectorAll('#espHl button').forEach(x => x.classList.toggle('active', x === b)); espPaint(); }));
             espVarOpts();
@@ -10343,7 +10349,10 @@
             Object.entries(ESP_RS).forEach(([k, [c, w]]) => gR.appendChild(mk('path', {d: E.rio[k], class: 'esp-ln', 'data-l': k, stroke: c, 'stroke-width': w})));
             ['pla', 'npv', 'obr', 'pav', 'dup'].forEach(k => { const [c, w, da] = ESP_RD[k]; gD.appendChild(mk('path', {d: E.rod[k], class: 'esp-ln', 'data-l': k, stroke: c, 'stroke-width': w, 'stroke-dasharray': da})); });
             Object.entries(E.uf).forEach(([u, o]) => { gU.appendChild(mk('path', {d: o.d, class: 'esp-uf'})); });
-            svg.append(gM, gB, gR, gD, gU, gC, gT);
+            const gBo = mk('g', {id: 'espGBo', 'pointer-events': 'none'});
+            Object.entries(E.biog).forEach(([n, d]) => gBo.appendChild(mk('path', {d, class: 'esp-bln', stroke: ESP_BC[n]})));
+            const gF = mk('g', {id: 'espGF', 'pointer-events': 'none'}), gH = mk('g', {id: 'espGH', 'pointer-events': 'none'});
+            svg.append(gM, gB, gBo, gR, gD, gU, gF, gH, gC, gT);
             // interação: dica, zoom e arrasto
             svg.addEventListener('mousemove', ev => { if (ESPS.drag) return; const ds = ev.target.dataset || {}; if (ds.rg !== undefined) return mapTip(espRgTip(+ds.rg), ev); if (ds.dm !== undefined) { const d = ESP.dm[+ds.dm]; return mapTip(`<b>${d[1]}</b><br><span class="tip-hint">Domínio natural · ${ESP.bn[d[2]]} · ${d[3]}</span>`, ev); } if (ds.b !== undefined) return mapTip(`<b>${ds.b}</b><br><span class="tip-hint">Bioma (IBGE 2025)</span>`, ev); const i = ds.i; if (i === undefined) return mapTip(null); mapTip(espTip(+i), ev); });
             svg.addEventListener('mouseleave', () => mapTip(null));
@@ -10368,14 +10377,39 @@
                 const pad = Math.sqrt(ar) * E.pxkm * 0.7 + 4; b = [b[0] - pad, b[1] - pad, b[2] - b[0] + 2 * pad, b[3] - b[1] + 2 * pad]; }
             const p = Math.max(b[2], b[3]) * 0.06; espSetVB([b[0] - p, b[1] - p, b[2] + 2 * p, b[3] + 2 * p]);
         }
+        // destaque do recorte: névoa fora dele e contorno reforçado
+        function espHL() {
+            const E = ESP, {t, k} = ESPS.sel, gF = document.getElementById('espGF'), gH = document.getElementById('espGH'); if (!gF) return;
+            gF.innerHTML = ''; gH.innerHTML = '';
+            if (t === 'BR') return;
+            let ds = [], core = null;
+            if (t === 'UF' || t === 'R') ds = (t === 'UF' ? [k] : Object.keys(UF_NAME).filter(u => UF_REGION[u] === k)).map(u => E.uf[u].d);
+            else { const m = espInR(); for (let i = 0; i < AC.N; i++) if (m[i] && E.d[i]) ds.push(E.d[i]); if (t === 'M' && E.d[k]) core = E.d[k]; }
+            const all = ds.join('');
+            gF.appendChild(svgEl('path', {d: `M-3000,-3000H4000V4000H-3000Z${all}`, 'fill-rule': 'evenodd', fill: '#ffffff', 'fill-opacity': ESPS.L.prod ? .72 : .62}));
+            if (t === 'TI' || t === 'M') { // contorno externo aproximado: bordas internas finas, externas fortes
+                gH.appendChild(svgEl('path', {d: all, class: 'esp-hlo', fill: 'none', stroke: '#f0a500', 'stroke-width': 5, 'stroke-opacity': .45}));
+                gH.appendChild(svgEl('path', {d: all, class: 'esp-hlo', fill: 'none', stroke: '#1e272e', 'stroke-width': t === 'M' ? 1 : 1.6, 'stroke-dasharray': t === 'M' ? '4 3' : ''}));
+                if (core) { gH.appendChild(svgEl('path', {d: core, class: 'esp-hlo', fill: '#f0a500', 'fill-opacity': ESPS.L.prod ? 0 : .18, stroke: '#f0a500', 'stroke-width': 7, 'stroke-opacity': .55}));
+                    gH.appendChild(svgEl('path', {d: core, class: 'esp-hlo', fill: 'none', stroke: '#1e272e', 'stroke-width': 2.6})); }
+            } else {
+                gH.appendChild(svgEl('path', {d: all, class: 'esp-hlo', fill: 'none', stroke: '#f0a500', 'stroke-width': 7, 'stroke-opacity': .5}));
+                gH.appendChild(svgEl('path', {d: all, class: 'esp-hlo', fill: 'none', stroke: '#1e272e', 'stroke-width': 2.6}));
+            }
+        }
+        // escala colorida da produção (amarelo → verde → azul-petróleo → roxo), distinta de rodovias (vermelho) e rios (azul)
+        const ESP_PS = ['#fff4b8', '#ffd866', '#b5de6b', '#4cc38a', '#26a69a', '#3f7fbf', '#7e57c2'];
+        function espPC(t) { t = Math.max(0, Math.min(1, t)); const n = ESP_PS.length - 1, k = Math.min(n - 1, Math.floor(t * n)); return mixHex(ESP_PS[k], ESP_PS[k + 1], t * n - k); }
         function espLayers() {
             const L = ESPS.L;
             document.querySelectorAll('#espGR path, #espGD path').forEach(p => { p.style.display = L[p.dataset.l] ? '' : 'none'; });
             document.getElementById('espGB').style.display = L.bio ? '' : 'none';
+            document.getElementById('espGBo').style.display = L.bio ? '' : 'none';
             ['bm', 'dm', 'rg'].forEach(v => { const g = document.getElementById({bm: 'espGBb', dm: 'espGBd', rg: 'espGBr'}[v]); g.style.display = ESPS.blv === v ? '' : 'none';
-                g.querySelectorAll('path').forEach(p => { if (!p.dataset.f) p.dataset.f = p.getAttribute('fill'); p.setAttribute('fill', espMix(p.dataset.f, v === 'bm' ? 0.55 : 0.4)); p.setAttribute('fill-opacity', L.prod ? 0 : 1); p.style.pointerEvents = L.prod ? 'none' : 'auto'; if (!p.dataset.s) p.dataset.s = p.getAttribute('stroke'); p.setAttribute('stroke', L.prod || v === 'bm' ? p.dataset.s : '#ffffff'); p.setAttribute('stroke-width', L.prod ? (v === 'bm' ? 1.6 : .9) : v === 'bm' ? 1.2 : .6); }); });
+                g.querySelectorAll('path').forEach(p => { if (!p.dataset.f) p.dataset.f = p.getAttribute('fill'); p.setAttribute('fill', espMix(p.dataset.f, v === 'bm' ? 0.74 : 0.6)); p.setAttribute('fill-opacity', L.prod ? 0 : 1); p.style.pointerEvents = L.prod ? 'none' : 'auto'; if (!p.dataset.s) p.dataset.s = p.getAttribute('stroke'); p.setAttribute('stroke', L.prod || v === 'bm' ? p.dataset.s : '#ffffff'); p.setAttribute('stroke-width', L.prod ? (v === 'bm' ? 1.6 : .9) : v === 'bm' ? 1.2 : .6); }); });
             document.getElementById('espGU').style.display = L.uf ? '' : 'none';
             document.getElementById('espGM').classList.toggle('esp-mb', !!L.mun);
+            document.getElementById('espGM').classList.toggle('esp-prodon', !!L.prod && ESPS.cu >= 0);
             espLabels();
         }
         function espLabels() {
@@ -10385,7 +10419,7 @@
             if (z < 0.45 && ESPS.F) { const F = ESPS.F; F.top.slice(0, z < 0.2 ? 25 : 12).forEach(i => { const c = ESP.c[i]; if (!c) return; const t = svgEl('text', {x: c[0] + 3 * z, y: c[1] - 3 * z, class: 'esp-ufl', 'font-size': 10 * z, 'stroke-width': 2.5 * z}); t.textContent = acCityShort(i); g.appendChild(t); }); }
             // bolhas com tamanho constante na tela
             const gc = document.getElementById('espGC'); gc.innerHTML = '';
-            if (ESPS.L.bub && ESPS.F) { const F = ESPS.F, mx = F.max || 1; F.list.slice(0, 1500).forEach(i => { const c = ESP.c[i]; if (!c || !(F.val[i] > 0)) return; gc.appendChild(svgEl('circle', {cx: c[0], cy: c[1], r: Math.max(0.6, 16 * Math.sqrt(F.val[i] / mx)) * z, class: 'esp-bub', fill: F.v === 'G' ? (F.g[i] >= 0 ? '#00a37a' : '#d63031') : '#f0a500'})); }); }
+            if (ESPS.L.bub && ESPS.F) { const F = ESPS.F, mx = F.max || 1; F.list.slice(0, 1500).forEach(i => { const c = ESP.c[i]; if (!c || !(F.val[i] > 0)) return; gc.appendChild(svgEl('circle', {cx: c[0], cy: c[1], r: Math.max(1.4, 22 * Math.sqrt(F.val[i] / mx)) * z, class: 'esp-bub', fill: F.v === 'G' ? (F.g[i] >= 0 ? '#00a37a' : '#d63031') : espPC(0.15 + 0.85 * (F.qf ? F.qf(F.val[i]) : 0.5))})); }); }
         }
         // ---------- dados ----------
         function espData() {
@@ -10419,31 +10453,37 @@
         }
         const espMix = (c, t) => { const m = String(c).match(/\d+/g), A = c[0] === '#' ? hexToRgb(c) : m.slice(0, 3).map(Number); return 'rgb(' + A.map(x => Math.round(x + (255 - x) * t)).join(',') + ')'; };
         const espBlvN = () => ({bm: 'Biomas', dm: 'Domínios naturais (fitogeográficos)', rg: 'Regiões naturais'}[ESPS.blv]);
-        const espBioLeg = () => ESP.bn.filter(n => n !== 'Ilhas Oceânicas').map(n => `<span class="esp-bl" style="display:inline-flex;margin-right:8px"><i style="background:${ESPS.L.prod ? ESP_BC[n] : mixHex(ESP_BC[n], '#ffffff', 0.55)};border:1px solid ${ESP_BC[n]}"></i>${n}</span>`).join('');
+        const espBioLeg = () => ESP.bn.filter(n => n !== 'Ilhas Oceânicas').map(n => `<span class="esp-bl" style="display:inline-flex;margin-right:8px"><i style="background:${ESPS.L.prod ? 'transparent' : mixHex(ESP_BC[n], '#ffffff', 0.74)};border:1px solid ${ESP_BC[n]}"></i>${n}</span>`).join('');
         function espFocus(i) { const c = ESP.c[i]; if (!c) return; const w = Math.min(ESPS.vb[2], 120); espSetVB([c[0] - w / 2, c[1] - w * ESP.H / ESP.W / 2, w, w * ESP.H / ESP.W]); }
         function espPaint() {
             const F = ESPS.F, E = ESP, k = F.v, N = AC.N, hl = ESPS.hl, dist = ESPS.dist;
             if (!F) return;
             const sorted = F.vals.slice().sort((a, b) => a - b), q = v => { let lo = 0, hi = sorted.length; while (lo < hi) { const m = (lo + hi) >> 1; if (sorted[m] < v) lo = m + 1; else hi = m; } return sorted.length ? lo / sorted.length : 0; };
+            // escala de cor: proporcional ao maior valor (raiz quadrada), logarítmica ou por quantis
+            const vmax = sorted.length ? sorted[sorted.length - 1] : 1, vmin = sorted.length ? Math.max(sorted[0], vmax * 1e-4) : 1, sm = ESPS.sc || 'prop';
+            const sc = v => !(v > 0) ? 0 : sm === 'quant' ? q(v) : sm === 'log' ? (vmax > vmin ? Math.log(Math.max(v, vmin) / vmin) / Math.log(vmax / vmin) : 1) : Math.sqrt(v / vmax);
+            const inv = t => sm === 'quant' ? sorted[Math.min(sorted.length - 1, Math.floor(t * sorted.length))] : sm === 'log' ? vmin * Math.pow(vmax / vmin, t) : vmax * t * t;
+            F.qf = sc;
             const gs = []; for (let i = 0; i < N; i++) if (F.mask[i] && acOk(F.g[i]) && !isNaN(F.g[i])) gs.push(F.g[i]); const lim = niceLimit(gs);
             const p90 = F.list.length ? F.val[F.list[Math.floor(F.list.length * 0.1)]] : 0;
             const isHL = i => hl === 'none' ? null : hl === 'rod' ? E.dpav[i] <= dist : hl === 'rio' ? E.drio[i] <= dist : hl === 'far' ? E.dpav[i] > dist && E.drio[i] > dist : F.val[i] >= p90 && F.val[i] > 0 && E.dpav[i] > dist;
             ESPS.p.forEach((p, i) => { if (!p) return;
                 let fill = '#f1f3f5';
                 if (!F.mask[i]) fill = ESPS.L.prod ? '#f3f4f5' : '#ffffff';
-                else if (ESPS.L.prod) fill = k === 'G' ? (isNaN(F.g[i]) ? '#eef1f3' : divColor(F.g[i], lim)) : F.val[i] > 0 ? seqColor(0.08 + 0.92 * q(F.val[i])) : '#f6f7f8';
+                else if (ESPS.L.prod) fill = k === 'G' ? (isNaN(F.g[i]) ? '#eef1f3' : divColor(F.g[i], lim)) : F.val[i] > 0 ? espPC(0.03 + 0.97 * sc(F.val[i])) : (ESPS.cu >= 0 ? '#ffffff' : '#f6f7f8');
                 else fill = '#ffffff';
                 p.style.fill = fill;
                 const h = F.mask[i] ? isHL(i) : null; p.classList.toggle('dim', h === false); p.classList.toggle('hl', (h === true && hl === 'gap') || (ESPS.sel.t === 'M' && i === ESPS.sel.k));
             });
             const leg = document.getElementById('espLeg');
             leg.innerHTML = !ESPS.L.prod ? '' : k === 'G' ? legendDiv(lim, `Variação do valor ${AC_Y[0]}→${AC_Y[F.yi]}`) :
-                `<div class="lg-title">${document.getElementById('espSelV').selectedOptions[0].text} · ${AC_Y[F.yi]} (quantis)</div><div class="lg-bar" style="background:linear-gradient(90deg,${SEQ_STOPS.join(',')})"></div><div class="lg-scale"><span>${espFmt(sorted[0] || 0)}</span><span>${espFmt(sorted[Math.floor(sorted.length / 2)] || 0)}</span><span>${espFmt(sorted[sorted.length - 1] || 0)}</span></div>` +
+                `<div class="lg-title">${document.getElementById('espSelV').selectedOptions[0].text} · ${AC_Y[F.yi]} (${{prop: 'proporcional ao maior', log: 'escala logarítmica', quant: 'quantis'}[sm]})</div><div class="lg-bar" style="background:linear-gradient(90deg,${ESP_PS.join(',')})"></div><div class="lg-scale"><span>${espFmt(sm === 'prop' ? 0 : sorted[0] || 0)}</span><span>${espFmt(inv(0.5) || 0)}</span><span>${espFmt(vmax || 0)}</span></div>` +
                 (ESPS.L.bio ? `<div class="lg-title" style="margin-top:6px">${espBlvN()} (contorno)</div>${espBioLeg()}` : '');
             if (!ESPS.L.prod && ESPS.L.bio) leg.innerHTML = `<div class="lg-title">${espBlvN()} · IBGE 2025</div>${espBioLeg()}${ESPS.blv !== 'bm' ? '<div class="lg-na" style="margin-top:4px">Tons de cada cor = domínios do bioma; passe o mouse para ver o nome' + (ESPS.blv === 'rg' ? ', a geologia, o relevo, a vegetação e os solos' : '') + '.</div>' : ''}`;
             espLayers();
+            espHL();
             const hlTxt = {none: '', rod: `municípios com sede a até ${dist} km de rodovia federal pavimentada`, rio: `municípios com sede a até ${dist} km de rio principal (≥ 300 km)`, far: `municípios a mais de ${dist} km de rodovia pavimentada e de rio principal`, gap: `10% maiores produtores a mais de ${dist} km de rodovia pavimentada (contorno escuro)`}[hl];
-            document.getElementById('espMapN').textContent = !ESPS.L.prod ? `Mapa de base: ${ESPS.L.bio ? espBlvN().toLowerCase() + ' (IBGE 2025), ' : ''}rios e rodovias federais. Ligue “Municípios (cores)” ou “Bolhas” no painel ao lado para ver a produção agrícola. Arraste para mover e use a roda do mouse para aproximar.` : `${k === 'G' ? 'Cor: variação nominal do valor da produção.' : 'Cor: quantil do município na variável escolhida, dentro do recorte.'} Arraste para mover, use a roda do mouse ou os botões para aproximar; clique num município para centralizá-lo.${hlTxt ? ' Destaque: ' + hlTxt + '.' : ''}`;
+            document.getElementById('espMapN').textContent = !ESPS.L.prod ? `Mapa de base: ${ESPS.L.bio ? espBlvN().toLowerCase() + ' (IBGE 2025), ' : ''}rios e rodovias federais. Ligue “Municípios (cores)” ou “Bolhas” no painel ao lado para ver a produção agrícola. Arraste para mover e use a roda do mouse para aproximar.` : `${k === 'G' ? 'Cor: variação nominal do valor da produção.' : ({prop: 'Cor proporcional ao maior município do recorte (raiz quadrada): diferenças grandes de produção aparecem como cores bem diferentes.', log: 'Cor em escala logarítmica: realça diferenças entre municípios pequenos e médios.', quant: 'Cor por quantil: cada faixa de cor tem o mesmo número de municípios.'}[ESPS.sc || 'prop'])} Arraste para mover, use a roda do mouse ou os botões para aproximar; clique num município para centralizá-lo.${hlTxt ? ' Destaque: ' + hlTxt + '.' : ''}`;
         }
         function espDmAgg(key) {
             const C = ESPS.dmCtx, E = ESP; if (!C) return []; const o = {};
