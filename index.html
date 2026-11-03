@@ -4,10 +4,8 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Produção Agrícola e Análise Regional</title>
-    <script src="./Dashboard Produção Agropecuária Brasil_files/chart.js.download"></script>
-    <script src="./Dashboard Produção Agropecuária Brasil_files/chartjs-plugin-datalabels.min.js.download"></script>
-<script>if(!window.Chart){document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"><\/script>');}</script>
-<script>if(!window.ChartDataLabels){document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"><\/script>');}</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -1106,8 +1104,8 @@
                             <div class="ms" id="stateFilter"></div>
                         </div>
                         <div class="filter-group">
-                            <label for="cultureFilter">Cultura Agrícola</label>
-                            <select id="cultureFilter"><option value="">Todas as Culturas</option></select>
+                            <label>Cultura Agrícola <span style="font-weight:500;color:#95a5a6;font-size:.85em">(múltipla escolha)</span></label>
+                            <div class="ms" id="cultureFilter"></div>
                         </div>
                     </div>
                 </div>
@@ -2394,7 +2392,13 @@
         
         let GEO_SCOPE = 'states';
         const GEO_TABS = ['states', 'regions', 'cities', 'tiba'];
+        function donutLegendLabels(chart) {
+            try { const f = (Chart.overrides && Chart.overrides.doughnut && Chart.overrides.doughnut.plugins.legend.labels.generateLabels) || Chart.defaults.plugins.legend.labels.generateLabels; return f(chart); }
+            catch (e) { const d = chart.data, ds = d.datasets[0] || {}; return (d.labels || []).map((l, i) => ({text: String(l), fillStyle: Array.isArray(ds.backgroundColor) ? ds.backgroundColor[i] : ds.backgroundColor, strokeStyle: '#fff', lineWidth: 1, hidden: false, index: i})); }
+        }
+        function resizeActiveCharts() { document.querySelectorAll('.tab-content.active canvas').forEach(c => { const ch = Chart.getChart(c); if (ch) ch.resize(); }); }
         function switchTab(tab) {
+            setTimeout(resizeActiveCharts, 60); setTimeout(resizeActiveCharts, 400);
             if (tab === 'geo') tab = GEO_SCOPE;
             const isGeo = GEO_TABS.includes(tab);
             if (isGeo) GEO_SCOPE = tab;
@@ -2593,25 +2597,34 @@
             });
             
             
-            statesData.culturas.forEach(culture => {
-                const option = document.createElement('option');
-                option.value = culture;
-                option.textContent = culture;
-                cultureFilter.appendChild(option);
-            });
-            
+            stCultMS = new MultiSelect(cultureFilter, {allLabel: 'Todas as Culturas', everyLabel: 'Todas as culturas listadas', noneLabel: 'Limpar', search: 'Buscar cultura',
+                onChange: () => { stSync(); updateStatesDashboard(); }});
+            stCultMS.setOptions(statesData.culturas, []);
             metricFilter.addEventListener('change', updateStatesDashboard);
-            cultureFilter.addEventListener('change', updateStatesDashboard);
         }
         
+        // culturas escolhidas na aba Produção Agrícola (estados e regiões): vazio = todas
+        let stCultMS = null, ST_CS = new Set();
+        const stIn = c => ST_CS.has(c);
+        const stOne = () => ST_CS.size === 1;
+        const stMulti = () => ST_CS.size > 1;
+        const stHasTon = () => [...ST_CS].some(c => !c.endsWith('*'));
+        const stMixQ = d => stMulti() && d.metrica === 'Quantidade Produzida' && d.cultura.endsWith('*') && stHasTon();
+        function stCult() { const a = [...ST_CS]; return !a.length ? '' : a.length === 1 ? a[0] : a.length <= 3 ? a.join(' + ') : `${a.slice(0, 2).join(' + ')} + ${a.length - 2} outras`; }
+        function stSync() {
+            ST_CS = new Set(stCultMS ? stCultMS.selected : []);
+            const mf = document.getElementById('metricFilter'), op = [...mf.options].find(o => o.value === 'Produtividade');
+            if (op) { op.disabled = stMulti(); op.textContent = stMulti() ? 'Produtividade (escolha uma cultura)' : 'Produtividade'; }
+            if (stMulti() && mf.value === 'Produtividade') mf.value = '';
+        }
         function filterStatesData(individual) {
             const metric = document.getElementById('metricFilter').value;
-            const culture = document.getElementById('cultureFilter').value;
+            const culture = stCult();
             const geos = individual ? new Set(getGeoList()) : new Set([geoKey()]);
             return allRows().filter(item => yearOk(item.ano) &&
                 (!metric || item.metrica === metric) &&
                 geos.has(item.estado) &&
-                (!culture || item.cultura === culture));
+                (!culture || (stIn(item.cultura) && !stMixQ(item))));
         }
         
         function updateStatesDashboard() {
@@ -2637,7 +2650,7 @@
         function aggregateByGeo(culture) {
             const agg = {};
             allRows().forEach(d => {
-                if (culture && d.cultura !== culture) return;
+                if (culture && (!stIn(d.cultura) || stMixQ(d))) return;
                 if (EXCL_TOTAL(d, culture)) return;
                 const g = agg[d.estado] = agg[d.estado] || {};
                 const m = g[d.metrica] = g[d.metrica] || {};
@@ -2668,12 +2681,12 @@
 
         function updateStatesStats() {
             const geo = geoKey();
-            const culture = document.getElementById('cultureFilter').value;
+            const culture = stCult();
             const year = selectedYear();
             const bYear = baseYear();
             const agg = aggregateByGeo(culture);
             const g = agg[geo] || {};
-            const metrics = statesData.metricas.filter(m => culture || m !== 'Produtividade');
+            const metrics = statesData.metricas.filter(m => stOne() || m !== 'Produtividade');
             const base = getBaseCultures();
             const years = [...statesData.anos].sort();
             document.getElementById('execSubtitle').textContent =
@@ -2838,7 +2851,7 @@
         function updateTimeChart(data) {
             const yearFilter = getYears().length === 1 ? String(getYears()[0]) : '';
             const tMetric = document.getElementById('metricFilter').value || 'Quantidade Produzida';
-            const tCulture = document.getElementById('cultureFilter').value;
+            const tCulture = stCult();
             const tState = geoKey();
             const tUnits = {'Área Plantada': 'ha', 'Área Colhida': 'ha', 'Quantidade Produzida': 't', 'Produtividade': 'kg/ha', 'Valor da Produção': 'R$'};
             const tMult = tMetric === 'Valor da Produção' ? 1000 : 1; // mil R$ -> R$
@@ -2915,11 +2928,14 @@
         function updateTopCulturesChart(data) {
             const metric = document.getElementById('metricFilter').value || 'Quantidade Produzida';
             if (metric === 'Produtividade') { prodStatesCulturesChart(); return; }
-            document.getElementById('topCultTitle').textContent = '🏆 Principais Culturas (participação)';
+            const frOut = metric === 'Quantidade Produzida' && ST_CS.size > 0 && stHasTon() ? [...ST_CS].filter(c => c.endsWith('*')) : [];
+            const frOnly = metric === 'Quantidade Produzida' && ST_CS.size > 0 && !stHasTon();
+            document.getElementById('topCultTitle').textContent = '🏆 Principais Culturas (participação)' + (frOnly ? ' · mil frutos' : '');
+            document.getElementById('topCultTitle').title = frOut.length ? `${frOut.map(c => c.replace(/\*$/, '')).join(', ')}: quantidade medida em mil frutos, não somada às culturas medidas em toneladas` : '';
             const cultureData = {};
             data.forEach(d => {
                 if (d.cultura === 'Café (em grão) Total') return;   // evita duplicar Arábica + Canephora
-                if (metric === 'Quantidade Produzida' && d.cultura.endsWith('*')) return; // mil frutos
+                if (metric === 'Quantidade Produzida' && d.cultura.endsWith('*') && (!ST_CS.size || stHasTon())) return; // mil frutos não se somam a toneladas
                 cultureData[d.cultura] = (cultureData[d.cultura] || 0) + d.valor;
             });
             const total = Object.values(cultureData).reduce((a, b) => a + b, 0);
@@ -2930,6 +2946,9 @@
             const colors = ['#00b894', '#0984e3', '#f0a500', '#e17055', '#6c5ce7', '#00cec9', '#fd79a8', '#e84393', '#74b9ff', '#b2bec3'];
             const pct = v => total > 0 ? v / total * 100 : 0;
             const isProd = metric === 'Produtividade';
+            const tcNote = document.getElementById('topCultNote') || (() => { const n = document.createElement('div'); n.id = 'topCultNote'; n.className = 'chart-note'; document.getElementById('topCultTitle').after(n); return n; })();
+            tcNote.textContent = frOut.length ? `${frOut.map(c => c.replace(/\*$/, '')).join(', ')} ${frOut.length > 1 ? 'são medidas' : 'é medida'} em mil frutos e não ${frOut.length > 1 ? 'entram' : 'entra'} na participação em toneladas — veja em Área colhida ou Valor da produção.` : !top.length ? 'Sem dados para a seleção nesta métrica.' : '';
+            tcNote.style.display = tcNote.textContent ? '' : 'none';
             createOrUpdateChart('topCulturesChart', {
                 type: 'doughnut',
                 data: {
@@ -2949,7 +2968,7 @@
                     layout: {padding: 8},
                     plugins: {
                         legend: {position: 'right', labels: {boxWidth: 14, padding: 9, font: {size: 11},
-                            generateLabels: chart => Chart.overrides.doughnut.plugins.legend.labels.generateLabels(chart)
+                            generateLabels: chart => donutLegendLabels(chart)
                                 .map((it, i) => ({...it, text: isProd ? it.text : `${it.text} · ${pct(top[i][1]).toLocaleString('pt-BR', {maximumFractionDigits: 1})}%`}))}},
                         tooltip: {callbacks: {label: ctx => ` ${ctx.label}: ${formatCompactBR(ctx.parsed * (metric === 'Valor da Produção' ? 1000 : 1), 2)}` +
                             (isProd ? ' kg/ha' : ` (${pct(ctx.parsed).toLocaleString('pt-BR', {maximumFractionDigits: 1})}%)`)}},
@@ -2973,14 +2992,14 @@
             const multi = isMultiGeo();
             const members = new Set(getGeoList());
             const metric = document.getElementById('metricFilter').value || 'Quantidade Produzida';
-            const culture = document.getElementById('cultureFilter').value;
+            const culture = stCult();
             const mult = metric === 'Valor da Produção' ? 1000 : 1;
             const unitTxt = metric === 'Valor da Produção' ? 'R$' : jointUnits[metric];
             if (state === 'Brasil' || multi) {
                 const geoData = {}, geoCount = {};
                 statesData.data.forEach(d => {
                     if (d.estado !== 'Brasil' && (!multi || members.has(d.estado)) && d.metrica === metric &&
-                        (!culture || d.cultura === culture) && yearOk(d.ano) && d.valor > 0) {
+                        (!culture || (stIn(d.cultura) && !stMixQ(d))) && yearOk(d.ano) && d.valor > 0) {
                         if (!culture && (d.cultura === 'Café (em grão) Total' || (metric === 'Quantidade Produzida' && d.cultura.endsWith('*')))) return;
                         geoData[d.estado] = (geoData[d.estado] || 0) + d.valor * mult;
                         geoCount[d.estado] = (geoCount[d.estado] || 0) + 1;
@@ -3096,17 +3115,17 @@
 
         function updateJointEvolutionChart() {
             const state = geoKey();
-            const culture = document.getElementById('cultureFilter').value;
+            const culture = stCult();
             // com 2+ anos selecionados, mostra só eles; com 0 ou 1, a série completa
             const years = getYears().length >= 2 ? getYears() : [...statesData.anos].sort();
             const base = getBaseCultures();
-            const metrics = statesData.metricas.filter(m => culture || m !== 'Produtividade');
+            const metrics = statesData.metricas.filter(m => stOne() || m !== 'Produtividade');
             const totals = {};
             metrics.forEach(m => { totals[m] = {}; });
 
             allRows().forEach(d => {
                 if (d.estado !== state || !totals[d.metrica]) return;
-                if (culture ? d.cultura !== culture : !inAggregate(d, base)) return;
+                if (culture ? !stIn(d.cultura) || stMixQ(d) : !inAggregate(d, base)) return;
                 totals[d.metrica][d.ano] = (totals[d.metrica][d.ano] || 0) + d.valor;
             });
 
@@ -3226,14 +3245,14 @@
 
         function updateYearSummary() {
             const state = geoKey();
-            const culture = document.getElementById('cultureFilter').value;
+            const culture = stCult();
             const base = getBaseCultures();
-            const metrics = statesData.metricas.filter(m => culture || m !== 'Produtividade');
+            const metrics = statesData.metricas.filter(m => stOne() || m !== 'Produtividade');
             const totals = {};
             metrics.forEach(m => { totals[m] = {}; });
             allRows().forEach(d => {
                 if (d.estado !== state || !totals[d.metrica]) return;
-                if (culture ? d.cultura !== culture : !inAggregate(d, base)) return;
+                if (culture ? !stIn(d.cultura) || stMixQ(d) : !inAggregate(d, base)) return;
                 totals[d.metrica][d.ano] = (totals[d.metrica][d.ano] || 0) + d.valor;
             });
             const years = [...statesData.anos].sort().filter(y => yearOk(y) && metrics.some(m => totals[m][y] > 0));
@@ -3280,12 +3299,12 @@
             const year = refYear();
             const prevYear = baseYear();
             const state = geoKey();
-            const culture = document.getElementById('cultureFilter').value;
-            const metrics = statesData.metricas.filter(m => culture || m !== 'Produtividade');
+            const culture = stCult();
+            const metrics = statesData.metricas.filter(m => stOne() || m !== 'Produtividade');
             const cur = {}, prev = {};
             allRows().forEach(d => {
                 if (d.estado !== state || (d.ano !== year && d.ano !== prevYear)) return;
-                if (culture) { if (d.cultura !== culture) return; }
+                if (culture) { if (!stIn(d.cultura) || stMixQ(d)) return; }
                 else {
                     // soma de todas as culturas: sem Café Total (duplicado) e, na quantidade, sem culturas em mil frutos
                     if (d.cultura === 'Café (em grão) Total') return;
@@ -3707,7 +3726,7 @@
                     responsive: true, maintainAspectRatio: false, cutout: '50%', layout: {padding: 8},
                     plugins: {
                         legend: {position: 'right', labels: {boxWidth: 14, padding: 9, font: {size: 11},
-                            generateLabels: chart => Chart.overrides.doughnut.plugins.legend.labels.generateLabels(chart)
+                            generateLabels: chart => donutLegendLabels(chart)
                                 .map((it, i) => ({...it, text: isProd ? it.text : `${it.text} · ${pct(sorted[i][1]).toLocaleString('pt-BR', {maximumFractionDigits: 1})}%`}))}},
                         tooltip: {callbacks: {label: ctx => ` ${ctx.label}: ${cityMetricInfo().fmt(ctx.parsed * cityMetricInfo().mult)}`}},
                         datalabels: {display: ctx => !isProd && pct(ctx.dataset.data[ctx.dataIndex]) >= 4, color: '#fff', font: {weight: 'bold', size: 12},
@@ -3821,7 +3840,7 @@
                     responsive: true, maintainAspectRatio: false, cutout: '55%', layout: {padding: 8},
                     plugins: {
                         legend: {position: 'right', labels: {boxWidth: 14, padding: 10, font: {size: 12, weight: '600'},
-                            generateLabels: chart => Chart.overrides.doughnut.plugins.legend.labels.generateLabels(chart)
+                            generateLabels: chart => donutLegendLabels(chart)
                                 .map((it, i) => ({...it, text: `${it.text} · ${pct(byReg[regs[i]]).toLocaleString('pt-BR', {maximumFractionDigits: 1})}%`}))}},
                         tooltip: {callbacks: {label: ctx => ` ${ctx.label}: ${(m === 'Valor da Produção' ? 'R$ ' : '') + formatCompactBR(ctx.parsed, 2)}${m === 'Valor da Produção' ? '' : ' ' + jointUnits[m]}`}},
                         datalabels: {display: ctx => pct(ctx.dataset.data[ctx.dataIndex]) >= 4, color: '#fff', font: {weight: 'bold', size: 12},
@@ -4064,7 +4083,7 @@
         }
         function updateGeoMap() {
             if (geoMapBuiltFor !== geoMode) buildGeoMap();
-            const culture = document.getElementById('cultureFilter').value;
+            const culture = stCult();
             const metric = document.getElementById('metricFilter').value || 'Quantidade Produzida';
             const isProd = metric === 'Produtividade';
             const prodIdx = isProd && !culture;          // sem cultura: índice Brasil = 100
@@ -4440,7 +4459,7 @@
             });
         }
         function prodStatesCulturesChart() {
-            const geo = geoKey(), year = refYear(), base = baseYear(), culture = document.getElementById('cultureFilter').value;
+            const geo = geoKey(), year = refYear(), base = baseYear(), culture = stCult();
             const cur = geoAP(geo, year, culture), br = brProdState(year);
             const isBR = geo === 'Brasil';
             const prev = isBR ? geoAP(geo, base, culture) : null;
@@ -4454,7 +4473,7 @@
                 ctx => { const r = rows[ctx.dataIndex]; return `${pctS(r.p)} · ${fmtKgHa(r.v)} (${isBR ? base : 'Brasil'}: ${fmtKgHa(r.ref)})`; });
         }
         function prodStatesDistChart() {
-            const culture = document.getElementById('cultureFilter').value;
+            const culture = stCult();
             const year = refYear(), multi = isMultiGeo(), state = geoKey();
             const fmt = culture ? fmtKgHa : (v => Math.round(v).toLocaleString('pt-BR'));
             const icon = geoMode === 'regions' ? '🌎' : '🗺️';
