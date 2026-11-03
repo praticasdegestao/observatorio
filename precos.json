@@ -1,0 +1,2538 @@
+{
+ "coletado": "2026-11-02",
+ "src": "embutido",
+ "cepea": [
+  {
+   "cult": "Mandioca",
+   "fonte": "Cepea/Esalq-USP",
+   "titulo": "Indicador da mandioca (raiz e fécula)",
+   "url": "https://www.cepea.org.br/br/indicador/mandioca.aspx",
+   "status": "bloqueado",
+   "msg": "O painel não coleta dados do Cepea (o site proíbe robôs). Abaixo, a própria página do indicador é exibida diretamente do site do Cepea pelo seu navegador, como uma visita normal: nada é copiado nem armazenado pelo painel."
+  }
+ ],
+ "hf": [
+  {
+   "cult": "Mandioca",
+   "fonte": "Notícias Agrícolas (dados Cepea/Esalq)",
+   "titulo": "Preços da fécula de mandioca",
+   "defMode": "raw",
+   "url": "https://www.noticiasagricolas.com.br/cotacoes/mandioca/precos-da-fecula-de-mandioca",
+   "cols": [
+    "2026-07-17",
+    "2026-07-24",
+    "2026-07-31",
+    "2026-08-14",
+    "2026-08-28",
+    "2026-09-04",
+    "2026-09-11",
+    "2026-09-25",
+    "2026-10-09",
+    "2026-10-16"
+   ],
+   "periodo": [
+    "13 - 17/07/2026",
+    "20 - 24/07/2026",
+    "27 - 31/07/2026",
+    "10 - 14/08/2026",
+    "24 - 28/08/2026",
+    "31 - 04/09/2026",
+    "7 - 11/09/2026",
+    "21 - 25/09/2026",
+    "5 - 09/10/2026",
+    "12 - 16/10/2026"
+   ],
+   "fechamento": [
+    "24/07/2026",
+    "31/07/2026",
+    "07/08/2026",
+    "21/08/2026",
+    "04/09/2026",
+    "11/09/2026",
+    "18/09/2026",
+    "02/10/2026",
+    "16/10/2026",
+    "26/10/2026"
+   ],
+   "rows": [
+    {
+     "produto": "Fécula de mandioca",
+     "regiao": "ESM-MS",
+     "unidade": "t",
+     "v": [
+      2795.13,
+      2809.72,
+      2884.53,
+      3005.96,
+      3139.32,
+      3160.76,
+      3136.42,
+      3175.31,
+      3225.79,
+      3222.2
+     ]
+    },
+    {
+     "produto": "Fécula de mandioca",
+     "regiao": "SOM-MS",
+     "unidade": "t",
+     "v": [
+      2863.04,
+      2867.08,
+      2926.55,
+      3036.59,
+      3173.07,
+      3180.47,
+      3172.27,
+      3165.28,
+      3180.61,
+      3190.77
+     ]
+    },
+    {
+     "produto": "Fécula de mandioca",
+     "regiao": "COP-PR",
+     "unidade": "t",
+     "v": [
+      3110.04,
+      3140.02,
+      2988.09,
+      3412.58,
+      3411.92,
+      3409.18,
+      3408.14,
+      3451.95,
+      3451.22,
+      3451.22
+     ]
+    },
+    {
+     "produto": "Fécula de mandioca",
+     "regiao": "EOP-PR",
+     "unidade": "t",
+     "v": [
+      2920.53,
+      2952.73,
+      2957.89,
+      2933.73,
+      3218.97,
+      3228.43,
+      3217.9,
+      3190.78,
+      3212.74,
+      3226.52
+     ]
+    },
+    {
+     "produto": "Fécula de mandioca",
+     "regiao": "NOP-PR",
+     "unidade": "t",
+     "v": [
+      2957.91,
+      2929.26,
+      3051.57,
+      3158.82,
+      3251.68,
+      3255.27,
+      3260.76,
+      3260.79,
+      3262.37,
+      3239.19
+     ]
+    },
+    {
+     "produto": "Fécula de mandioca",
+     "regiao": "ASS-SP",
+     "unidade": "t",
+     "v": [
+      3076.09,
+      3169.47,
+      3064.48,
+      3277.44,
+      3343.69,
+      3327.73,
+      3302.57,
+      3318.05,
+      3323.99,
+      3328.91
+     ]
+    }
+   ]
+  },
+  {
+   "cult": "Banana",
+   "fonte": "HF Brasil (Hortifruti/Cepea)",
+   "url": "https://www.hfbrasil.org.br/br/estatistica/banana.aspx",
+   "cols": [
+    "2026-10-02",
+    "2026-10-09",
+    "2026-10-16",
+    "2026-10-23"
+   ],
+   "rows": [
+    {
+     "produto": "Nanica primeira - atacado",
+     "regiao": "São Paulo (capital)",
+     "unidade": "caixa 22 kg",
+     "v": [
+      60.0,
+      48.33,
+      60.0,
+      43.33
+     ]
+    },
+    {
+     "produto": "Nanica primeira - produtor",
+     "regiao": "Bom Jesus da Lapa",
+     "unidade": "kg",
+     "v": [
+      0.99,
+      0.89,
+      0.84,
+      0.85
+     ]
+    },
+    {
+     "produto": "Nanica primeira - produtor",
+     "regiao": "Linhares",
+     "unidade": "kg",
+     "v": [
+      1.0,
+      null,
+      0.8,
+      null
+     ]
+    },
+    {
+     "produto": "Nanica primeira - produtor",
+     "regiao": "Norte de Minas Gerais",
+     "unidade": "kg",
+     "v": [
+      1.03,
+      0.86,
+      0.84,
+      1.05
+     ]
+    },
+    {
+     "produto": "Nanica primeira - produtor",
+     "regiao": "Norte de Santa Catarina",
+     "unidade": "kg",
+     "v": [
+      1.02,
+      0.9,
+      0.86,
+      0.81
+     ]
+    },
+    {
+     "produto": "Nanica primeira - produtor",
+     "regiao": "Vale do Ribeira",
+     "unidade": "kg",
+     "v": [
+      1.33,
+      1.34,
+      1.35,
+      1.22
+     ]
+    },
+    {
+     "produto": "Prata anã primeira - atacado",
+     "regiao": "São Paulo (capital)",
+     "unidade": "caixa 20 kg",
+     "v": [
+      100.0,
+      113.33,
+      110.0,
+      106.67
+     ]
+    },
+    {
+     "produto": "Prata anã primeira - produtor",
+     "regiao": "Bom Jesus da Lapa",
+     "unidade": "kg",
+     "v": [
+      1.59,
+      1.68,
+      1.61,
+      1.77
+     ]
+    },
+    {
+     "produto": "Prata anã primeira - produtor",
+     "regiao": "Delfinópolis",
+     "unidade": "kg",
+     "v": [
+      2.66,
+      2.73,
+      2.68,
+      2.82
+     ]
+    },
+    {
+     "produto": "Prata anã primeira - produtor",
+     "regiao": "Linhares",
+     "unidade": "kg",
+     "v": [
+      2.45,
+      null,
+      1.5,
+      null
+     ]
+    },
+    {
+     "produto": "Prata anã primeira - produtor",
+     "regiao": "Norte de Minas Gerais",
+     "unidade": "kg",
+     "v": [
+      2.57,
+      2.44,
+      2.24,
+      3.0
+     ]
+    },
+    {
+     "produto": "Prata anã primeira - produtor",
+     "regiao": "Vale do São Francisco",
+     "unidade": "kg",
+     "v": [
+      1.3,
+      1.4,
+      1.3,
+      1.3
+     ]
+    },
+    {
+     "produto": "Prata litoral primeira - atacado",
+     "regiao": "São Paulo (capital)",
+     "unidade": "caixa 20 kg",
+     "v": [
+      70.0,
+      53.33,
+      75.0,
+      58.33
+     ]
+    },
+    {
+     "produto": "Prata litoral primeira - produtor",
+     "regiao": "Norte de Minas Gerais",
+     "unidade": "kg",
+     "v": [
+      null,
+      2.15,
+      null,
+      null
+     ]
+    },
+    {
+     "produto": "Prata litoral primeira - produtor",
+     "regiao": "Norte de Santa Catarina",
+     "unidade": "kg",
+     "v": [
+      1.75,
+      1.68,
+      1.7,
+      1.59
+     ]
+    },
+    {
+     "produto": "Prata litoral primeira - produtor",
+     "regiao": "Vale do Ribeira",
+     "unidade": "kg",
+     "v": [
+      1.97,
+      1.95,
+      1.94,
+      1.87
+     ]
+    }
+   ]
+  },
+  {
+   "cult": "Citros",
+   "fonte": "HF Brasil (Hortifruti/Cepea)",
+   "url": "https://www.hfbrasil.org.br/br/estatistica/citros.aspx",
+   "cols": [
+    "2026-10-20",
+    "2026-10-21",
+    "2026-10-22",
+    "2026-10-23",
+    "2026-10-26"
+   ],
+   "rows": [
+    {
+     "produto": "Laranja Lima - árvore - mercado",
+     "regiao": "Araraquara (região)",
+     "unidade": "caixa 40,8 kg",
+     "v": [
+      61.2,
+      61.2,
+      61.2,
+      61.2,
+      61.2
+     ]
+    },
+    {
+     "produto": "Laranja Lima - árvore - mercado",
+     "regiao": "Bebedouro (região)",
+     "unidade": "caixa 40,8 kg",
+     "v": [
+      50.0,
+      50.0,
+      50.0,
+      50.0,
+      50.0
+     ]
+    },
+    {
+     "produto": "Laranja Lima - árvore - mercado",
+     "regiao": "Limeira (região)",
+     "unidade": "caixa 40,8 kg",
+     "v": [
+      39.0,
+      39.0,
+      44.5,
+      44.5,
+      44.5
+     ]
+    },
+    {
+     "produto": "Laranja Lima - árvore - mercado",
+     "regiao": "Mogiana (região)",
+     "unidade": "caixa 40,8 kg",
+     "v": [
+      null,
+      35.0,
+      35.0,
+      35.0,
+      35.0
+     ]
+    },
+    {
+     "produto": "Laranja Pêra - árvore - mercado",
+     "regiao": "Araraquara (região)",
+     "unidade": "caixa 40,8 kg",
+     "v": [
+      34.7,
+      34.7,
+      32.35,
+      32.35,
+      32.35
+     ]
+    },
+    {
+     "produto": "Laranja Pêra - árvore - mercado",
+     "regiao": "Bebedouro (região)",
+     "unidade": "caixa 40,8 kg",
+     "v": [
+      34.25,
+      34.88,
+      34.88,
+      34.88,
+      34.4
+     ]
+    },
+    {
+     "produto": "Laranja Pêra - árvore - mercado",
+     "regiao": "Limeira (região)",
+     "unidade": "caixa 40,8 kg",
+     "v": [
+      33.95,
+      35.35,
+      35.57,
+      35.57,
+      35.57
+     ]
+    },
+    {
+     "produto": "Laranja Pêra - árvore - mercado",
+     "regiao": "Mogiana (região)",
+     "unidade": "caixa 40,8 kg",
+     "v": [
+      29.38,
+      28.58,
+      28.58,
+      28.3,
+      29.75
+     ]
+    },
+    {
+     "produto": "Lima ácida Tahiti - colhida - mercado",
+     "regiao": "Araraquara (região)",
+     "unidade": "caixa 27 kg",
+     "v": [
+      160.54,
+      165.16,
+      167.28,
+      169.19,
+      171.03
+     ]
+    },
+    {
+     "produto": "Lima ácida Tahiti - colhida - mercado",
+     "regiao": "Bebedouro (região)",
+     "unidade": "caixa 27 kg",
+     "v": [
+      150.0,
+      167.5,
+      177.5,
+      177.5,
+      177.5
+     ]
+    },
+    {
+     "produto": "Lima ácida Tahiti - colhida - mercado",
+     "regiao": "Limeira (região)",
+     "unidade": "caixa 27 kg",
+     "v": [
+      145.0,
+      145.0,
+      145.0,
+      145.0,
+      145.0
+     ]
+    },
+    {
+     "produto": "Lima ácida Tahiti - colhida - mercado",
+     "regiao": "Mogiana (região)",
+     "unidade": "caixa 27 kg",
+     "v": [
+      180.0,
+      180.0,
+      175.0,
+      175.0,
+      175.0
+     ]
+    },
+    {
+     "produto": "Tangerina Ponkan - árvore - mercado",
+     "regiao": "Araraquara (região)",
+     "unidade": "caixa 27 kg",
+     "v": [
+      108.8,
+      108.8,
+      108.8,
+      108.8,
+      108.8
+     ]
+    }
+   ]
+  },
+  {
+   "cult": "Mamão",
+   "fonte": "HF Brasil (Hortifruti/Cepea)",
+   "url": "https://www.hfbrasil.org.br/br/estatistica/mamao.aspx",
+   "cols": [
+    "2026-10-02",
+    "2026-10-09",
+    "2026-10-16",
+    "2026-10-23"
+   ],
+   "rows": [
+    {
+     "produto": "Formosa - atacado",
+     "regiao": "São Paulo (capital)",
+     "unidade": "caixa 13 kg",
+     "v": [
+      74.25,
+      67.29,
+      69.1,
+      63.4
+     ]
+    },
+    {
+     "produto": "Formosa - produtor",
+     "regiao": "Espírito Santo (estado)",
+     "unidade": "kg",
+     "v": [
+      2.96,
+      3.44,
+      3.61,
+      4.07
+     ]
+    },
+    {
+     "produto": "Formosa - produtor",
+     "regiao": "Norte de Minas Gerais",
+     "unidade": "kg",
+     "v": [
+      2.42,
+      2.93,
+      3.04,
+      3.84
+     ]
+    },
+    {
+     "produto": "Formosa - produtor",
+     "regiao": "Oeste da Bahia",
+     "unidade": "kg",
+     "v": [
+      2.8,
+      3.25,
+      3.2,
+      3.42
+     ]
+    },
+    {
+     "produto": "Formosa - produtor",
+     "regiao": "Rio Grande do Norte (estado)",
+     "unidade": "kg",
+     "v": [
+      2.42,
+      2.43,
+      2.71,
+      2.74
+     ]
+    },
+    {
+     "produto": "Formosa - produtor",
+     "regiao": "Sul da Bahia",
+     "unidade": "kg",
+     "v": [
+      3.0,
+      3.1,
+      3.5,
+      4.0
+     ]
+    },
+    {
+     "produto": "Havaí primeira - produtor",
+     "regiao": "Rio Grande do Norte (estado)",
+     "unidade": "kg",
+     "v": [
+      3.6,
+      3.6,
+      4.03,
+      4.0
+     ]
+    },
+    {
+     "produto": "Havaí segunda - produtor",
+     "regiao": "Rio Grande do Norte (estado)",
+     "unidade": "kg",
+     "v": [
+      1.5,
+      1.5,
+      1.8,
+      2.5
+     ]
+    },
+    {
+     "produto": "Havaí tipo 12 - atacado",
+     "regiao": "São Paulo (capital)",
+     "unidade": "caixa 8 kg",
+     "v": [
+      37.17,
+      55.05,
+      53.03,
+      38.15
+     ]
+    },
+    {
+     "produto": "Havaí tipo 12 a 18 - produtor",
+     "regiao": "Espírito Santo (estado)",
+     "unidade": "kg",
+     "v": [
+      1.39,
+      3.44,
+      2.57,
+      2.42
+     ]
+    },
+    {
+     "produto": "Havaí tipo 12 a 18 - produtor",
+     "regiao": "Sul da Bahia",
+     "unidade": "kg",
+     "v": [
+      1.16,
+      3.45,
+      2.93,
+      2.67
+     ]
+    },
+    {
+     "produto": "Havaí tipo 15 a 18 - atacado",
+     "regiao": "São Paulo (capital)",
+     "unidade": "caixa 8 kg",
+     "v": [
+      42.17,
+      60.05,
+      58.03,
+      43.15
+     ]
+    },
+    {
+     "produto": "Havaí tipo 21 - atacado",
+     "regiao": "São Paulo (capital)",
+     "unidade": "caixa 8 kg",
+     "v": [
+      32.17,
+      50.05,
+      48.03,
+      33.15
+     ]
+    },
+    {
+     "produto": "Havaí tipo 21 - produtor",
+     "regiao": "Espírito Santo (estado)",
+     "unidade": "kg",
+     "v": [
+      0.97,
+      2.41,
+      1.8,
+      1.69
+     ]
+    },
+    {
+     "produto": "Havaí tipo 21 - produtor",
+     "regiao": "Sul da Bahia",
+     "unidade": "kg",
+     "v": [
+      0.81,
+      2.42,
+      1.97,
+      1.87
+     ]
+    },
+    {
+     "produto": "Havaí tipo 24 a 28 - produtor",
+     "regiao": "Espírito Santo (estado)",
+     "unidade": "kg",
+     "v": [
+      0.69,
+      1.72,
+      1.29,
+      1.21
+     ]
+    },
+    {
+     "produto": "Havaí tipo 24 a 28 - produtor",
+     "regiao": "Sul da Bahia",
+     "unidade": "kg",
+     "v": [
+      0.58,
+      1.73,
+      1.41,
+      1.33
+     ]
+    }
+   ]
+  }
+ ],
+ "ceasa": [
+  {
+   "cult": "Mandioca",
+   "produto": "Mandioca / aipim",
+   "unidade": "kg",
+   "url": "https://www.agrolink.com.br/cotacoes/ceasa/diversos/mandioca/mandioca-aipim-1kg",
+   "fonte": "Agrolink (cotações das Ceasas)",
+   "total": 33,
+   "rows": [
+    {
+     "praca": "AMA Juazeiro",
+     "uf": "BA",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 2.2,
+     "var": 0.0,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEAGESP Araçatuba",
+     "uf": "SP",
+     "data": "2026-10-06",
+     "freq": "Mensal",
+     "preco": 3.0,
+     "var": null,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEAGESP Franca",
+     "uf": "SP",
+     "data": "2026-10-05",
+     "freq": "Mensal",
+     "preco": 5.5,
+     "var": null,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEAGESP Piracicaba",
+     "uf": "SP",
+     "data": "2026-10-12",
+     "freq": "Mensal",
+     "preco": 1.8,
+     "var": null,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEAGESP Presidente Prudente",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Mensal",
+     "preco": 4.0,
+     "var": -20.0,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEAGESP Ribeirão Preto",
+     "uf": "SP",
+     "data": "2026-10-15",
+     "freq": "Diário",
+     "preco": 5.17,
+     "var": 29.3,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEAGESP São José dos Campos",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Semanal",
+     "preco": 2.5,
+     "var": 0.0,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEAGESP São Paulo",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 1.64,
+     "var": 6.5,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA Maceió",
+     "uf": "AL",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 1.85,
+     "var": 0.0,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA Salvador",
+     "uf": "BA",
+     "data": "2026-10-14",
+     "freq": "Semanal",
+     "preco": 2.33,
+     "var": 5.9,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA Tianguá",
+     "uf": "CE",
+     "data": "2026-10-20",
+     "freq": "Mensal",
+     "preco": 1.6,
+     "var": null,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA Brasília",
+     "uf": "DF",
+     "data": "2026-10-15",
+     "freq": "Semanal",
+     "preco": 2.25,
+     "var": 0.0,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 2.9,
+     "var": -1.7,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA São Luís",
+     "uf": "MA",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 4.5,
+     "var": -17.9,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA Campo Grande",
+     "uf": "MS",
+     "data": "2026-10-20",
+     "freq": "Semanal",
+     "preco": 2.0,
+     "var": 0.0,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 1.31,
+     "var": 0.0,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 1.8,
+     "var": 2.9,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA Patos",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": "Semanal",
+     "preco": 2.0,
+     "var": 0.0,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA Caruaru",
+     "uf": "PE",
+     "data": "2026-10-19",
+     "freq": "Semanal",
+     "preco": 2.3,
+     "var": 4.5,
+     "produto": "Mandioca / aipim"
+    },
+    {
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 1.8,
+     "var": 12.5,
+     "produto": "Mandioca / aipim"
+    }
+   ],
+   "nota": null
+  },
+  {
+   "cult": "Banana",
+   "produto": "Banana nanica",
+   "unidade": "kg",
+   "url": "https://www.agrolink.com.br/cotacoes/ceasa/frutas/banana",
+   "fonte": "Agrolink (cotações das Ceasas)",
+   "total": 43,
+   "rows": [
+    {
+     "praca": "AMA Juazeiro",
+     "uf": "BA",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 2.36,
+     "var": 0.0,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEAGESP Araçatuba",
+     "uf": "SP",
+     "data": "2026-10-06",
+     "freq": "Mensal",
+     "preco": 4.08,
+     "var": null,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEAGESP Franca",
+     "uf": "SP",
+     "data": "2026-10-05",
+     "freq": "Mensal",
+     "preco": 4.5,
+     "var": null,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEAGESP Piracicaba",
+     "uf": "SP",
+     "data": "2026-10-12",
+     "freq": "Mensal",
+     "preco": 4.0,
+     "var": null,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEAGESP Presidente Prudente",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Mensal",
+     "preco": 4.0,
+     "var": 0.0,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEAGESP Ribeirão Preto",
+     "uf": "SP",
+     "data": "2026-10-15",
+     "freq": "Diário",
+     "preco": 3.88,
+     "var": -7.0,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEAGESP São José dos Campos",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Semanal",
+     "preco": 2.5,
+     "var": -16.7,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEAGESP São Paulo",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 2.91,
+     "var": 0.7,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA Tianguá",
+     "uf": "CE",
+     "data": "2026-10-20",
+     "freq": "Mensal",
+     "preco": 4.38,
+     "var": null,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA Brasília",
+     "uf": "DF",
+     "data": "2026-10-15",
+     "freq": "Semanal",
+     "preco": 2.63,
+     "var": 0.0,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 2.75,
+     "var": -24.2,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA São Luís",
+     "uf": "MA",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 4.45,
+     "var": -6.7,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA Campo Grande",
+     "uf": "MS",
+     "data": "2026-10-20",
+     "freq": "Semanal",
+     "preco": 3.5,
+     "var": -10.3,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 3.16,
+     "var": -7.6,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 2.0,
+     "var": 0.0,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA Patos",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": "Semanal",
+     "preco": 2.97,
+     "var": 0.0,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA Caruaru",
+     "uf": "PE",
+     "data": "2026-10-19",
+     "freq": "Semanal",
+     "preco": 3.75,
+     "var": 0.0,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA Cascavel",
+     "uf": "PR",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 3.5,
+     "var": 2.9,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA Curitiba",
+     "uf": "PR",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 2.5,
+     "var": 0.0,
+     "produto": "Banana nanica"
+    },
+    {
+     "praca": "CEASA Foz do Iguaçu",
+     "uf": "PR",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 3.4,
+     "var": 0.0,
+     "produto": "Banana nanica"
+    }
+   ],
+   "nota": null
+  },
+  {
+   "cult": "Abacaxi",
+   "produto": "Abacaxi",
+   "unidade": "unidade",
+   "url": "https://www.agrolink.com.br/cotacoes/ceasa/frutas/abacaxi/abacaxi-1un",
+   "fonte": "Agrolink (cotações das Ceasas)",
+   "total": 33,
+   "rows": [
+    {
+     "praca": "AMA Juazeiro",
+     "uf": "BA",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 7.0,
+     "var": 0.0,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEAGESP Araçatuba",
+     "uf": "SP",
+     "data": "2026-10-06",
+     "freq": "Mensal",
+     "preco": 14.68,
+     "var": null,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEAGESP Franca",
+     "uf": "SP",
+     "data": "2026-10-05",
+     "freq": "Mensal",
+     "preco": 7.0,
+     "var": null,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEAGESP Piracicaba",
+     "uf": "SP",
+     "data": "2026-10-12",
+     "freq": "Mensal",
+     "preco": 6.0,
+     "var": null,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEAGESP Presidente Prudente",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Mensal",
+     "preco": 9.0,
+     "var": 0.0,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEAGESP Ribeirão Preto",
+     "uf": "SP",
+     "data": "2026-10-15",
+     "freq": "Diário",
+     "preco": 4.33,
+     "var": -13.4,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEAGESP São José dos Campos",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Semanal",
+     "preco": 6.8,
+     "var": 1.5,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEAGESP São Paulo",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 4.66,
+     "var": 0.2,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA Maceió",
+     "uf": "AL",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 4.0,
+     "var": 0.0,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA Salvador",
+     "uf": "BA",
+     "data": "2026-10-14",
+     "freq": "Semanal",
+     "preco": 5.0,
+     "var": 25.0,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA Tianguá",
+     "uf": "CE",
+     "data": "2026-10-20",
+     "freq": "Mensal",
+     "preco": 5.0,
+     "var": null,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA Brasília",
+     "uf": "DF",
+     "data": "2026-10-15",
+     "freq": "Semanal",
+     "preco": 9.0,
+     "var": 20.0,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 6.29,
+     "var": 4.8,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA São Luís",
+     "uf": "MA",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 9.0,
+     "var": 2.9,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA Campo Grande",
+     "uf": "MS",
+     "data": "2026-10-20",
+     "freq": "Semanal",
+     "preco": 10.0,
+     "var": 33.3,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 7.5,
+     "var": 12.4,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 3.5,
+     "var": 9.4,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA Patos",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": "Semanal",
+     "preco": 5.0,
+     "var": 0.0,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA Caruaru",
+     "uf": "PE",
+     "data": "2026-10-19",
+     "freq": "Semanal",
+     "preco": 3.0,
+     "var": -14.3,
+     "produto": "Abacaxi"
+    },
+    {
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 2.5,
+     "var": -16.7,
+     "produto": "Abacaxi"
+    }
+   ],
+   "nota": null
+  },
+  {
+   "cult": "Mamão",
+   "produto": "Mamão Formosa",
+   "unidade": "kg",
+   "url": "https://www.agrolink.com.br/cotacoes/ceasa/frutas/mamao",
+   "fonte": "Agrolink (cotações das Ceasas)",
+   "total": null,
+   "hist": true,
+   "rows": [
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 4.0,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Campo Grande",
+     "uf": "MS",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 6.0,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Tianguá",
+     "uf": "CE",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 2.05,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 5.67,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 3.95,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Patos",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 2.08,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 3.0,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Rio de Janeiro",
+     "uf": "RJ",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 7.0,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Curitiba",
+     "uf": "PR",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 5.67,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA São Luís",
+     "uf": "MA",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 3.9,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 4.0,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEAGESP Presidente Prudente",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 4.0,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Foz do Iguaçu",
+     "uf": "PR",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 8.0,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 7.13,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Natal",
+     "uf": "RN",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 3.5,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 3.68,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 3.1,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASA Caruaru",
+     "uf": "PE",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 4.0,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEASAMINAS Belo Horizonte",
+     "uf": "MG",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 4.44,
+     "var": null
+    },
+    {
+     "produto": "Mamão Formosa",
+     "praca": "CEAGESP São José dos Campos",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 7.0,
+     "var": null
+    }
+   ]
+  },
+  {
+   "cult": "Mamão",
+   "produto": "Mamão Havaí",
+   "unidade": "kg",
+   "url": "https://www.agrolink.com.br/cotacoes/ceasa/frutas/mamao",
+   "fonte": "Agrolink (cotações das Ceasas)",
+   "total": null,
+   "hist": true,
+   "rows": [
+    {
+     "produto": "Mamão Havaí",
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 6.0,
+     "var": null
+    },
+    {
+     "produto": "Mamão Havaí",
+     "praca": "CEASA Campo Grande",
+     "uf": "MS",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 9.5,
+     "var": null
+    },
+    {
+     "produto": "Mamão Havaí",
+     "praca": "CEASA Tianguá",
+     "uf": "CE",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 3.86,
+     "var": null
+    },
+    {
+     "produto": "Mamão Havaí",
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 4.2,
+     "var": null
+    },
+    {
+     "produto": "Mamão Havaí",
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 8.9,
+     "var": null
+    },
+    {
+     "produto": "Mamão Havaí",
+     "praca": "CEASA Patos",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 6.08,
+     "var": null
+    },
+    {
+     "produto": "Mamão Havaí",
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 3.25,
+     "var": null
+    },
+    {
+     "produto": "Mamão Havaí",
+     "praca": "CEASA Rio de Janeiro",
+     "uf": "RJ",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 7.0,
+     "var": null
+    },
+    {
+     "produto": "Mamão Havaí",
+     "praca": "CEASA Curitiba",
+     "uf": "PR",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 8.75,
+     "var": null
+    },
+    {
+     "produto": "Mamão Havaí",
+     "praca": "CEASA São Luís",
+     "uf": "MA",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 4.5,
+     "var": null
+    }
+   ]
+  },
+  {
+   "cult": "Citros",
+   "produto": "Laranja Pêra",
+   "unidade": "kg",
+   "url": "https://www.agrolink.com.br/cotacoes/ceasa/frutas/laranja/laranja-pera-1kg",
+   "fonte": "Agrolink (cotações das Ceasas)",
+   "total": null,
+   "hist": true,
+   "rows": [
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 2.0,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Foz do Iguaçu",
+     "uf": "PR",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 2.5,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 1.88,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 2.22,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Patos",
+     "uf": "PB",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 2.15,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 1.7,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Campinas",
+     "uf": "SP",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 2.2,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASAMINAS Belo Horizonte",
+     "uf": "MG",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 2.0,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Rio de Janeiro",
+     "uf": "RJ",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 2.5,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEAGESP São José dos Campos",
+     "uf": "SP",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 2.5,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Curitiba",
+     "uf": "PR",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 2.5,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Palmas",
+     "uf": "TO",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 2.2,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Maceió",
+     "uf": "AL",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 1.66,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "AMA Juazeiro",
+     "uf": "BA",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 1.0,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Brasília",
+     "uf": "DF",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 1.8,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 2.0,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 1.92,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA São Luís",
+     "uf": "MA",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 2.5,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 2.22,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 1.7,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Rio de Janeiro",
+     "uf": "RJ",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 3.5,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEAGESP Ribeirão Preto",
+     "uf": "SP",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 2.17,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Curitiba",
+     "uf": "PR",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 2.5,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Maceió",
+     "uf": "AL",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 1.66,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Porto Alegre",
+     "uf": "RS",
+     "data": "2026-10-15",
+     "freq": null,
+     "preco": 2.5,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEAGESP Ribeirão Preto",
+     "uf": "SP",
+     "data": "2026-10-14",
+     "freq": null,
+     "preco": 2.17,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Salvador",
+     "uf": "BA",
+     "data": "2026-10-14",
+     "freq": null,
+     "preco": 1.2,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-14",
+     "freq": null,
+     "preco": 2.0,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Rio de Janeiro",
+     "uf": "RJ",
+     "data": "2026-10-14",
+     "freq": null,
+     "preco": 2.25,
+     "var": null
+    },
+    {
+     "produto": "Laranja Pêra",
+     "praca": "CEASA Foz do Iguaçu",
+     "uf": "PR",
+     "data": "2026-10-14",
+     "freq": null,
+     "preco": 2.5,
+     "var": null
+    }
+   ]
+  },
+  {
+   "cult": "Citros",
+   "produto": "Limão Taiti",
+   "unidade": "kg",
+   "url": "https://www.agrolink.com.br/cotacoes/ceasa/frutas/limao/limao-taiti-1kg",
+   "fonte": "Agrolink (cotações das Ceasas)",
+   "total": 33,
+   "rows": [
+    {
+     "praca": "AMA Juazeiro",
+     "uf": "BA",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 5.75,
+     "var": 21.1,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEAGESP Araçatuba",
+     "uf": "SP",
+     "data": "2026-10-06",
+     "freq": "Mensal",
+     "preco": 6.56,
+     "var": null,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEAGESP Franca",
+     "uf": "SP",
+     "data": "2026-10-05",
+     "freq": "Mensal",
+     "preco": 11.0,
+     "var": null,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEAGESP Piracicaba",
+     "uf": "SP",
+     "data": "2026-10-12",
+     "freq": "Mensal",
+     "preco": 5.0,
+     "var": null,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEAGESP Presidente Prudente",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Mensal",
+     "preco": 7.2,
+     "var": 80.0,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEAGESP Ribeirão Preto",
+     "uf": "SP",
+     "data": "2026-10-15",
+     "freq": "Diário",
+     "preco": 8.57,
+     "var": 18.2,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEAGESP São José dos Campos",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Semanal",
+     "preco": 7.8,
+     "var": -6.5,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEAGESP São Paulo",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 7.0,
+     "var": -18.8,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA Maceió",
+     "uf": "AL",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 7.2,
+     "var": 0.0,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA Salvador",
+     "uf": "BA",
+     "data": "2026-10-14",
+     "freq": "Semanal",
+     "preco": 11.0,
+     "var": 4.8,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA Tianguá",
+     "uf": "CE",
+     "data": "2026-10-20",
+     "freq": "Mensal",
+     "preco": 7.6,
+     "var": null,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA Brasília",
+     "uf": "DF",
+     "data": "2026-10-15",
+     "freq": "Semanal",
+     "preco": 9.5,
+     "var": 58.3,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 10.67,
+     "var": 25.5,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA São Luís",
+     "uf": "MA",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 9.5,
+     "var": -15.6,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA Campo Grande",
+     "uf": "MS",
+     "data": "2026-10-20",
+     "freq": "Semanal",
+     "preco": 8.8,
+     "var": -8.3,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 11.0,
+     "var": -8.3,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 8.9,
+     "var": -3.3,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA Patos",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": "Semanal",
+     "preco": 4.0,
+     "var": 0.0,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA Caruaru",
+     "uf": "PE",
+     "data": "2026-10-19",
+     "freq": "Semanal",
+     "preco": 10.0,
+     "var": 25.0,
+     "produto": "Limão Taiti"
+    },
+    {
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 8.15,
+     "var": 0.0,
+     "produto": "Limão Taiti"
+    }
+   ],
+   "nota": null
+  },
+  {
+   "cult": "Citros",
+   "produto": "Tangerina",
+   "unidade": "kg",
+   "url": "https://www.agrolink.com.br/cotacoes/ceasa/frutas/tangerina/tangerina-1kg",
+   "fonte": "Agrolink (cotações das Ceasas)",
+   "total": 33,
+   "rows": [
+    {
+     "praca": "AMA Juazeiro",
+     "uf": "BA",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 6.67,
+     "var": 4.4,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEAGESP Araçatuba",
+     "uf": "SP",
+     "data": "2026-10-06",
+     "freq": "Mensal",
+     "preco": 6.33,
+     "var": null,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEAGESP Franca",
+     "uf": "SP",
+     "data": "2026-10-05",
+     "freq": "Mensal",
+     "preco": 5.0,
+     "var": null,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEAGESP Piracicaba",
+     "uf": "SP",
+     "data": "2026-10-12",
+     "freq": "Mensal",
+     "preco": 3.5,
+     "var": null,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEAGESP Presidente Prudente",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Mensal",
+     "preco": 4.0,
+     "var": 14.3,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEAGESP Ribeirão Preto",
+     "uf": "SP",
+     "data": "2026-10-15",
+     "freq": "Diário",
+     "preco": 4.72,
+     "var": -6.9,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEAGESP São José dos Campos",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Semanal",
+     "preco": 5.2,
+     "var": -1.9,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEAGESP São Paulo",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 3.92,
+     "var": -31.5,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA Maceió",
+     "uf": "AL",
+     "data": "2026-10-19",
+     "freq": "Diário",
+     "preco": 3.33,
+     "var": 0.0,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA Salvador",
+     "uf": "BA",
+     "data": "2026-10-14",
+     "freq": "Semanal",
+     "preco": 3.6,
+     "var": 12.5,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA Tianguá",
+     "uf": "CE",
+     "data": "2026-10-20",
+     "freq": "Mensal",
+     "preco": 5.2,
+     "var": null,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA Brasília",
+     "uf": "DF",
+     "data": "2026-10-15",
+     "freq": "Semanal",
+     "preco": 5.0,
+     "var": 0.0,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 6.31,
+     "var": 1.0,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA São Luís",
+     "uf": "MA",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 3.5,
+     "var": -6.7,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA Campo Grande",
+     "uf": "MS",
+     "data": "2026-10-20",
+     "freq": "Semanal",
+     "preco": 6.0,
+     "var": -6.3,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-13",
+     "freq": "Diário",
+     "preco": 5.25,
+     "var": 31.3,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 3.1,
+     "var": 6.9,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA Patos",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": "Semanal",
+     "preco": 4.08,
+     "var": 0.0,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA Caruaru",
+     "uf": "PE",
+     "data": "2026-10-19",
+     "freq": "Semanal",
+     "preco": 9.0,
+     "var": -40.0,
+     "produto": "Tangerina"
+    },
+    {
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-20",
+     "freq": "Diário",
+     "preco": 3.2,
+     "var": -11.1,
+     "produto": "Tangerina"
+    }
+   ],
+   "nota": null
+  },
+  {
+   "cult": "Maracujá",
+   "produto": "Maracujá azedo",
+   "unidade": "kg",
+   "url": "https://www.agrolink.com.br/cotacoes/ceasa/frutas/maracuja/maracuja-azedo-1kg",
+   "fonte": "Agrolink (cotações das Ceasas)",
+   "total": null,
+   "hist": true,
+   "rows": [
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 7.05,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Campo Grande",
+     "uf": "MS",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 11.75,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Tianguá",
+     "uf": "CE",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 7.5,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 10.38,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 11.0,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Patos",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 5.25,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 8.4,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Rio de Janeiro",
+     "uf": "RJ",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 11.0,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Curitiba",
+     "uf": "PR",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 12.73,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA São Luís",
+     "uf": "MA",
+     "data": "2026-10-20",
+     "freq": null,
+     "preco": 7.47,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 7.05,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEAGESP Presidente Prudente",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 11.81,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Foz do Iguaçu",
+     "uf": "PR",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 13.0,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 11.0,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Natal",
+     "uf": "RN",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 7.5,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 14.0,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA João Pessoa",
+     "uf": "PB",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 7.6,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Caruaru",
+     "uf": "PE",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 7.5,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASAMINAS Belo Horizonte",
+     "uf": "MG",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 8.33,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEAGESP São José dos Campos",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 10.0,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Curitiba",
+     "uf": "PR",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 12.73,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Maceió",
+     "uf": "AL",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 9.3,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "AMA Juazeiro",
+     "uf": "BA",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 6.56,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Campinas",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 11.82,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEAGESP São Paulo",
+     "uf": "SP",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 9.69,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Cascavel",
+     "uf": "PR",
+     "data": "2026-10-19",
+     "freq": null,
+     "preco": 14.0,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Recife",
+     "uf": "PE",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 7.65,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Foz do Iguaçu",
+     "uf": "PR",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 13.0,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Vitória",
+     "uf": "ES",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 12.0,
+     "var": null
+    },
+    {
+     "produto": "Maracujá azedo",
+     "praca": "CEASA Cuiabá",
+     "uf": "MT",
+     "data": "2026-10-16",
+     "freq": null,
+     "preco": 14.0,
+     "var": null
+    }
+   ]
+  }
+ ],
+ "obs": [
+  "Agrolink: as listas por praça mostram as 20 primeiras de cada página (o restante fica atrás do botão “Carregar mais”); nas páginas com histórico (laranja pêra, maracujá azedo e mamão) foram lidas as 30 cotações mais recentes.",
+  "A página https://www.agrolink.com.br/cotacoes/frutas/maracuja (cotações de caixas em Juazeiro/BA e Jaguaquara/BA) não exibia os valores no HTML no momento da coleta, por isso não entrou.",
+  "Agrolink informa que os preços das Ceasas são referenciais e não auditados."
+ ]
+}
